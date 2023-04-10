@@ -131,24 +131,27 @@ float fbm(vec4 p) {
   for(int i = 0; i < 6; i++) {
     sum += snoise(p * scale) * amp;
     p.w += 100.0;
-    amp *= 0.9;
-    scale *= 1.5;
+    amp *= 0.7;
+    scale *= 2.25;
   }
 
   return sum;
 }
 
 void main() {
-  vec4 p = vec4(vPosition * 3.0, uTime * 0.05);
-  float surface = fbm(p);
+  vec4 p = vec4(vPosition * 5.0, uTime * 0.05);
+  float surface = fbm(p) * 1.5;
 
-  vec4 p1 = vec4(vPosition * 2.0, uTime * 0.05);
-  float sunspots = max(snoise(p1), 0.0);
+  vec4 p1 = vec4(vPosition * 1.5, uTime * 0.025);
+  float sunspots = max(snoise(p1), 0.25);
 
   vec3 col = sunBright(sunLayer() * 3.75 + 1.75);
-  
-  gl_FragColor = vec4(vec3(surface), 1.0);
-  gl_FragColor *= mix(1.0, sunspots, 0.25);
+  vec3 col1 = vec3(1.3, 1.1, 2.7);
 
-  gl_FragColor = mix(gl_FragColor, vec4(col, 0.75), 0.5);
+  vec3 mixCol = mix(col, col1, 0.75);
+  
+  gl_FragColor = vec4(vec3(surface), 0.25);
+  gl_FragColor *= mix(1.0, sunspots, 0.75);
+
+  gl_FragColor += mix(gl_FragColor, vec4(mixCol, 0.75), 0.85);
 }

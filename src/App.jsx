@@ -1,16 +1,10 @@
-import { Suspense } from 'react'
-import { Canvas } from '@react-three/fiber'
-import Experience from './components/Experience.jsx'
+import GalaxyCanvas from './components/GalaxyCanvas.jsx'
 
 export default function App() {
   
   return (
     <>
-      <Canvas>
-        <Suspense fallback={ null }>
-          <Experience />
-        </Suspense>
-      </Canvas>
+      <GalaxyCanvas />
     </>
   )
 }
