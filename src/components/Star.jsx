@@ -20,7 +20,7 @@ export default function Star() {
 
     <Center>
 
-      <mesh ref={ star } scale={ 5 } >
+      <mesh ref={ star } scale={ 5 }>
         <sphereGeometry args={[ 1, 32, 32 ]} />
         <shaderMaterial
           ref={ starMat }

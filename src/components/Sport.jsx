@@ -30,12 +30,12 @@ export default function Sport() {
 
   return <>
   
-    <mesh ref={ terra } castShadow receiveShadow scale={ 1.5 } position-x={ 16 }>
+    <mesh ref={ terra } scale={ 1.5 } castShadow receiveShadow>
       <sphereGeometry args={[ 1, 32, 32 ]} />
       <meshStandardMaterial map={ terraMap } roughness={ 1 } />
     </mesh>
 
-    <mesh ref={ terraAtmo } castShadow receiveShadow scale={ 1.51 } position-x={ 16 } >
+    <mesh ref={ terraAtmo } scale={ 1.51 } castShadow receiveShadow>
       <sphereGeometry args={[ 1, 32, 32 ]} />
       <meshStandardMaterial map={ terraAtmoMap } side={ THREE.DoubleSide } transparent={ true } depthWrite={ false } />
     </mesh>

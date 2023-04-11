@@ -22,7 +22,7 @@ export default function Interest() {
 
   return <>
 
-    <mesh castShadow receiveShadow ref={ volanic } scale={ 1 }>
+    <mesh ref={ volanic } scale={ 1 } castShadow receiveShadow>
       <sphereGeometry args={[ 1, 32, 32 ]} />
       <meshStandardMaterial color={[ 8, 4, 1.5 ]} map={ volanicMap } roughness={ 1 } toneMapped={ false } />
     </mesh>

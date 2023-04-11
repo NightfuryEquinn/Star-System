@@ -6,6 +6,7 @@ import GalaxyEnv from "./GalaxyEnv.jsx";
 import Star from "./Star.jsx";
 import Interest from "./Interest.jsx";
 import Sport from "./Sport.jsx";
+import Game from "./Game.jsx";
 
 export default function Experience() {
   return <>
@@ -37,6 +38,8 @@ export default function Experience() {
     <Interest />
 
     <Sport />
+
+    <Game />
 
   </>
 }
