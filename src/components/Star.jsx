@@ -6,6 +6,7 @@ import starVert from '../shaders/star/vertex.glsl?raw'
 import starFrag from '../shaders/star/fragment.glsl?raw'
 
 export default function Star() {
+
   const star = useRef()
   const starMat = useRef()
 
@@ -18,7 +19,8 @@ export default function Star() {
   return <>
 
     <Center>
-      <mesh ref={ star } scale={ 2 } >
+
+      <mesh ref={ star } scale={ 5 } >
         <sphereGeometry args={[ 1, 32, 32 ]} />
         <shaderMaterial
           ref={ starMat }
@@ -30,6 +32,7 @@ export default function Star() {
           toneMapped={ false }
         />
       </mesh>
+      
     </Center>
 
   </>

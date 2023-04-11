@@ -25,7 +25,8 @@ I even designed my own logo and created a wireframe in Figma.
 
 ### 👻 Since it is a 3D portfolio, I also used some resources from:
 1️⃣ Poly Haven <br/>
-2️⃣ Solar Textures
+2️⃣ Solar Textures <br/>
+3️⃣ Textures For Planets
 
 <hr/>
 

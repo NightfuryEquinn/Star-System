@@ -4,7 +4,8 @@ import { EffectComposer, Bloom } from '@react-three/postprocessing'
 
 import GalaxyEnv from "./GalaxyEnv.jsx";
 import Star from "./Star.jsx";
-import Alpha from "./Alpha.jsx";
+import Interest from "./Interest.jsx";
+import Sport from "./Sport.jsx";
 
 export default function Experience() {
   return <>
@@ -13,19 +14,29 @@ export default function Experience() {
 
     <OrbitControls makeDefault />
 
-    <EffectComposer>
+    {/* <EffectComposer>
       <Bloom 
         mipmapBlur 
         intensity={ 1.5 } 
         luminanceThreshold={ 0.75 } 
       />
-    </EffectComposer>
+    </EffectComposer> */}
 
     <GalaxyEnv />
+    <ambientLight intensity={ 0.5 } />
 
     <Star />
+    <pointLight 
+      castShadow 
+      intensity={ 5 }
+      position={[ 0, 0, 0 ]}
+      shadow-normalBias={ 1 }
+      shadow-mapSize={[ 1080, 1080 ]}
+    />
 
-    <Alpha />
+    <Interest />
+
+    <Sport />
 
   </>
 }

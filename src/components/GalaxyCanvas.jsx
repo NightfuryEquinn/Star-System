@@ -5,10 +5,17 @@ import GalaxyExp from "./GalaxyExp.jsx"
 
 export default function GalaxyCanvas() {
   return <>
-    <Canvas>
+
+    <Canvas
+      shadows
+      camera={{
+        position: [ 0, 10, 50 ]
+      }}
+    >
       <Suspense fallback={ null }>
         <GalaxyExp />
       </Suspense>
     </Canvas>
+    
   </>
 }
