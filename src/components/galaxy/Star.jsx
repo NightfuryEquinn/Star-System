@@ -2,8 +2,8 @@ import { useFrame } from '@react-three/fiber'
 import { Center } from '@react-three/drei'
 import { useRef } from 'react'
 
-import starVert from '../shaders/star/vertex.glsl?raw'
-import starFrag from '../shaders/star/fragment.glsl?raw'
+import starVert from '../../shaders/star/vertex.glsl?raw'
+import starFrag from '../../shaders/star/fragment.glsl?raw'
 
 export default function Star() {
 

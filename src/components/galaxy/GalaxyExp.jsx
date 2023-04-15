@@ -18,18 +18,18 @@ export default function Experience() {
 
     <OrbitControls makeDefault />
 
-    <EffectComposer>
+    {/* <EffectComposer>
       <Bloom 
         mipmapBlur 
         intensity={ 1.25 } 
         luminanceThreshold={ 1 } 
       />
-    </EffectComposer>
+    </EffectComposer> */}
 
     <GalaxyEnv />
     <ambientLight intensity={ 0.5 } />
 
-    <Star />
+    {/* <Star />
     <pointLight 
       intensity={ 5 }
       position={[ 0, 0, 0 ]}
@@ -45,7 +45,7 @@ export default function Experience() {
 
     <Technical />
 
-    <WorkExp />
+    <WorkExp /> */}
 
   </>
 }

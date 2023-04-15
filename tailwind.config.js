@@ -19,9 +19,8 @@ export default {
       'dune': ['Dune Rise'],
       'stellar-light': ['Stellar Light'],
       'stellar-regular': ['Stellar Regular'],
-      'stellar-medium': ['Stellar Medium'],
-      'stellar-bold': ['Stellar Bold']
-    },
+      'stellar-medium': ['Stellar Medium']
+    }
   },
   plugins: [],
 }

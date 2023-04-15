@@ -22,9 +22,4 @@
     font-family: 'Stellar Medium';
     src: url('./fonts/Stellar-Medium.otf');
   }
-
-  @font-face {
-    font-family: 'Stellar Bold';
-    src: url('./fonts/Stellar-Bold.otf');
-  }
 }

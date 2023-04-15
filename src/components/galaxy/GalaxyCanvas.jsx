@@ -1,9 +1,14 @@
 import { Canvas } from "@react-three/fiber"
 import { Suspense } from "react"
+import { useProgress } from "@react-three/drei"
 
 import GalaxyExp from "./GalaxyExp.jsx"
+import LoadingScreen from "../ui/LoadingScreen.jsx"
 
 export default function GalaxyCanvas() {
+
+  const { progress } = useProgress()
+
   return <>
 
     <Canvas
@@ -16,6 +21,8 @@ export default function GalaxyCanvas() {
         <GalaxyExp />
       </Suspense>
     </Canvas>
+
+    <LoadingScreen />
     
   </>
 }
