@@ -14,9 +14,9 @@ export default function Game() {
   const rockyAtmo = useRef()
 
   useFrame(({ clock }) => {
-    const radius = 25
-    const speed = 0.0625
-    const angle = clock.getElapsedTime() * speed
+    const radius = 44 * 2
+    const speed = 0.035
+    const angle = clock.getElapsedTime() * speed + 9
     
     rocky.current.position.x = Math.cos(angle) * radius
     rocky.current.position.z = Math.sin(angle) * radius
@@ -30,12 +30,12 @@ export default function Game() {
 
   return <>
 
-    <mesh ref={ rocky } scale={ 2.5 } position-x={ 25 } castShadow receiveShadow>
+    <mesh ref={ rocky } scale={ 2.5 }>
       <sphereGeometry args={[ 1, 32, 32 ]} />
       <meshStandardMaterial map={ rockyMap } roughness={ 1 } />
     </mesh>
 
-    <mesh ref={ rockyAtmo } scale={ 2.51 } position-x={ 25 } castShadow receiveShadow>
+    <mesh ref={ rockyAtmo } scale={ 2.51 }>
       <sphereGeometry args={[ 1, 32, 32 ]} />
       <meshStandardMaterial map={ rockyAtmoMap } side={ THREE.DoubleSide } transparent={ true } depthWrite={ false } />
     </mesh>

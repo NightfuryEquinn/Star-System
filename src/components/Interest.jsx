@@ -10,9 +10,9 @@ export default function Interest() {
   const volanic = useRef()
 
   useFrame(({ clock }) => {
-    const radius = 10
-    const speed = 0.05
-    const angle = clock.getElapsedTime() * speed
+    const radius = 20 * 2
+    const speed = 0.025
+    const angle = clock.getElapsedTime() * speed + 1
     
     volanic.current.position.x = Math.cos(angle) * radius
     volanic.current.position.z = Math.sin(angle) * radius
@@ -22,7 +22,7 @@ export default function Interest() {
 
   return <>
 
-    <mesh ref={ volanic } scale={ 1 } castShadow receiveShadow>
+    <mesh ref={ volanic } scale={ 1 }>
       <sphereGeometry args={[ 1, 32, 32 ]} />
       <meshStandardMaterial color={[ 8, 4, 1.5 ]} map={ volanicMap } roughness={ 1 } toneMapped={ false } />
     </mesh>

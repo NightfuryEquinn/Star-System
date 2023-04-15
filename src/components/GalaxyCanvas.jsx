@@ -7,9 +7,9 @@ export default function GalaxyCanvas() {
   return <>
 
     <Canvas
-      shadows
       camera={{
-        position: [ 0, 10, 50 ]
+        position: [ 0, 20, 100 ],
+        fov: 55
       }}
     >
       <Suspense fallback={ null }>

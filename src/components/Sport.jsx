@@ -14,9 +14,9 @@ export default function Sport() {
   const terraAtmo = useRef()
 
   useFrame(({ clock }) => {
-    const radius = 16
-    const speed = 0.075
-    const angle = clock.getElapsedTime() * speed
+    const radius = 32 * 2
+    const speed = 0.045
+    const angle = clock.getElapsedTime() * speed + 4
     
     terra.current.position.x = Math.cos(angle) * radius
     terra.current.position.z = Math.sin(angle) * radius
@@ -30,14 +30,14 @@ export default function Sport() {
 
   return <>
   
-    <mesh ref={ terra } scale={ 1.5 } castShadow receiveShadow>
+    <mesh ref={ terra } scale={ 1.25 }>
       <sphereGeometry args={[ 1, 32, 32 ]} />
       <meshStandardMaterial map={ terraMap } roughness={ 1 } />
     </mesh>
 
-    <mesh ref={ terraAtmo } scale={ 1.51 } castShadow receiveShadow>
+    <mesh ref={ terraAtmo } scale={ 1.26 }>
       <sphereGeometry args={[ 1, 32, 32 ]} />
-      <meshStandardMaterial map={ terraAtmoMap } side={ THREE.DoubleSide } transparent={ true } depthWrite={ false } />
+      <meshStandardMaterial map={ terraAtmoMap } side={ THREE.DoubleSide } transparent={ true } depthWrite={ true } />
     </mesh>
 
   </>

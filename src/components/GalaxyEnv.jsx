@@ -4,8 +4,6 @@ export default function GalaxyEnv() {
   return <>
 
     <color args={[ '#161a1d' ]} attach='background' />
-
-    <ambientLight intensity={ 0.5 } />
     
     <Environment
       background
@@ -20,9 +18,9 @@ export default function GalaxyEnv() {
     />
 
     <Stars 
-      depth={ 40 }
-      count={ 3750 }
-      radius={ 300 }
+      depth={ 60 }
+      count={ 5000 }
+      radius={ 350 }
       factor={ 7 }
       saturation={ 0 }
       fade
