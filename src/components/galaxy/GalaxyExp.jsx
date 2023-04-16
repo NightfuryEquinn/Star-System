@@ -1,4 +1,4 @@
-import { OrbitControls, Environment, Stars } from "@react-three/drei"
+import { OrbitControls, Environment, Stars, useTexture } from "@react-three/drei"
 import { Perf } from "r3f-perf"
 
 import Star from "./Star.jsx"
@@ -27,7 +27,7 @@ export default function Experience() {
         '../src/assets/env/py-min.png',
         '../src/assets/env/ny-min.png',
         '../src/assets/env/pz-min.png',
-        '../src/assets/env/nz-min.png',
+        '../src/assets/env/nz-min.png'
       ]}
     />
 

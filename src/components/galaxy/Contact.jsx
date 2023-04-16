@@ -1,11 +1,16 @@
-import { useFrame, useLoader } from "@react-three/fiber"
+import { useTexture } from "@react-three/drei"
+import { useFrame } from "@react-three/fiber"
 import { useRef } from "react"
-import { TextureLoader } from "three"
 import * as THREE from 'three'
+
+useTexture.preload([
+  '/src/assets/textures/earth_day.jpg',
+  '/src/assets/textures/earth_clouds.png'
+])
 
 export default function Contact() {
 
-  const [ earthMap, earthAtmoMap ] = useLoader(TextureLoader, [
+  const [ earthMap, earthAtmoMap ] = useTexture([
     '/src/assets/textures/earth_day.jpg',
     '/src/assets/textures/earth_clouds.png'
   ])

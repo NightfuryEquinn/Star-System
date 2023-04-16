@@ -1,10 +1,12 @@
-import { useFrame, useLoader } from "@react-three/fiber"
+import { useTexture } from "@react-three/drei"
+import { useFrame } from "@react-three/fiber"
 import { useRef } from "react"
-import { TextureLoader } from "three"
+
+useTexture.preload('/src/assets/textures/haumea.jpg')
 
 export default function Technical() {
 
-  const inhabitMap = useLoader(TextureLoader, '/src/assets/textures/haumea.jpg') 
+  const inhabitMap = useTexture('/src/assets/textures/haumea.jpg') 
 
   const inhabit = useRef()
 

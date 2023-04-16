@@ -1,10 +1,12 @@
-import { useFrame, useLoader } from "@react-three/fiber"
+import { useTexture } from "@react-three/drei"
+import { useFrame } from "@react-three/fiber"
 import { useRef } from "react"
-import { TextureLoader } from "three"
+
+useTexture.preload('/src/assets/textures/gaseous.png')
 
 export default function WorkExp() {
 
-  const gasMap = useLoader(TextureLoader, '/src/assets/textures/gaseous.png') 
+  const gasMap = useTexture('/src/assets/textures/gaseous.png') 
 
   const gas = useRef()
 

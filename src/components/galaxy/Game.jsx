@@ -1,11 +1,16 @@
-import { useFrame, useLoader } from "@react-three/fiber"
+import { useTexture } from "@react-three/drei"
+import { useFrame } from "@react-three/fiber"
 import { useRef } from "react"
-import { TextureLoader } from "three"
 import * as THREE from 'three'
+
+useTexture.preload([
+  '/src/assets/textures/makemake.jpg',
+  '/src/assets/textures/high_clouds.png'
+])
 
 export default function Game() {
 
-  const [ rockyMap, rockyAtmoMap ] = useLoader(TextureLoader, [
+  const [ rockyMap, rockyAtmoMap ] = useTexture([
     '/src/assets/textures/makemake.jpg',
     '/src/assets/textures/high_clouds.png'
   ])

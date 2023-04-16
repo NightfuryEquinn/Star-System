@@ -1,11 +1,13 @@
-import { useFrame, useLoader } from "@react-three/fiber"
+import { useTexture } from "@react-three/drei"
+import { useFrame } from "@react-three/fiber"
 import { useRef } from "react"
-import { TextureLoader } from "three"
 import * as THREE from 'three'
+
+useTexture.preload('/src/assets/textures/volcanic.png')
 
 export default function Interest() {
 
-  const volanicMap = useLoader(TextureLoader, '/src/assets/textures/volcanic.png') 
+  const volanicMap = useTexture('/src/assets/textures/volcanic.png') 
 
   const volanic = useRef()
 

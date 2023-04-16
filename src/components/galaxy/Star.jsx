@@ -1,9 +1,14 @@
 import { useFrame } from '@react-three/fiber'
-import { Center } from '@react-three/drei'
+import { Center, useTexture } from '@react-three/drei'
 import { useRef } from 'react'
 
 import starVert from '../../shaders/star/vertex.glsl?raw'
 import starFrag from '../../shaders/star/fragment.glsl?raw'
+
+useTexture.preload([
+  starVert,
+  starFrag
+])
 
 export default function Star() {
 

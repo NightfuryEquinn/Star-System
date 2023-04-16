@@ -1,11 +1,16 @@
-import { useFrame, useLoader } from "@react-three/fiber"
+import { useTexture } from "@react-three/drei"
+import { useFrame } from "@react-three/fiber"
 import { useRef } from "react"
-import { TextureLoader } from "three"
 import * as THREE from 'three'
+
+useTexture.preload([
+  '/src/assets/textures/ceres.jpg',
+  '/src/assets/textures/light_clouds.png'
+])
 
 export default function Sport() {
 
-  const [ terraMap, terraAtmoMap ] = useLoader(TextureLoader, [
+  const [ terraMap, terraAtmoMap ] = useTexture([
     '/src/assets/textures/ceres.jpg',
     '/src/assets/textures/light_clouds.png'
   ])

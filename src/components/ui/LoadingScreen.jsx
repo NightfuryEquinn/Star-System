@@ -1,10 +1,9 @@
 import GlitchedWriter from "glitched-writer"
 import { useEffect, useState } from "react"
-import { useProgress } from "@react-three/drei"
 
 export default function LoadingScreen({ skipped, onSkipped }) {
 
-  const [progress, setProgress] = useState(0)
+  const [ inProgress, setInProgress ] = useState(false)
 
   useEffect(() => {
     /**
@@ -53,24 +52,9 @@ export default function LoadingScreen({ skipped, onSkipped }) {
     /**
      * Progress Loading Screen
      */
-    const handleLoad = () => {
-      setProgress(100)
-    }
-
-    const handleProgress = (e) => {
-      if (e.lengthComputable) {
-        const loaded = e.loaded / e.total
-        setProgress(Math.round(loaded * 100))
-      }
-    }
-
-    window.addEventListener("load", handleLoad)
-    window.addEventListener("progress", handleProgress)
-
-    return () => {
-      window.removeEventListener("load", handleLoad)
-      window.removeEventListener("progress", handleProgress)
-    }
+    window.addEventListener('load', () => {
+      setInProgress(true)
+    })
   }, [])
 
   return (
@@ -82,9 +66,9 @@ export default function LoadingScreen({ skipped, onSkipped }) {
       />
       <div id="glitched-loading" className="mx-10 font-dune text-4xl text-white text-center"></div>
       <button 
-        className={`bottom-20 absolute pt-2 pr-4 pb-[10px] pl-[18px] font-stellar-regular text-xl bg-white rounded-md duration-500 ${ progress == 100 ? "opacity-100" : "opacity-25" }`}
-        disabled={ progress < 100 }
+        className={`bottom-20 absolute pt-2 pr-4 pb-[10px] pl-[18px] font-stellar-regular text-xl bg-white rounded-md duration-500 ${ inProgress ? "opacity-100" : "opacity-25" } `}
         onClick={ onSkipped }
+        disabled={ !inProgress }
       >
         <p>Skip</p>
       </button>
