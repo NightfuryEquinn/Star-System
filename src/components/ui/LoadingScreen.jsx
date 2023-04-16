@@ -1,9 +1,15 @@
 import GlitchedWriter from "glitched-writer"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
+import { useProgress } from "@react-three/drei"
 
-export default function LoadingScreen() {
+export default function LoadingScreen({ skipped, onSkipped }) {
+
+  const [progress, setProgress] = useState(0)
 
   useEffect(() => {
+    /**
+     * Glitched Writer
+     **/
     const writer = new GlitchedWriter(
       document.getElementById("glitched-loading"),
       {
@@ -37,26 +43,51 @@ export default function LoadingScreen() {
   
     const loadWriter = () => {
       writer.queueWrite(phrases, 1000, () => {
-        document.getElementById("glitched-logo").style.opacity = 1
+        document.getElementById("glitched-logo").classList.remove("opacity-25")
+        document.getElementById("glitched-logo").classList.add("opacity-100")
       })
     }
 
     loadWriter()
+
+    /**
+     * Progress Loading Screen
+     */
+    const handleLoad = () => {
+      setProgress(100)
+    }
+
+    const handleProgress = (e) => {
+      if (e.lengthComputable) {
+        const loaded = e.loaded / e.total
+        setProgress(Math.round(loaded * 100))
+      }
+    }
+
+    window.addEventListener("load", handleLoad)
+    window.addEventListener("progress", handleProgress)
+
+    return () => {
+      window.removeEventListener("load", handleLoad)
+      window.removeEventListener("progress", handleProgress)
+    }
   }, [])
 
   return (
-    <>
-      <div id="glitched-screen" className="relative bg-black w-full max-w-full h-full max-h-full flex flex-col gap-y-24 items-center">
-        <img 
-          src="/logo/Self Design Logo - Dark.png"
-          id="glitched-logo"
-          className="duration-700 opacity-25"
-        />
-        <div id="glitched-loading" className="mx-10 relative font-dune text-4xl text-white text-center"></div>
-        <button className="bottom-20 absolute pt-2 pr-4 pb-[10px] pl-[18px] font-stellar-regular text-xl bg-white rounded-md duration-500 opacity-100">
-          <p>Skip</p>
-        </button>
-      </div>
-    </>
+    <div id="glitched-screen" className={`${ skipped && "opacity-0 pointer-events-none" } absolute top-0 left-0 bg-black w-full max-w-full h-full max-h-full flex flex-col gap-y-24 items-center duration-500`}>
+      <img 
+        src="/logo/Self Design Logo - Dark.png"
+        id="glitched-logo"
+        className="duration-700 opacity-25"
+      />
+      <div id="glitched-loading" className="mx-10 font-dune text-4xl text-white text-center"></div>
+      <button 
+        className={`bottom-20 absolute pt-2 pr-4 pb-[10px] pl-[18px] font-stellar-regular text-xl bg-white rounded-md duration-500 ${ progress == 100 ? "opacity-100" : "opacity-25" }`}
+        disabled={ progress < 100 }
+        onClick={ onSkipped }
+      >
+        <p>Skip</p>
+      </button>
+    </div>
   )
 }
