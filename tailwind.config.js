@@ -20,6 +20,11 @@ export default {
       'stellar-light': ['Stellar Light'],
       'stellar-regular': ['Stellar Regular'],
       'stellar-medium': ['Stellar Medium']
+    },
+    extend: {
+      screens: {
+        '3xl': '1920px'
+      }
     }
   },
   plugins: [],

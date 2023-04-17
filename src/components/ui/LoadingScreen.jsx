@@ -58,20 +58,28 @@ export default function LoadingScreen({ skipped, onSkipped }) {
   }, [])
 
   return (
-    <div id="glitched-screen" className={`${ skipped && "opacity-0 pointer-events-none" } absolute top-0 left-0 bg-black w-full max-w-full h-full max-h-full flex flex-col gap-y-24 items-center duration-500`}>
-      <img 
-        src="/logo/Self Design Logo - Dark.png"
-        id="glitched-logo"
-        className="duration-700 opacity-25"
-      />
-      <div id="glitched-loading" className="mx-10 font-dune text-4xl text-white text-center"></div>
-      <button 
-        className={`bottom-20 absolute pt-2 pr-4 pb-[10px] pl-[18px] font-stellar-regular text-xl bg-white rounded-md duration-500 ${ inProgress ? "opacity-100" : "opacity-25" } `}
-        onClick={ onSkipped }
-        disabled={ !inProgress }
+    <>
+      <div 
+        id="glitched-screen" 
+        className={`${ skipped && "opacity-0 pointer-events-none" } absolute top-0 left-0 bg-black w-full max-w-full h-full max-h-full flex flex-col lg:flex-row-reverse gap-24 lg:gap-0 lg:justify-between items-center duration-500`}
       >
-        <p>Skip</p>
-      </button>
-    </div>
+        <img 
+          src="/logo/Self Design Logo - Dark.png"
+          id="glitched-logo"
+          className="duration-700 opacity-25 w-full max-w-2xl lg:max-w-xl 2xl:max-w-2xl 3xl:max-w-3xl"
+        />
+        <div id="glitched-loading" className="mx-10 lg:mx-0 lg:ml-20 xl:ml-28 3xl:ml-36 font-dune text-4xl xl:text-5xl text-white text-center lg:text-left"></div>
+      </div>
+
+      <div className={`${ skipped && "opacity-0 pointer-events-none" } relative mx-20 lg:mx-40`}>
+        <button 
+            className={`absolute bottom-20 w-full font-stellar-medium text-xl lg:text-3xl text-white duration-500 ${ inProgress ? "opacity-100" : "opacity-25" } `}
+            onClick={ onSkipped }
+            disabled={ !inProgress }
+          >
+            <p className="pb-1 border-b-white border-b-2">Skip</p>
+        </button>
+      </div>
+    </>
   )
 }

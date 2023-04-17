@@ -4,7 +4,6 @@ import { EffectComposer, Bloom } from '@react-three/postprocessing'
 
 import GalaxyExp from "./components/galaxy/GalaxyExp.jsx"
 import LoadingScreen from "./components/ui/LoadingScreen.jsx"
-import { Preload } from "@react-three/drei"
 
 export default function App() {
 
@@ -33,7 +32,6 @@ export default function App() {
         </EffectComposer> */}
 
       </Canvas>
-
       <LoadingScreen skipped={ skipLoad } onSkipped={ () => setSkipLoad(true) } />
 
     </>
