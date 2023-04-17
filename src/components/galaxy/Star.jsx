@@ -1,14 +1,19 @@
-import { useFrame } from '@react-three/fiber'
-import { Center, useTexture } from '@react-three/drei'
+import { extend, useFrame } from '@react-three/fiber'
+import { Center, shaderMaterial } from '@react-three/drei'
 import { useRef } from 'react'
 
 import starVert from '../../shaders/star/vertex.glsl?raw'
 import starFrag from '../../shaders/star/fragment.glsl?raw'
 
-useTexture.preload([
+const StarMaterial = shaderMaterial(
+  {
+    uTime: 0
+  },
   starVert,
-  starFrag
-])
+  starFrag,
+)
+
+extend({ StarMaterial })
 
 export default function Star() {
 
@@ -27,15 +32,7 @@ export default function Star() {
 
       <mesh ref={ star } scale={ 10 }>
         <sphereGeometry args={[ 1, 32, 32 ]} />
-        <shaderMaterial
-          ref={ starMat }
-          vertexShader={ starVert }
-          fragmentShader={ starFrag }
-          uniforms={{
-            uTime: { value: 0 }
-          }}
-          toneMapped={ false }
-        />
+        <starMaterial ref={ starMat } toneMapped={ false } />
       </mesh>
       
     </Center>

@@ -1,5 +1,6 @@
-import { OrbitControls, Environment, Stars, useTexture } from "@react-three/drei"
+import { OrbitControls, Environment, Stars } from "@react-three/drei"
 import { Perf } from "r3f-perf"
+import { EffectComposer, Bloom } from '@react-three/postprocessing'
 
 import Star from "./Star.jsx"
 import Interest from "./Interest.jsx"
@@ -30,6 +31,14 @@ export default function Experience() {
         '../src/assets/env/nz-min.png'
       ]}
     />
+
+    {/* <EffectComposer>
+      <Bloom 
+        mipmapBlur 
+        intensity={ 1.25 } 
+        luminanceThreshold={ 1 } 
+      />
+    </EffectComposer> */}
 
     <Stars 
       depth={ 60 }
