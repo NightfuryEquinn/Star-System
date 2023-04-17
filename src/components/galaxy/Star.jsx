@@ -10,7 +10,7 @@ const StarMaterial = shaderMaterial(
     uTime: 0
   },
   starVert,
-  starFrag,
+  starFrag
 )
 
 extend({ StarMaterial })
