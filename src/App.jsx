@@ -13,7 +13,7 @@ export default function App() {
 
       <Canvas camera={{ position: [ 0, 20, 100 ], fov: 55 }}>
         <Suspense fallback={ null }>
-          <GalaxyExp />
+          <GalaxyExp onClickInterest={ () => { setViewContent('interest') } } />
         </Suspense>
       </Canvas>
       

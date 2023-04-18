@@ -9,19 +9,19 @@ export default function Content() {
      */
     const writer = new GlitchedWriter(
       document.getElementById("glitched-title"),
-      'cosmic'
+      'typewriter'
     )
 
     writer.options.set({
       letterize: true
     })
 
-    writer.write("Content")
+    writer.write("Dummy")
   })
 
   return (
     <>
-      <div className="absolute top-0 left-0 bg-black bg-opacity-90 w-full max-w-full h-full max-h-full">
+      <div className={`${ view ? "opacity-100" : "opacity-0 pointer-events-none" } absolute top-0 left-0 bg-black bg-opacity-90 w-full max-w-full h-full max-h-full duration-500`}>
         <div className="h-full max-h-screen overflow-hidden m-10 relative flex flex-col gap-y-10">
           <h2 id="glitched-title" className="font-dune text-white text-4xl self-center"></h2>
 
