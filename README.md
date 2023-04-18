@@ -13,7 +13,7 @@ I even designed my own logo and created a wireframe in Figma.
 <hr/>
 
 ### 💡 Libraries and framework used: 
-1️⃣ React-Three-Fiber <br/>
+1️⃣ React-Three-Fiber (Big thanks to Bruno Simon course) <br/>
 2️⃣ React-Three-Drei <br/>
 3️⃣ R3F-Perf <br/>
 4️⃣ Leva <br/>
@@ -26,10 +26,11 @@ I even designed my own logo and created a wireframe in Figma.
 ### 👻 Since it is a 3D portfolio, I also used some resources from:
 1️⃣ Poly Haven <br/>
 2️⃣ Solar Textures <br/>
-3️⃣ Textures For Planets
+3️⃣ Textures For Planets <br/>
+4️⃣ Icones <br/>
 
 <hr/>
 
 P/S: 🤡 If I missed any credits, please do not hestitate to tell me to include it.
 <br/>
-P/S: 😌 The shaders are taken, adapted and tweaked from [here](https://www.youtube.com/watch?v=3krH52AhPqk).
+P/S: 😌 The shader for the star are taken, adapted and tweaked from [here](https://www.youtube.com/watch?v=3krH52AhPqk).
