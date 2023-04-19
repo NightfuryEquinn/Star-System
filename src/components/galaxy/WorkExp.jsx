@@ -4,7 +4,7 @@ import { useRef } from "react"
 
 useTexture.preload('/src/assets/textures/gaseous.png')
 
-export default function WorkExp() {
+export default function WorkExp({ onSetView }) {
 
   const gasMap = useTexture('/src/assets/textures/gaseous.png') 
 
@@ -23,7 +23,7 @@ export default function WorkExp() {
 
   return <>
 
-    <mesh ref={ gas } scale={ 5.75 }>
+    <mesh ref={ gas } scale={ 5.75 } onClick={ (e) => { onSetView(); e.stopPropagation() } }>
       <sphereGeometry args={[ 1, 32, 32 ]} />
       <meshStandardMaterial map={ gasMap } roughness={ 1 } />
     </mesh>

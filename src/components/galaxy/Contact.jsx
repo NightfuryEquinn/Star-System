@@ -8,7 +8,7 @@ useTexture.preload([
   '/src/assets/textures/earth_clouds.png'
 ])
 
-export default function Contact() {
+export default function Contact({ onSetView }) {
 
   const [ earthMap, earthAtmoMap ] = useTexture([
     '/src/assets/textures/earth_day.jpg',
@@ -40,7 +40,7 @@ export default function Contact() {
       <meshStandardMaterial map={ earthMap } roughness={ 1 } />
     </mesh>
 
-    <mesh ref={ earthAtmo } scale={ 2.76 }>
+    <mesh ref={ earthAtmo } scale={ 2.76 } onClick={ (e) => { onSetView(); e.stopPropagation() } }>
       <sphereGeometry args={[ 1, 32, 32 ]} />
       <meshStandardMaterial map={ earthAtmoMap } opacity={ 0.5 } side={ THREE.DoubleSide } transparent={ true } depthWrite={ true } />
     </mesh>

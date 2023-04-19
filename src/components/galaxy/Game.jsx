@@ -8,7 +8,7 @@ useTexture.preload([
   '/src/assets/textures/high_clouds.png'
 ])
 
-export default function Game() {
+export default function Game({ onSetView }) {
 
   const [ rockyMap, rockyAtmoMap ] = useTexture([
     '/src/assets/textures/makemake.jpg',
@@ -40,7 +40,7 @@ export default function Game() {
       <meshStandardMaterial map={ rockyMap } roughness={ 1 } />
     </mesh>
 
-    <mesh ref={ rockyAtmo } scale={ 2.51 }>
+    <mesh ref={ rockyAtmo } scale={ 2.51 } onClick={ (e) => { onSetView(); e.stopPropagation() } }>
       <sphereGeometry args={[ 1, 32, 32 ]} />
       <meshStandardMaterial map={ rockyAtmoMap } side={ THREE.DoubleSide } transparent={ true } depthWrite={ false } />
     </mesh>

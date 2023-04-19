@@ -8,7 +8,7 @@ useTexture.preload([
   '/src/assets/textures/light_clouds.png'
 ])
 
-export default function Sport() {
+export default function Sport({ onSetView }) {
 
   const [ terraMap, terraAtmoMap ] = useTexture([
     '/src/assets/textures/ceres.jpg',
@@ -40,7 +40,7 @@ export default function Sport() {
       <meshStandardMaterial map={ terraMap } roughness={ 1 } />
     </mesh>
 
-    <mesh ref={ terraAtmo } scale={ 1.26 }>
+    <mesh ref={ terraAtmo } scale={ 1.26 } onClick={ (e) => { onSetView(); e.stopPropagation() } }>
       <sphereGeometry args={[ 1, 32, 32 ]} />
       <meshStandardMaterial map={ terraAtmoMap } side={ THREE.DoubleSide } transparent={ true } depthWrite={ true } />
     </mesh>

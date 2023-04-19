@@ -5,7 +5,7 @@ import * as THREE from 'three'
 
 useTexture.preload('/src/assets/textures/volcanic.png')
 
-export default function Interest() {
+export default function Interest({ onSetView }) {
 
   const volanicMap = useTexture('/src/assets/textures/volcanic.png') 
 
@@ -24,7 +24,7 @@ export default function Interest() {
 
   return <>
 
-    <mesh ref={ volanic } scale={ 1 }>
+    <mesh ref={ volanic } scale={ 1 } onClick={ (e) => { onSetView(); e.stopPropagation() } }>
       <sphereGeometry args={[ 1, 32, 32 ]} />
       <meshStandardMaterial color={[ 8, 4, 1.5 ]} map={ volanicMap } roughness={ 1 } toneMapped={ false } />
     </mesh>

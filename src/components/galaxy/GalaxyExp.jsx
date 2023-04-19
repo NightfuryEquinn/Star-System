@@ -10,7 +10,7 @@ import Contact from "./Contact.jsx"
 import Technical from "./Technical.jsx"
 import WorkExp from "./WorkExp.jsx"
 
-export default function Experience() {
+export default function GalayxExp({ onViewInterest, onViewSport, onViewGame, onViewContact, onViewTechnical, onViewWorkExp }) {
 
   return <>
 
@@ -58,17 +58,17 @@ export default function Experience() {
       position={[ 0, 0, 0 ]}
     />
 
-    <Interest />
+    <Interest onSetView={ onViewInterest } />
 
-    <Sport />
+    <Sport onSetView={ onViewSport } />
 
-    <Game />
+    <Game onSetView={ onViewGame } />
 
-    <Contact />
+    <Contact onSetView={ onViewContact } />
 
-    <Technical />
+    <Technical onSetView={ onViewTechnical } />
 
-    <WorkExp />
+    <WorkExp onSetView={ onViewWorkExp } />
 
   </>
 }

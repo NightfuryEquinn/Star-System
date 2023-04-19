@@ -30,7 +30,7 @@ export default function Star() {
 
     <Center>
 
-      <mesh ref={ star } scale={ 10 }>
+      <mesh ref={ star } scale={ 10 } onClick={ (e) => e.stopPropagation() } >
         <sphereGeometry args={[ 1, 32, 32 ]} />
         <starMaterial ref={ starMat } toneMapped={ false } />
       </mesh>

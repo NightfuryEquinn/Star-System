@@ -4,7 +4,7 @@ import { useRef } from "react"
 
 useTexture.preload('/src/assets/textures/haumea.jpg')
 
-export default function Technical() {
+export default function Technical({ onSetView }) {
 
   const inhabitMap = useTexture('/src/assets/textures/haumea.jpg') 
 
@@ -23,7 +23,7 @@ export default function Technical() {
 
   return <>
 
-    <mesh ref={ inhabit } scale={ 4.5 }>
+    <mesh ref={ inhabit } scale={ 4.5 } onClick={ (e) => { onSetView(); e.stopPropagation() } }>
       <sphereGeometry args={[ 1, 32, 32 ]} />
       <meshStandardMaterial map={ inhabitMap } roughness={ 1 } />
     </mesh>
