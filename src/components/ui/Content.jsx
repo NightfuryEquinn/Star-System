@@ -11,12 +11,8 @@ export default function Content({ planet, view, onSetView }) {
      */
     const writer = new GlitchedWriter(
       document.getElementById("glitched-title"),
-      'typewriter'
+      'nier'
     )
-
-    writer.options.set({
-      letterize: true
-    })
 
     writer.write(planet)
   })

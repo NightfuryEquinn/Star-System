@@ -14,10 +14,6 @@ export default function LoadingScreen({ skipped, onSkipped }) {
       'nier'
     )
 
-    writer.options.set({
-      letterize: true
-    })
-
     const phrases = [
       "Unknown User Detected",
       "Initializing Interface",
@@ -59,7 +55,7 @@ export default function LoadingScreen({ skipped, onSkipped }) {
           id="glitched-logo"
           className="duration-700 opacity-25 w-full max-w-2xl lg:max-w-xl 2xl:max-w-2xl 3xl:max-w-3xl"
         />
-        <div id="glitched-loading" className="mx-10 lg:mx-0 lg:ml-20 xl:ml-28 3xl:ml-36 font-dune text-4xl xl:text-5xl text-white text-center lg:text-left"></div>
+        <div id="glitched-loading" className="relative mx-10 lg:mx-0 lg:ml-20 xl:ml-28 3xl:ml-36 font-dune text-4xl xl:text-5xl text-white text-center lg:text-left"></div>
       </div>
 
       <div className={`${ skipped && "opacity-0 pointer-events-none" } relative mx-20 lg:mx-40`}>

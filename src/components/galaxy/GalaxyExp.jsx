@@ -32,14 +32,6 @@ export default function GalayxExp({ onViewInterest, onViewSport, onViewGame, onV
       ]}
     />
 
-    {/* <EffectComposer>
-      <Bloom 
-        mipmapBlur 
-        intensity={ 1.25 } 
-        luminanceThreshold={ 1 } 
-      />
-    </EffectComposer> */}
-
     <Stars 
       depth={ 60 }
       count={ 5000 }
