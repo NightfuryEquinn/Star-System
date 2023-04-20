@@ -1,17 +1,33 @@
 let planetsData = [
   {
     "planet": "interest",
-    "content": {
-      "title": "Physics",
-      "body": "Lorem ipsum dolor est astrum"
-    }
+    "content": [
+      {
+        "title": "Physics",
+        "body": "Lorem ipsum dolor est astrum 1"
+      },
+      {
+        "title": "Space",
+        "body": "Lorem ipsum dolor est astrum 2"
+      }
+    ]
   },
   {
     "planet": "sport",
-    "content": {
-      "title": "Taekwando",
-      "body": "Lorem ipsum dolor est astrum"
-    }
+    "content": [
+      {
+        "title": "Taekwando",
+        "body": "Lorem ipsum dolor est astrum 1"
+      },
+      {
+        "title": "Archery",
+        "body": "Lorem ipsum dolor est astrum 2"
+      },
+      {
+        "title": "Badminton",
+        "body": "Lorem ipsum dolor est astrum 3"
+      }
+    ]
   },
   {
     "planet": "game",

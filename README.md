@@ -32,5 +32,3 @@ I even designed my own logo and created a wireframe in Figma.
 <hr/>
 
 P/S: 🤡 If I missed any credits, please do not hestitate to tell me to include it.
-<br/>
-P/S: 😌 The shader for the star are taken, adapted and tweaked from [here](https://www.youtube.com/watch?v=3krH52AhPqk).

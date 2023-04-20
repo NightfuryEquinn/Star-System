@@ -14,9 +14,9 @@ export default function GalayxExp({ onViewInterest, onViewSport, onViewGame, onV
 
   return <>
 
-    {/* <Perf position='top-left' /> */}
+    <Perf position='top-left' />
 
-    <OrbitControls makeDefault />
+    <OrbitControls makeDefault maxDistance={ 1500 } panSpeed={ 0.375 } />
 
     <color args={[ '#161a1d' ]} attach='background' />
     
