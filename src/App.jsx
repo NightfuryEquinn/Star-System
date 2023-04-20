@@ -42,7 +42,7 @@ export default function App() {
         </EffectComposer> */}
       </Canvas>
       
-      {/* <LoadingScreen skipped={ skipLoad } onSkipped={ () => setSkipLoad(true) } /> */}
+      <LoadingScreen skipped={ skipLoad } onSkipped={ () => setSkipLoad(true) } />
 
       <Content planet={ planet } view={ view } onSetView={ () => setView(false) } />
 
