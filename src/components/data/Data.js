@@ -1,39 +1,37 @@
 let planetsData = [
   {
-    "planet": "interest",
-    "content": [
-      {}
+    planet: "interest",
+    skill: [
+      {
+        name: "Physics",
+        ratings: {
+          fond: 86,
+          attractive: 94
+        }
+      },
+      {
+        name: "Astronomy",
+        ratings: {
+          fond: 81,
+          attractive: 77
+        }
+      }
     ]
   },
   {
-    "planet": "sport",
-    "content": [
-      {}
-    ]
+    planet: "sport",
   },
   {
-    "planet": "game",
-    "content": [
-      {}
-    ]
+    planet: "game",
   },
   {
-    "planet": "contact",
-    "content": [
-      {}
-    ]
+    planet: "contact",
   },
   {
-    "planet": "technical",
-    "content": [
-      {}
-    ]
+    planet: "technical",
   },
   {
-    "planet": "workexp",
-    "content": [
-      {}
-    ]
+    planet: "workexp",
   }
 ]
 
