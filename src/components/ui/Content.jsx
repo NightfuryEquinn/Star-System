@@ -7,9 +7,6 @@ import SkillChart from "./SkillChart.jsx"
 export default function Content({ planet, view, onSetView }) {
 
   const thePlanetData = planetsData.find((planetName) => planetName.planet === planet);
-  const content = thePlanetData?.content || []
-
-  console.log(content)
 
   useEffect(() => {
     /**
@@ -30,7 +27,7 @@ export default function Content({ planet, view, onSetView }) {
           <h2 id="glitched-title-1" className="glitched-title font-dune text-white text-4xl md:text-6xl self-center"></h2>
 
           <div className="p-2 bg-white">
-            <SkillChart />
+            <SkillChart thePlanetData={ thePlanetData } />
           </div>
 
           <button onClick={ onSetView } className="self-center">

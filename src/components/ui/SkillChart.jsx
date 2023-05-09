@@ -1,5 +1,8 @@
-export default function SkillChart() {
+export default function SkillChart({ thePlanetData }) {
+
   return (
-    <p>Test</p>
+    <>
+      <p>{thePlanetData?.planet}</p>
+    </>
   )
 }
