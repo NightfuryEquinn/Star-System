@@ -23,10 +23,10 @@ export default function Content({ planet, view, onSetView }) {
   return (
     <>
       <div className={`${ view ? "opacity-100 scale-y-100" : "opacity-0 scale-y-0 pointer-events-none" } absolute top-0 right-0 bottom-0 left-0 bg-black duration-500 origin-center`}>
-        <div className="m-10 md:m-20 h-full max-h-screen flex flex-col gap-y-10">
+        <div className="p-10 md:p-20 h-full max-h-screen flex flex-col gap-y-10">
           <h2 id="glitched-title-1" className="glitched-title font-dune text-white text-4xl md:text-6xl self-center"></h2>
 
-          <div className="p-2 h-full max-h-[600px] bg-white">
+          <div className="p-2 h-full bg-white rounded-tr-3xl rounded-bl-3xl">
             <SkillChart thePlanetData={ thePlanetData } />
           </div>
 
