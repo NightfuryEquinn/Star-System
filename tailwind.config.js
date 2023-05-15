@@ -24,9 +24,14 @@ export default {
     extend: {
       screens: {
         '3xl': '1920px'
+      },
+      transitionTimingFunction: {
+        'open': 'cubic-bezier(0, .81, .16, 1)'
       }
     }
   },
-  plugins: [],
+  plugins: [
+    require('tailwindcss-animated')
+  ],
 }
 
