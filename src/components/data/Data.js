@@ -51,14 +51,16 @@ let planetsData = [
         name: "Genshin",
         ratings: {
           fond: 86,
-          attractive: 94
+          attractive: 94,
+          mastery: 64
         }
       },
       {
         name: "Honkai",
         ratings: {
           fond: 81,
-          attractive: 77
+          attractive: 77,
+          mastery: 36
         }
       }
     ]
@@ -71,14 +73,16 @@ let planetsData = [
         name: "Facebook",
         ratings: {
           fond: 86,
-          attractive: 94
+          attractive: 94,
+          mastery: 64
         }
       },
       {
         name: "Instagram",
         ratings: {
           fond: 81,
-          attractive: 77
+          attractive: 77,
+          mastery: 36
         }
       }
     ]
@@ -91,14 +95,16 @@ let planetsData = [
         name: "React.JS",
         ratings: {
           fond: 86,
-          attractive: 94
+          attractive: 94,
+          mastery: 64
         }
       },
       {
         name: "Three.JS",
         ratings: {
           fond: 81,
-          attractive: 77
+          attractive: 77,
+          mastery: 36
         }
       }
     ]
@@ -111,14 +117,16 @@ let planetsData = [
         name: "Erican",
         ratings: {
           fond: 86,
-          attractive: 94
+          attractive: 94,
+          mastery: 64
         }
       },
       {
         name: "TechyHub",
         ratings: {
           fond: 81,
-          attractive: 77
+          attractive: 77,
+          mastery: 36
         }
       }
     ]

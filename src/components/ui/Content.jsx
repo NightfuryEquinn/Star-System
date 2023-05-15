@@ -26,7 +26,7 @@ export default function Content({ planet, view, onSetView }) {
         <div className="p-10 md:p-20 h-full max-h-screen flex flex-col gap-y-10">
           <h2 id="glitched-title-1" className="glitched-title font-dune text-white text-4xl md:text-6xl self-center"></h2>
 
-          <div className="p-2 h-full bg-white rounded-tr-3xl rounded-bl-3xl">
+          <div className="h-full">
             <SkillChart thePlanetData={ thePlanetData } view={ view } />
           </div>
 

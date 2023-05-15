@@ -1,3 +1,5 @@
+@import "/node_modules/augmented-ui/augmented-ui.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -35,38 +37,22 @@
   }
 }
 
-/* Corner only Border */
-.border-corner-only {
-  padding: 1em;
-  border: 0.5em solid;
-  position: relative;
-  @apply border-black;
+/* Cyber Border */
+.cyber-border {
+  --aug-clip-t1: initial;
+  --aug-clip-t2: initial;
+  --aug-clip-r1: initial;
+  --aug-clip-r2: initial;
+  --aug-clip-l1: initial;
+  --aug-clip-l2: initial;
+  --aug-t-extend1: 25%;
+  --aug-r-extend1: 50%;
+  --aug-l-extend1: 50%;
 }
 
-.border-corner-only::before, .border-corner-only::after {
-  content: '';
-  display: block;
-  position: absolute;
-  @apply bg-white;
-}
-
-.border-corner-only::before {
-  top: -0.6em;
-  right: 3em;
-  bottom: -0.6em;
-  left: 3em;
-}
-
-.border-corner-only::after {
-  top: 3em;
-  right: -0.6em;
-  bottom: 3em;
-  left: -0.6em;
-}
-
-.border-corner-only-content {
-  position: relative;
-  z-index: 1;
+.cyber-border-color {
+  --aug-border-bg: #dee2e6;
+  --aug-inlay-bg: #dee2e6;
 }
 
 /* Style on Glitched Write classes */
