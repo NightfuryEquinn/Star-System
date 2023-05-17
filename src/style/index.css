@@ -37,6 +37,41 @@
   }
 }
 
+/* CSS Variables */
+@property --aug-bg-pos {
+  syntax: "<length-percentage>";
+  initial-value: 0%;
+  inherits: true;
+}
+
+@property --colorAlpha {
+  syntax: "<color>";
+  initial-value: #ed0101;
+  inherits: true;
+}
+
+@property --colorBeta {
+  syntax: "<color>";
+  initial-value: #0c44ac;
+  inherits: true;
+}
+
+html {
+  --aug-bg: linear-gradient(-135deg, var(--colorAlpha), var(--colorBeta));
+  animation: colorGradient 10s ease alternate infinite;
+}
+
+@keyframes colorGradient {
+  0%, 100% { 
+    --colorAlpha: #ed0101;
+    --colorBeta: #0c44ac;
+  }
+  50% { 
+    --colorAlpha: #970005; 
+    --colorBeta: #000052;
+  }
+}
+
 /* Cyber Border */
 .cyber-border {
   --aug-clip-t1: initial;
@@ -51,7 +86,8 @@
 }
 
 .cyber-border-color {
-  --aug-border-bg: #dee2e6;
+  --aug-inlay-all: 7.5px;
+  --aug-border-bg: var(--aug-bg);
   --aug-inlay-bg: #dee2e6;
 }
 
