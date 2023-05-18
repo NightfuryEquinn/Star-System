@@ -38,12 +38,6 @@
 }
 
 /* CSS Variables */
-@property --aug-bg-pos {
-  syntax: "<length-percentage>";
-  initial-value: 0%;
-  inherits: true;
-}
-
 @property --colorAlpha {
   syntax: "<color>";
   initial-value: #ed0101;
