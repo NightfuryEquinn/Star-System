@@ -3,11 +3,11 @@ import { useFrame } from "@react-three/fiber"
 import { useRef } from "react"
 import * as THREE from 'three'
 
-useTexture.preload('src/assets/textures/volcanic.png')
+useTexture.preload('../../assets/textures/volcanic.png')
 
 export default function Interest({ onSetView }) {
 
-  const volanicMap = useTexture('src/assets/textures/volcanic.png') 
+  const volanicMap = useTexture('../../assets/textures/volcanic.png') 
 
   const volanic = useRef()
 

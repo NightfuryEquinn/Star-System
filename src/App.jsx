@@ -30,7 +30,7 @@ export default function App() {
             onViewWorkExp={ () => { setView(true), setPlanet("workexp") } }
           />
 
-          {/* <EffectComposer>
+          <EffectComposer>
             <Bloom 
               mipmapBlur 
               intensity={ 3.5 } 
@@ -42,7 +42,7 @@ export default function App() {
               duration={[ 0.3, 0.5 ]}
               strength={[ 0.2, 0.4 ]}
             />
-          </EffectComposer> */}
+          </EffectComposer>
         </Suspense>
         
       </Canvas>

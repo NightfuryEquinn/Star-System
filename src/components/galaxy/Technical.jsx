@@ -2,11 +2,11 @@ import { useTexture } from "@react-three/drei"
 import { useFrame } from "@react-three/fiber"
 import { useRef } from "react"
 
-useTexture.preload('src/assets/textures/haumea.jpg')
+useTexture.preload('../../assets/textures/haumea.jpg')
 
 export default function Technical({ onSetView }) {
 
-  const inhabitMap = useTexture('src/assets/textures/haumea.jpg') 
+  const inhabitMap = useTexture('../../assets/textures/haumea.jpg') 
 
   const inhabit = useRef()
 

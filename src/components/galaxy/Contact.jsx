@@ -4,15 +4,15 @@ import { useRef } from "react"
 import * as THREE from 'three'
 
 useTexture.preload([
-  'src/assets/textures/earth_day.jpg',
-  'src/assets/textures/earth_clouds.png'
+  '../../assets/textures/earth_day.jpg',
+  '../../assets/textures/earth_clouds.png'
 ])
 
 export default function Contact({ onSetView }) {
 
   const [ earthMap, earthAtmoMap ] = useTexture([
-    'src/assets/textures/earth_day.jpg',
-    'src/assets/textures/earth_clouds.png'
+    '../../assets/textures/earth_day.jpg',
+    '../../assets/textures/earth_clouds.png'
   ])
 
   const earth = useRef()

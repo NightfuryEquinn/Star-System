@@ -2,11 +2,11 @@ import { useTexture } from "@react-three/drei"
 import { useFrame } from "@react-three/fiber"
 import { useRef } from "react"
 
-useTexture.preload('src/assets/textures/gaseous.png')
+useTexture.preload('../../assets/textures/gaseous.png')
 
 export default function WorkExp({ onSetView }) {
 
-  const gasMap = useTexture('src/assets/textures/gaseous.png') 
+  const gasMap = useTexture('../../assets/textures/gaseous.png') 
 
   const gas = useRef()
 
