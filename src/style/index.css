@@ -18,22 +18,22 @@
 @layer base {
   @font-face {
     font-family: 'Dune Rise';
-    src: url('src/fonts/Dune-Rise.otf');
+    src: url('./fonts/Dune-Rise.otf');
   }
 
   @font-face {
     font-family: 'Stellar Light';
-    src: url('src/fonts/Stellar-Light.otf');
+    src: url('./fonts/Stellar-Light.otf');
   }
 
   @font-face {
     font-family: 'Stellar Regular';
-    src: url('src/fonts/Stellar-Regular.otf');
+    src: url('./fonts/Stellar-Regular.otf');
   }
 
   @font-face {
     font-family: 'Stellar Medium';
-    src: url('src/fonts/Stellar-Medium.otf');
+    src: url('./fonts/Stellar-Medium.otf');
   }
 }
 
