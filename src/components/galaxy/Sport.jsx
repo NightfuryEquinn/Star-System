@@ -4,15 +4,15 @@ import { useRef } from "react"
 import * as THREE from 'three'
 
 useTexture.preload([
-  '../../assets/textures/ceres.jpg',
-  '../../assets/textures/light_clouds.png'
+  './textures/ceres.jpg',
+  './textures/light_clouds.png'
 ])
 
 export default function Sport({ onSetView }) {
 
   const [ terraMap, terraAtmoMap ] = useTexture([
-    '../../assets/textures/ceres.jpg',
-    '../../assets/textures/light_clouds.png'
+    './textures/ceres.jpg',
+    './textures/light_clouds.png'
   ])
 
   const terra = useRef()

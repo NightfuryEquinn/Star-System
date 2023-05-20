@@ -19,12 +19,12 @@ export default function GalayxExp({ onViewInterest, onViewSport, onViewGame, onV
     <Environment
       background
       files={[
-        '../../assets/env/px-min.png',
-        '../../assets/env/nx-min.png',
-        '../../assets/env/py-min.png',
-        '../../assets/env/ny-min.png',
-        '../../assets/env/pz-min.png',
-        '../../assets/env/nz-min.png'
+        './env/px-min.png',
+        './env/nx-min.png',
+        './env/py-min.png',
+        './env/ny-min.png',
+        './env/pz-min.png',
+        './env/nz-min.png'
       ]}
     />
 

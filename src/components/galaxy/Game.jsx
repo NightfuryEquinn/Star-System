@@ -4,15 +4,15 @@ import { useRef } from "react"
 import * as THREE from 'three'
 
 useTexture.preload([
-  '../../assets/textures/makemake.jpg',
-  '../../assets/textures/high_clouds.png'
+  './textures/makemake.jpg',
+  './textures/high_clouds.png'
 ])
 
 export default function Game({ onSetView }) {
 
   const [ rockyMap, rockyAtmoMap ] = useTexture([
-    '../../assets/textures/makemake.jpg',
-    '../../assets/textures/high_clouds.png'
+    './textures/makemake.jpg',
+    './textures/high_clouds.png'
   ])
 
   const rocky = useRef()
