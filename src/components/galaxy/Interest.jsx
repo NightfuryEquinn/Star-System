@@ -3,7 +3,7 @@ import { useFrame } from "@react-three/fiber"
 import { useRef } from "react"
 import * as THREE from 'three'
 
-useTexture.preload('./textures/volcanic.png')
+// useTexture.preload('./textures/volcanic.png')
 
 export default function Interest({ onSetView }) {
 

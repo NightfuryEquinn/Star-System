@@ -3,10 +3,10 @@ import { useFrame } from "@react-three/fiber"
 import { useRef } from "react"
 import * as THREE from 'three'
 
-useTexture.preload([
-  './textures/earth_day.jpg',
-  './textures/earth_clouds.png'
-])
+// useTexture.preload([
+//   './textures/earth_day.jpg',
+//   './textures/earth_clouds.png'
+// ])
 
 export default function Contact({ onSetView }) {
 

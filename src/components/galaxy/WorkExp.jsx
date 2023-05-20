@@ -2,7 +2,7 @@ import { useTexture } from "@react-three/drei"
 import { useFrame } from "@react-three/fiber"
 import { useRef } from "react"
 
-useTexture.preload('./textures/gaseous.png')
+// useTexture.preload('./textures/gaseous.png')
 
 export default function WorkExp({ onSetView }) {
 
