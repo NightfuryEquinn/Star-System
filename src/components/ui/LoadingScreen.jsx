@@ -64,7 +64,7 @@ export default function LoadingScreen({ skipped, onSkipped }) {
             onClick={ onSkipped }
             disabled={ !inProgress }
           >
-            <p className="pb-1 border-b-white border-b-2">Skip</p>
+            <p className="pb-1 border-b-white border-b-2 tracking-widest">SKIP</p>
         </button>
       </div>
     </>

@@ -18,22 +18,22 @@
 @layer base {
   @font-face {
     font-family: 'Dune Rise';
-    src: url('./fonts/Dune-Rise.otf')
+    src: url('src/fonts/Dune-Rise.otf');
   }
 
   @font-face {
     font-family: 'Stellar Light';
-    src: url('./fonts/Stellar-Light.otf');
+    src: url('src/fonts/Stellar-Light.otf');
   }
 
   @font-face {
     font-family: 'Stellar Regular';
-    src: url('./fonts/Stellar-Regular.otf');
+    src: url('src/fonts/Stellar-Regular.otf');
   }
 
   @font-face {
     font-family: 'Stellar Medium';
-    src: url('./fonts/Stellar-Medium.otf');
+    src: url('src/fonts/Stellar-Medium.otf');
   }
 }
 
@@ -80,9 +80,24 @@ html {
 }
 
 .cyber-border-color {
-  --aug-inlay-all: 7.5px;
   --aug-border-bg: var(--aug-bg);
+  --aug-border-all: 7.5px;
+  --aug-inlay-all: 7.5px;
   --aug-inlay-bg: #dee2e6;
+  --aug-inlay-opacity: 0.75;
+}
+
+@media screen and (min-width: 768px) {
+  .cyber-border-color {
+    --aug-tl: 50px;
+    --aug-t: 50px;
+    --aug-tr: 50px;
+    --aug-r: 50px;
+    --aug-bl: 50px;
+    --aug-b: 50px;
+    --aug-br: 50px;
+    --aug-l: 50px;
+  }
 }
 
 /* Style on Glitched Write classes */

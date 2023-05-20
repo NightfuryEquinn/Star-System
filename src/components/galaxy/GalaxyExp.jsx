@@ -1,6 +1,4 @@
 import { OrbitControls, Environment, Stars } from "@react-three/drei"
-import { Perf } from "r3f-perf"
-import { EffectComposer, Bloom } from '@react-three/postprocessing'
 
 import Star from "./Star.jsx"
 import Interest from "./Interest.jsx"
@@ -14,8 +12,6 @@ export default function GalayxExp({ onViewInterest, onViewSport, onViewGame, onV
 
   return <>
 
-    {/* <Perf position='top-left' /> */}
-
     <OrbitControls makeDefault maxDistance={ 1500 } panSpeed={ 0.375 } />
 
     <color args={[ '#161a1d' ]} attach='background' />
@@ -23,12 +19,12 @@ export default function GalayxExp({ onViewInterest, onViewSport, onViewGame, onV
     <Environment
       background
       files={[
-        '../src/assets/env/px-min.png',
-        '../src/assets/env/nx-min.png',
-        '../src/assets/env/py-min.png',
-        '../src/assets/env/ny-min.png',
-        '../src/assets/env/pz-min.png',
-        '../src/assets/env/nz-min.png'
+        'src/assets/env/px-min.png',
+        'src/assets/env/nx-min.png',
+        'src/assets/env/py-min.png',
+        'src/assets/env/ny-min.png',
+        'src/assets/env/pz-min.png',
+        'src/assets/env/nz-min.png'
       ]}
     />
 

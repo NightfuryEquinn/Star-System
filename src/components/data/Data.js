@@ -45,7 +45,7 @@ let planetsData = [
   },
   {
     planet: "game",
-    quote: "Sometimes is good to escape reality... except when boss...",
+    quote: "Sometimes it's good to escape reality... except when boss sees...",
     skill: [
       {
         name: "Genshin",
@@ -70,7 +70,9 @@ let planetsData = [
     quote: "I am single... I mean I work for one company at a time only...",
     skill: [
       {
-        name: "Facebook",
+        name: "LinkedIn",
+        user: "Yip Zi Xian",
+        link: "https://www.linkedin.com/in/yip-zi-xian-a459691bb/",
         ratings: {
           fond: 86,
           attractive: 94,
@@ -79,6 +81,8 @@ let planetsData = [
       },
       {
         name: "Instagram",
+        user: "NightfuryEquinn",
+        link: "https://www.instagram.com/nightfury_equinn/?theme=dark",
         ratings: {
           fond: 81,
           attractive: 77,

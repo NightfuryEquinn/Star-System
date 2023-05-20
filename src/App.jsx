@@ -1,6 +1,7 @@
 import { Canvas } from "@react-three/fiber"
 import { Suspense, useState } from "react"
-import { EffectComposer, Glitch, Bloom, Noise } from "@react-three/postprocessing"
+import { Perf } from "r3f-perf"
+import { EffectComposer, Glitch, Bloom } from "@react-three/postprocessing"
 
 import GalaxyExp from "./components/galaxy/GalaxyExp.jsx"
 import LoadingScreen from "./components/ui/LoadingScreen.jsx"
@@ -16,6 +17,9 @@ export default function App() {
     <>
 
       <Canvas camera={{ position: [ 0, 20, 100 ], fov: 55, near: 0.1, far: 1500 }}>
+
+        {/* <Perf position='top-left' /> */}
+
         <Suspense fallback={ null }>
           <GalaxyExp 
             onViewInterest={ () => { setView(true), setPlanet("interest") } }
@@ -25,21 +29,22 @@ export default function App() {
             onViewTechnical={ () => { setView(true), setPlanet("technical") } }
             onViewWorkExp={ () => { setView(true), setPlanet("workexp") } }
           />
+
+          {/* <EffectComposer>
+            <Bloom 
+              mipmapBlur 
+              intensity={ 3.5 } 
+              luminanceThreshold={ 1 } 
+            />
+
+            <Glitch 
+              delay={[ 60, 120 ]}
+              duration={[ 0.3, 0.5 ]}
+              strength={[ 0.2, 0.4 ]}
+            />
+          </EffectComposer> */}
         </Suspense>
-
-        {/* <EffectComposer>
-          <Bloom 
-            mipmapBlur 
-            intensity={ 3.5 } 
-            luminanceThreshold={ 1 } 
-          />
-
-          <Glitch 
-            delay={[ 60, 120 ]}
-            duration={[ 0.3, 0.5 ]}
-            strength={[ 0.2, 0.4 ]}
-          />
-        </EffectComposer> */}
+        
       </Canvas>
       
       <LoadingScreen skipped={ skipLoad } onSkipped={ () => setSkipLoad(true) } />
