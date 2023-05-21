@@ -2,7 +2,7 @@ import { useTexture } from "@react-three/drei"
 import { useFrame } from "@react-three/fiber"
 import { useRef } from "react"
 
-// useTexture.preload('./textures/haumea.jpg')
+useTexture.preload('./textures/haumea.jpg')
 
 export default function Technical({ onSetView }) {
 

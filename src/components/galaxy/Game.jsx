@@ -3,10 +3,10 @@ import { useFrame } from "@react-three/fiber"
 import { useRef } from "react"
 import * as THREE from 'three'
 
-// useTexture.preload([
-//   './textures/makemake.jpg',
-//   './textures/high_clouds.png'
-// ])
+useTexture.preload([
+  './textures/makemake.jpg',
+  './textures/high_clouds.png'
+])
 
 export default function Game({ onSetView }) {
 
