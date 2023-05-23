@@ -83,7 +83,7 @@ html {
   --aug-border-bg: var(--aug-bg);
   --aug-border-all: 7.5px;
   --aug-inlay-all: 7.5px;
-  --aug-inlay-bg: #dee2e6;
+  --aug-inlay-bg: #161a1d;/* #dee2e6; */
   --aug-inlay-opacity: 0.75;
 }
 

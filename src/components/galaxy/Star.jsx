@@ -17,7 +17,7 @@ export default function Star() {
 
       <mesh ref={ star } scale={ 10 } onClick={ (e) => e.stopPropagation() } >
         <sphereGeometry args={[ 1, 32, 32 ]} />
-        <meshStandardMaterial color={[ 2, 2, 10 ]} toneMapped={ false } />
+        <meshStandardMaterial color={[ 15, 3, 1 ]} toneMapped={ false } />
       </mesh>
       
     </Center>
