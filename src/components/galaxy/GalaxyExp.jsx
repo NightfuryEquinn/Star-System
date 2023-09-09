@@ -1,14 +1,6 @@
 import { OrbitControls, Environment, Stars } from "@react-three/drei"
 
-import Star from "./Star.jsx"
-import Interest from "./Interest.jsx"
-import Sport from "./Sport.jsx"
-import Game from "./Game.jsx"
-import Contact from "./Contact.jsx"
-import Technical from "./Technical.jsx"
-import WorkExp from "./WorkExp.jsx"
-
-export default function GalayxExp({ onViewInterest, onViewSport, onViewGame, onViewContact, onViewTechnical, onViewWorkExp }) {
+export default function GalayxExp() {
 
   return <>
 
@@ -40,23 +32,10 @@ export default function GalayxExp({ onViewInterest, onViewSport, onViewGame, onV
 
     <ambientLight intensity={ 0.5 } />
 
-    <Star />
     <pointLight 
       intensity={ 5 }
       position={[ 0, 0, 0 ]}
     />
-
-    <Interest onSetView={ onViewInterest } />
-
-    <Sport onSetView={ onViewSport } />
-
-    <Game onSetView={ onViewGame } />
-
-    <Contact onSetView={ onViewContact } />
-
-    <Technical onSetView={ onViewTechnical } />
-
-    <WorkExp onSetView={ onViewWorkExp } />
 
   </>
 }
