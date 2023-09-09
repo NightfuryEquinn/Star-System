@@ -13,21 +13,12 @@ I even designed my own logo and created a wireframe in Figma.
 <hr/>
 
 ### 💡 Libraries and framework used: 
-1️⃣ React-Three-Fiber (Big thanks to Bruno Simon course) <br/>
-2️⃣ React-Three-Drei <br/>
-3️⃣ R3F-Perf <br/>
-4️⃣ Leva <br/>
-5️⃣ TailwindCSS <br/>
-6️⃣ Vite <br/>
-7️⃣ GlitchedWriter <br/>
+
 
 <hr/>
 
 ### 👻 Since it is a 3D portfolio, I also used some resources from:
-1️⃣ Poly Haven <br/>
-2️⃣ Solar Textures <br/>
-3️⃣ Textures For Planets <br/>
-4️⃣ Icones <br/>
+
 
 <hr/>
 
