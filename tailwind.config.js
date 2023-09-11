@@ -1,5 +1,5 @@
 /**
- * @type {import('tailwindcss').Config} 
+ * @type { import( 'tailwindcss' ).Config } 
  **/
 export default {
   content: [
@@ -16,22 +16,22 @@ export default {
       'blue': '#0c44ac'
     },
     fontFamily: {
-      'dune': ['Dune Rise'],
-      'stellar-light': ['Stellar Light'],
-      'stellar-regular': ['Stellar Regular'],
-      'stellar-medium': ['Stellar Medium']
+      'wormbox': [ 'Wormbox' ],
+      'made-light': [ 'Made Light' ],
+      'made-regular': [ 'Made Regular' ],
+      'made-bold': [ 'Made Bold' ]
     },
     extend: {
       screens: {
         '3xl': '1920px'
       },
       transitionTimingFunction: {
-        'open': 'cubic-bezier(0, .81, .16, 1)'
+        'open': 'cubic-bezier( 0, .81, .16, 1 )'
       }
     }
   },
   plugins: [
-    require('tailwindcss-animated')
+    require( 'tailwindcss-animated' )
   ],
 }
 

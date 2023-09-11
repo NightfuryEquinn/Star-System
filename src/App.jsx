@@ -9,7 +9,7 @@ export default function App() {
   return (
     <>
 
-      <Canvas camera={{ position: [ 0, 20, 100 ], fov: 55, near: 0.1, far: 1500 }}>
+      <Canvas camera={ { position: [ 0, 20, 100 ], fov: 55, near: 0.1, far: 1500 } }>
 
         <Perf position='top-left' />
 
@@ -18,9 +18,9 @@ export default function App() {
 
           <EffectComposer>
             <Glitch 
-              delay={[ 60, 120 ]}
-              duration={[ 0.3, 0.5 ]}
-              strength={[ 0.2, 0.4 ]}
+              delay={ [ 60, 120 ] }
+              duration={ [ 0.3, 0.5 ] }
+              strength={ [ 0.2, 0.4 ] }
             />
           </EffectComposer>
         </Suspense>
