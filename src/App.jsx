@@ -3,7 +3,7 @@ import { Suspense } from "react"
 import { Perf } from "r3f-perf"
 import { EffectComposer, Glitch } from "@react-three/postprocessing"
 
-import GalaxyExp from "./components/galaxy/GalaxyExp.jsx"
+import Exp from "./components/Exp.jsx"
 
 export default function App() {
   return (
@@ -14,7 +14,7 @@ export default function App() {
         <Perf position='top-left' />
 
         <Suspense fallback={ null }>
-          <GalaxyExp />
+          <Exp />
 
           <EffectComposer>
             <Glitch 

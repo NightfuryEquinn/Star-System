@@ -2,8 +2,7 @@ import { OrbitControls, useGLTF } from "@react-three/drei"
 
 export default function GalayxExp() {
 
-  const model = useGLTF("../model/logo.glb")
-  console.log(model)
+  const { nodes } = useGLTF( "../model/logo.glb" )
 
   return <>
 
@@ -18,6 +17,7 @@ export default function GalayxExp() {
       position={ [ 0, 0, 0 ] }
     />
 
-    <mesh scale geometry={ model.nodes.F1.geometry } />
+    <mesh geometry={ nodes.F1.geometry } />
+
   </>
 }
