@@ -11,16 +11,6 @@ export default function Exp() {
     metalness: 0.5,
   });
 
-  // const redMetal = new MeshStandardMaterial({
-  //   color: "#970005",
-  //   toneMapped: false,
-  // })
-
-  // const blueMetal = new MeshStandardMaterial({
-  //   color: "#000052",
-  //   toneMapped: false,
-  // })
-
   return <>
     <color args={ [ '#0a0c0d' ] } attach='background' />
 
@@ -33,10 +23,11 @@ export default function Exp() {
 
     <PresentationControls
       global
-      polar={ [ -0.4, 0.2 ] }
+      cursor
+      polar={ [ -1, 0.75 ] }
       azimuth={ [ -1, 0.75 ] }
       config={ { mass: 2, tension: 400 } }
-      snap={ { mass: 4, tension: 400 } }
+      snap={ { mass: 4, tension: 600 } }
     >
       <Center scale={ 1.5 }>
         <mesh position={ [ 0, 0, 0 ] } rotation={ [ 0, 0, 0 ] } geometry={ nodes.F1.geometry } material={ blackMetal } />
@@ -48,11 +39,10 @@ export default function Exp() {
 
         <mesh position={ [ -1, -11.5, 0 ] } rotation={ [ 0, 0, Math.PI * 0.5 ] } geometry={ nodes.Y1.geometry } material={ blackMetal } />
         <mesh position={ [ 9, -11.5, 0 ] } rotation={ [ 0, Math.PI, Math.PI * 0.5 ] } geometry={ nodes.Y2.geometry } material={ blackMetal } />
-        <mesh position={ [ 4, -21, 0 ] } rotation={ [ 0, 0, 0 ] } geometry={ nodes.Y3.geometry } material={ blackMetal } />
+        <mesh position={ [ 4, -21.45, 0 ] } rotation={ [ 0, 0, 0 ] } geometry={ nodes.Y3.geometry } material={ blackMetal } />
 
         <mesh position={ [ -6, -18.5, 0 ] } rotation={ [ 0, 0, Math.PI * 0.5 ] } geometry={ nodes.U1.geometry } material={ blackMetal } />
         <mesh position={ [ 14, -18.5, 0 ] } rotation={ [ 0, Math.PI, Math.PI * 0.5 ] } geometry={ nodes.U2.geometry } material={ blackMetal } />
-
         <mesh position={ [ -1, -22.65, 0 ] } rotation={ [ 0, Math.PI, 0 ] } geometry={ nodes.U3.geometry }>
           <meshStandardMaterial color={ [ 7.5, 0.25, 0.25 ] } toneMapped={ false } />
         </mesh>
