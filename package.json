@@ -10,6 +10,7 @@
     "vercel": "vercel --prod"
   },
   "dependencies": {
+    "@react-spring/three": "^9.7.3",
     "@react-three/postprocessing": "^2.7.1",
     "augmented-ui": "^2.0.0",
     "postprocessing": "^6.30.2",
