@@ -1,34 +1,34 @@
 import { Canvas } from "@react-three/fiber"
 import { Suspense } from "react"
 import { Perf } from "r3f-perf"
-import { EffectComposer, Glitch } from "@react-three/postprocessing"
+import { EffectComposer, Glitch, Bloom } from "@react-three/postprocessing"
 
 import Exp from "./components/Exp.jsx"
 
 export default function App() {
-  return (
-    <>
+  return <>
+    <Canvas camera={ { position: [ 0, 20, 100 ], fov: 55, near: 0.1, far: 1500 } }>
+      <Perf position='top-left' />
 
-      <Canvas camera={ { position: [ 0, 20, 100 ], fov: 55, near: 0.1, far: 1500 } }>
+      <Suspense fallback={ null }>
+        <Exp />
 
-        <Perf position='top-left' />
+        <EffectComposer>
+          <Glitch 
+            delay={ [ 60, 120 ] }
+            duration={ [ 0.3, 0.5 ] }
+            strength={ [ 0.2, 0.4 ] }
+          />
 
-        <Suspense fallback={ null }>
-          <Exp />
-
-          <EffectComposer>
-            <Glitch 
-              delay={ [ 60, 120 ] }
-              duration={ [ 0.3, 0.5 ] }
-              strength={ [ 0.2, 0.4 ] }
-            />
-          </EffectComposer>
-        </Suspense>
-        
-      </Canvas>
-    
-    </>
-  )
+          <Bloom
+            mipmapBlur
+            intensity={ 0.5 }
+            luminanceThreshold={ 1 }
+          />
+        </EffectComposer>
+      </Suspense>
+    </Canvas>
+  </>
 }
 
 

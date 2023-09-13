@@ -66,6 +66,10 @@ html {
   }
 }
 
+canvas {
+  touch-action: none;
+}
+
 /* Cyber Border */
 .cyber-border {
   --aug-clip-t1: initial;
