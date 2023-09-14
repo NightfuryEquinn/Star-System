@@ -28,26 +28,29 @@ export default function Logo() {
     F1Animate, F2Animate, 
     R1Animate, R2Animate, R3Animate,
     Y1Animate, Y2Animate, Y3Animate,
-    U1Animate, U2Animate, U3Animate, U4Animate
+    U1Animate, U2Animate, U3Animate, U4Animate,
+    U3Opacity, U4Opacity
   } = useSpring({
     from: { 
       F1Animate: [ 0, 0, 0 ], F2Animate: [ 0, -6, 0 ],
       R1Animate: [ 8, 0, 0 ], R2Animate: [ 10, -6, 0 ], R3Animate: [ 4, -10, 0 ],
       Y1Animate: [ -1, -11.5, 0 ], Y2Animate: [ 9, -11.5, 0 ], Y3Animate: [ 4, -21.45, 0 ],
-      U1Animate: [ -6, -18.5, 0 ], U2Animate: [ 14, -18.5, 0 ], U3Animate: [ -1, -22.65, 0 ], U4Animate: [ 9, -22.65, 0 ]
+      U1Animate: [ -6, -18.5, 0 ], U2Animate: [ 14, -18.5, 0 ], U3Animate: [ -1, -22.65, 0 ], U4Animate: [ 9, -22.65, 0 ],
+      U3Opacity: 0.0, U4Opacity: 0.0
     },
     to: [
       {
         F1Animate: [ -60, 60, 60 ], F2Animate: [ -60, -60, 60 ],
         R1Animate: [ 60, 60, -60 ], R2Animate: [ 60, 60, -60 ], R3Animate: [ 60, -60, 60 ],
-        Y1Animate: [ 60, -60, 60 ], Y2Animate: [ 60, -60, -60 ], Y3Animate: [ 60, 60, 60 ],
-        U1Animate: [ -60, -60, 60 ], U2Animate: [ 60, -60, -60 ], U3Animate: [ -60, -60, -60 ], U4Animate: [ 60, 60, -60 ]
+        Y1Animate: [ 60, -60, 60 ], Y2Animate: [ 60, 60, -60 ], Y3Animate: [ 60, 60, 60 ],
+        U1Animate: [ -60, -60, 60 ], U2Animate: [ 60, 60, -60 ], U3Animate: [ -60, -60, -60 ], U4Animate: [ 60, -60, -60 ]
       },
       {
         F1Animate: [ 0, 0, 0 ], F2Animate: [ 0, -6, 0 ],
         R1Animate: [ 8, 0, 0 ], R2Animate: [ 10, -6, 0 ], R3Animate: [ 4, -10, 0 ],
         Y1Animate: [ -1, -11.5, 0 ], Y2Animate: [ 9, -11.5, 0 ], Y3Animate: [ 4, -21.45, 0 ],
-        U1Animate: [ -6, -18.5, 0 ], U2Animate: [ 14, -18.5, 0 ], U3Animate: [ -1, -22.65, 0 ], U4Animate: [ 9, -22.65, 0 ]
+        U1Animate: [ -6, -18.5, 0 ], U2Animate: [ 14, -18.5, 0 ], U3Animate: [ -1, -22.65, 0 ], U4Animate: [ 9, -22.65, 0 ],
+        U3Opacity: 1.0, U4Opacity: 1.0
       }
     ],
     config: {
@@ -75,8 +78,8 @@ export default function Logo() {
 
       <U1 position={ U1Animate } geometry={ nodes.U1.geometry } material={ blackMetal } />
       <U2 position={ U2Animate } geometry={ nodes.U2.geometry } material={ blackMetal } />
-      <U3 position={ U3Animate } geometry={ nodes.U3.geometry } />
-      <U4 position={ U4Animate } geometry={ nodes.U4.geometry } />
+      <U3 position={ U3Animate } geometry={ nodes.U3.geometry } opacity={ U3Opacity } />
+      <U4 position={ U4Animate } geometry={ nodes.U4.geometry } opacity={ U4Opacity } />
     </Center>
   </>
 }
