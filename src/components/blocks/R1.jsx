@@ -1,10 +1,10 @@
 import { animated } from "@react-spring/three"
 
-export default function F1( { position, geometry, material } ) {
+export default function R1( { position, geometry, material } ) {
   return <>
-    <animated.mesh 
+    <animated.mesh
       position={ position } 
-      rotation={ [ 0, 0, 0 ] } 
+      rotation={ [ 0, Math.PI, 0 ] } 
       geometry={ geometry } 
       material={ material } 
     />
