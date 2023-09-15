@@ -29,6 +29,10 @@ export default function Logo() {
     R1Animate, R2Animate, R3Animate,
     Y1Animate, Y2Animate, Y3Animate,
     U1Animate, U2Animate, U3Animate, U4Animate,
+    F1Scale, F2Scale, 
+    R1Scale, R2Scale, R3Scale,
+    Y1Scale, Y2Scale, Y3Scale,
+    U1Scale, U2Scale, U3Scale, U4Scale,
     U3Opacity, U4Opacity
   } = useSpring({
     from: { 
@@ -36,27 +40,35 @@ export default function Logo() {
       R1Animate: [ 8, 0, 0 ], R2Animate: [ 10, -6, 0 ], R3Animate: [ 4, -10, 0 ],
       Y1Animate: [ -1, -11.5, 0 ], Y2Animate: [ 9, -11.5, 0 ], Y3Animate: [ 4, -21.45, 0 ],
       U1Animate: [ -6, -18.5, 0 ], U2Animate: [ 14, -18.5, 0 ], U3Animate: [ -1, -22.65, 0 ], U4Animate: [ 9, -22.65, 0 ],
+      F1Scale: 0.0, F2Scale: 0.0,
+      R1Scale: 0.0, R2Scale: 0.0, R3Scale: 0.0,
+      Y1Scale: 0.0, Y2Scale: 0.0, Y3Scale: 0.0,
+      U1Scale: 0.0, U2Scale: 0.0, U3Scale: 0.0, U4Scale: 0.0,
       U3Opacity: 0.0, U4Opacity: 0.0
     },
     to: [
       {
-        F1Animate: [ -60, 60, 60 ], F2Animate: [ -60, -60, 60 ],
-        R1Animate: [ 60, 60, -60 ], R2Animate: [ 60, 60, -60 ], R3Animate: [ 60, -60, 60 ],
-        Y1Animate: [ 60, -60, 60 ], Y2Animate: [ 60, 60, -60 ], Y3Animate: [ 60, 60, 60 ],
-        U1Animate: [ -60, -60, 60 ], U2Animate: [ 60, 60, -60 ], U3Animate: [ -60, -60, -60 ], U4Animate: [ 60, -60, -60 ]
+        F1Animate: [ -50, 50, 50 ], F2Animate: [ -50, -50, 50 ],
+        R1Animate: [ 50, 50, -50 ], R2Animate: [ 50, 50, -50 ], R3Animate: [ 50, -50, 50 ],
+        Y1Animate: [ 50, -50, 50 ], Y2Animate: [ 50, 50, -50 ], Y3Animate: [ 50, 50, 50 ],
+        U1Animate: [ -50, -50, 50 ], U2Animate: [ 50, 50, -50 ], U3Animate: [ -50, -50, -50 ], U4Animate: [ 50, -50, -50 ]
       },
       {
         F1Animate: [ 0, 0, 0 ], F2Animate: [ 0, -6, 0 ],
         R1Animate: [ 8, 0, 0 ], R2Animate: [ 10, -6, 0 ], R3Animate: [ 4, -10, 0 ],
         Y1Animate: [ -1, -11.5, 0 ], Y2Animate: [ 9, -11.5, 0 ], Y3Animate: [ 4, -21.45, 0 ],
         U1Animate: [ -6, -18.5, 0 ], U2Animate: [ 14, -18.5, 0 ], U3Animate: [ -1, -22.65, 0 ], U4Animate: [ 9, -22.65, 0 ],
+        F1Scale: 1.0, F2Scale: 1.0,
+        R1Scale: 1.0, R2Scale: 1.0, R3Scale: 1.0,
+        Y1Scale: 1.0, Y2Scale: 1.0, Y3Scale: 1.0,
+        U1Scale: 1.0, U2Scale: 1.0, U3Scale: 1.0, U4Scale: 1.0,
         U3Opacity: 1.0, U4Opacity: 1.0
       }
     ],
     config: {
       mass: 1,
       tension: 1,
-      duration: 2000,
+      duration: 1500,
       easing: easings.easeInOutCirc
     },
     loop: false,
@@ -65,21 +77,21 @@ export default function Logo() {
 
   return <>
     <Center scale={ 1.5 }>
-      <F1 position={ F1Animate } geometry={ nodes.F1.geometry } material={ blackMetal } />
-      <F2 position={ F2Animate } geometry={ nodes.F2.geometry } material={ blackMetal } />
+      <F1 position={ F1Animate } scale={ F1Scale } geometry={ nodes.F1.geometry } material={ blackMetal } />
+      <F2 position={ F2Animate } scale={ F2Scale } geometry={ nodes.F2.geometry } material={ blackMetal } />
 
-      <R1 position={ R1Animate } geometry={ nodes.R1.geometry } material={ blackMetal } />
-      <R2 position={ R2Animate } geometry={ nodes.R2.geometry } material={ blackMetal } />
-      <R3 position={ R3Animate } geometry={ nodes.R3.geometry } material={ blackMetal } />
+      <R1 position={ R1Animate } scale={ R1Scale } geometry={ nodes.R1.geometry } material={ blackMetal } />
+      <R2 position={ R2Animate } scale={ R2Scale } geometry={ nodes.R2.geometry } material={ blackMetal } />
+      <R3 position={ R3Animate } scale={ R3Scale } geometry={ nodes.R3.geometry } material={ blackMetal } />
 
-      <Y1 position={ Y1Animate } geometry={ nodes.Y1.geometry } material={ blackMetal } />
-      <Y2 position={ Y2Animate } geometry={ nodes.Y2.geometry } material={ blackMetal } />
-      <Y3 position={ Y3Animate } geometry={ nodes.Y3.geometry } material={ blackMetal } />
+      <Y1 position={ Y1Animate } scale={ Y1Scale } geometry={ nodes.Y1.geometry } material={ blackMetal } />
+      <Y2 position={ Y2Animate } scale={ Y2Scale } geometry={ nodes.Y2.geometry } material={ blackMetal } />
+      <Y3 position={ Y3Animate } scale={ Y3Scale } geometry={ nodes.Y3.geometry } material={ blackMetal } />
 
-      <U1 position={ U1Animate } geometry={ nodes.U1.geometry } material={ blackMetal } />
-      <U2 position={ U2Animate } geometry={ nodes.U2.geometry } material={ blackMetal } />
-      <U3 position={ U3Animate } geometry={ nodes.U3.geometry } opacity={ U3Opacity } />
-      <U4 position={ U4Animate } geometry={ nodes.U4.geometry } opacity={ U4Opacity } />
+      <U1 position={ U1Animate } scale={ U1Scale } geometry={ nodes.U1.geometry } material={ blackMetal } />
+      <U2 position={ U2Animate } scale={ U2Scale } geometry={ nodes.U2.geometry } material={ blackMetal } />
+      <U3 position={ U3Animate } scale={ U3Scale } geometry={ nodes.U3.geometry } opacity={ U3Opacity } />
+      <U4 position={ U4Animate } scale={ U4Scale } geometry={ nodes.U4.geometry } opacity={ U4Opacity } />
     </Center>
   </>
 }

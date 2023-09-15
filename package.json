@@ -13,10 +13,12 @@
     "@react-spring/three": "^9.7.3",
     "@react-three/postprocessing": "^2.7.1",
     "augmented-ui": "^2.0.0",
+    "gl-noise": "^1.6.1",
     "postprocessing": "^6.30.2",
     "r3f-perf": "^7.1.2",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "three-custom-shader-material": "^5.4.0"
   },
   "devDependencies": {
     "@react-three/drei": "^9.64.0",

@@ -5,7 +5,7 @@ export default function U3( { position, geometry, opacity } ) {
     <animated.mesh
       position={ position } 
       rotation={ [ 0, Math.PI, 0 ] } 
-      geometry={ geometry } 
+      geometry={ geometry }
     >
       <animated.meshStandardMaterial 
         color={ [ 7.5, 0.25, 0.25 ] } 

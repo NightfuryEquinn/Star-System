@@ -16,7 +16,7 @@ export default function Exp() {
 
     <PresentationControls
       global
-      cursor
+      cursor={ false }
       polar={ [ -1, 0.75 ] }
       azimuth={ [ -1, 0.75 ] }
       config={ { mass: 2, tension: 400 } }
