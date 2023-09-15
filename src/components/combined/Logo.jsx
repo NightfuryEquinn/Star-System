@@ -20,8 +20,8 @@ export default function Logo() {
 
   const blackMetal = new MeshStandardMaterial({
     color: "#161A1D",
-    roughness: 0.75,
-    metalness: 0.5,
+    roughness: 0.25,
+    metalness: 0.75,
   });
 
   const { 

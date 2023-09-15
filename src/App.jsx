@@ -22,7 +22,7 @@ export default function App() {
 
           <Bloom
             mipmapBlur
-            intensity={ 0.5 }
+            intensity={ 0.25 }
             luminanceThreshold={ 1 }
           />
         </EffectComposer>

@@ -10,8 +10,8 @@ export default function Exp() {
     <ambientLight intensity={ 0.5 } />
 
     <pointLight 
-      intensity={ 5 }
-      position={ [ -15, 10, 10 ] }
+      intensity={ 10 }
+      position={ [ -25, 15, 5 ] }
     />
 
     <PresentationControls
