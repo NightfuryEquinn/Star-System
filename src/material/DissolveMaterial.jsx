@@ -1,9 +1,9 @@
-import { useFrame } from "@react-three/fiber";
-import { patchShaders } from "gl-noise";
-import { easing } from "maath";
+import { useFrame } from "@react-three/fiber"
+import { patchShaders } from "gl-noise"
+import { easing } from "maath"
 import { useEffect, useRef } from "react"
-import * as THREE from "three";
-import CSM from "three-custom-shader-material";
+import * as THREE from "three"
+import CSM from "three-custom-shader-material"
 
 import DissolveVertex from "../shaders/dissolve/vertex.glsl?raw"
 import DissolveFragment from "../shaders/dissolve/fragment.glsl?raw"
@@ -27,9 +27,9 @@ export default function DissolveMaterial({
   });
 
   useEffect(() => {
-    uniforms.current.uThickness.value = thickness;
-    uniforms.current.uColor.value.set( color ).multiplyScalar( intensity );
-  }, [ thickness, color, intensity ] );
+    uniforms.current.uThickness.value = thickness
+    uniforms.current.uColor.value.set( color ).multiplyScalar( intensity )
+  }, [ thickness, color, intensity ] )
 
   useFrame( ( state, delta ) => {
     easing.damp(

@@ -55,20 +55,32 @@ export default function Logo() {
       },
       {
         F1Animate: [ 0, 0, 0 ], F2Animate: [ 0, -6, 0 ],
+        F1Scale: 1.0, F2Scale: 1.0
+      },
+      {
         R1Animate: [ 8, 0, 0 ], R2Animate: [ 10, -6, 0 ], R3Animate: [ 4, -10, 0 ],
+        R1Scale: 1.0, R2Scale: 1.0, R3Scale: 1.0
+      },
+      {
         Y1Animate: [ -1, -11.5, 0 ], Y2Animate: [ 9, -11.5, 0 ], Y3Animate: [ 4, -21.45, 0 ],
-        U1Animate: [ -6, -18.5, 0 ], U2Animate: [ 14, -18.5, 0 ], U3Animate: [ -1, -22.65, 0 ], U4Animate: [ 9, -22.65, 0 ],
-        F1Scale: 1.0, F2Scale: 1.0,
-        R1Scale: 1.0, R2Scale: 1.0, R3Scale: 1.0,
-        Y1Scale: 1.0, Y2Scale: 1.0, Y3Scale: 1.0,
-        U1Scale: 1.0, U2Scale: 1.0, U3Scale: 1.0, U4Scale: 1.0,
+        Y1Scale: 1.0, Y2Scale: 1.0, Y3Scale: 1.0
+      },
+      {
+        U1Animate: [ -6, -18.5, 0 ], U2Animate: [ 14, -18.5, 0 ], 
+        U1Scale: 1.0, U2Scale: 1.0
+      },
+      {
+        U3Animate: [ -1, -22.65, 0 ], U4Animate: [ 9, -22.65, 0 ]
+      },
+      {
+        U3Scale: 1.0, U4Scale: 1.0,
         U3Opacity: 1.0, U4Opacity: 1.0
       }
     ],
     config: {
       mass: 1,
       tension: 1,
-      duration: 1500,
+      duration: 2000,
       easing: easings.easeInOutCirc
     },
     loop: false,
