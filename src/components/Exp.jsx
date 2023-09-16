@@ -11,21 +11,21 @@ export default function Exp() {
 
     <pointLight 
       intensity={ 10 }
-      position={ [ -25, 15, 5 ] }
+      position={ [ -20, 20, 5 ] }
     />
 
     <PresentationControls
       global
       cursor={ false }
-      polar={ [ -1, 0.75 ] }
-      azimuth={ [ -1, 0.75 ] }
+      polar={ [ -0.75, 0.75 ] }
+      azimuth={ [ -0.75, 0.75 ] }
       config={ { mass: 2, tension: 400 } }
       snap={ { mass: 4, tension: 600 } }
     >
       <Float
-        rotationIntensity={ 1.5 }
-        floatIntensity={ 1.5 }
-        floatingRange={ [ -2.5, 2.5 ] }
+        rotationIntensity={ 0.75 }
+        floatIntensity={ 0.75 }
+        floatingRange={ [ -1.5, 1.5 ] }
       >
         <Logo />
       </Float>

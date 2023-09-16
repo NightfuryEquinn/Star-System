@@ -7,7 +7,7 @@ import Exp from "./components/Exp.jsx"
 
 export default function App() {
   return <>
-    <Canvas camera={ { position: [ 0, 20, 100 ], fov: 55, near: 0.1, far: 1500 } }>
+    <Canvas camera={ { position: [ 0, 0, 75 ], fov: 55 } }>
       <Perf position='top-left' />
 
       <Suspense fallback={ null }>

@@ -20,7 +20,7 @@ export default function Logo() {
 
   const blackMetal = new MeshStandardMaterial({
     color: "#161A1D",
-    roughness: 0.25,
+    roughness: 0.375,
     metalness: 0.75,
   });
 
@@ -87,8 +87,10 @@ export default function Logo() {
     immediate: true
   })
 
+  
+
   return <>
-    <Center scale={ 1.5 }>
+    <Center>
       <F1 position={ F1Animate } scale={ F1Scale } geometry={ nodes.F1.geometry } material={ blackMetal } />
       <F2 position={ F2Animate } scale={ F2Scale } geometry={ nodes.F2.geometry } material={ blackMetal } />
 
