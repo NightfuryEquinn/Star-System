@@ -14,23 +14,18 @@ export default function F2( { position, scale, geometry, material } ) {
   const theVector = new THREE.Vector3()
   const theCameraVector = new THREE.Vector3()
 
-  // useFrame(( state ) => {
-  //   if( clicked ) {
-  //     theMesh.current.position.lerp( theVector.set( -100, -6, 0 ), 0.025 )
+  useFrame(( state ) => {
+    if( clicked ) {
+      theMesh.current.position.lerp( theVector.set( -100, -6, 0 ), 0.025 )
 
-  //     state.camera.position.lerp( theCameraVector.set( -100, 19, 50 ), 0.025 )
-  //     state.camera.lookAt( theMesh.current.position )
+      state.camera.position.lerp( theCameraVector.set( -100, 19, 50 ), 0.025 )
+      state.camera.lookAt( theMesh.current.position )
 
-  //     state.camera.updateProjectionMatrix()
-  //   } else {
-  //     theMesh.current.position.lerp( theVector.set( 0, -6, 0 ), 0.025 )
-
-  //     state.camera.position.lerp( theCameraVector.set( 0, 0, 75 ), 0.025 )
-  //     state.camera.lookAt( theMesh.current.position )
-
-  //     state.camera.updateProjectionMatrix()
-  //   }
-  // })
+      state.camera.updateProjectionMatrix()
+    } else {
+      theMesh.current.position.lerp( theVector.set( 0, -6, 0 ), 0.025 )
+    }
+  })
 
   return <>
     <animated.mesh
@@ -39,6 +34,9 @@ export default function F2( { position, scale, geometry, material } ) {
       scale={ scale }
       rotation={ [ 0, 0, 0 ] } 
       geometry={ geometry } 
+      onClick={ () => {
+        setClicked( !clicked )
+      }}
       onPointerEnter={ () => {
         setVisible( false )
       }} 

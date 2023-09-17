@@ -26,7 +26,7 @@ export default function F1( { position, scale, geometry, material } ) {
       theMesh.current.position.lerp( theVector.set( 0, 0, 0 ), 0.025 )
 
       state.camera.position.lerp( theCameraVector.set( 0, 0, 75 ), 0.025 )
-      state.camera.lookAt( theMesh.current.position )
+      state.camera.lookAt( 0, 0, 0 )
       
       state.camera.updateProjectionMatrix()
     }

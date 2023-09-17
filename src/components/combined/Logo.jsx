@@ -1,6 +1,8 @@
 import { easings, useSpring } from "@react-spring/three"
 import { Center, useGLTF } from "@react-three/drei"
-import { MeshStandardMaterial } from "three"
+import * as THREE from "three"
+import { useState } from "react"
+import { useFrame } from "@react-three/fiber"
 
 import F1 from "../blocks/F1"
 import F2 from "../blocks/F2"
@@ -18,7 +20,7 @@ import U4 from "../blocks/U4"
 export default function Logo() {
   const { nodes } = useGLTF( "../model/logo.glb" )
 
-  const blackMetal = new MeshStandardMaterial({
+  const blackMetal = new THREE.MeshStandardMaterial({
     color: "#161A1D",
     roughness: 0.375,
     metalness: 0.75,
@@ -86,8 +88,6 @@ export default function Logo() {
     loop: false,
     immediate: true
   })
-
-  
 
   return <>
     <Center>
