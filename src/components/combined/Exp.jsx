@@ -1,6 +1,6 @@
 import { Float, PresentationControls } from "@react-three/drei"
 
-import Logo from "./combined/Logo"
+import Logo from "./Logo"
 
 export default function Exp() {
 
@@ -19,8 +19,6 @@ export default function Exp() {
       cursor={ false }
       polar={ [ -0.75, 0.75 ] }
       azimuth={ [ -0.75, 0.75 ] }
-      config={ { mass: 5, tension: 100 } }
-      snap={ { mass: 5, tension: 200 } }
     >
       <Float
         rotationIntensity={ 0.75 }

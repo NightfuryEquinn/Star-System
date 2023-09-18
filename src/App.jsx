@@ -3,7 +3,7 @@ import { Suspense } from "react"
 import { Perf } from "r3f-perf"
 import { EffectComposer, Glitch, Bloom } from "@react-three/postprocessing"
 
-import Exp from "./components/Exp.jsx"
+import Exp from "./components/combined/Exp.jsx"
 
 export default function App() {
   return <>

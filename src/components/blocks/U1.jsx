@@ -1,10 +1,17 @@
+import DissolveMaterial from "../../material/DissolveMaterial"
+import { LogoBlockControls } from "../combined/LogoBlockControls"
+
 import { animated } from "@react-spring/three"
 import { useState } from "react"
+import { useFrame } from "@react-three/fiber"
 
-import DissolveMaterial from "../../material/DissolveMaterial"
-
-export default function U1( { position, scale, geometry, material } ) {
+export default function U1( { controls, position, scale, geometry, material } ) {
   const [ visible, setVisible ] = useState( true )
+  const [ clicked, setClicked ] = useState( false )
+
+  useFrame(( _, delta ) => {
+    LogoBlockControls( controls, clicked, delta )
+  })
 
   return <>
     <animated.mesh
@@ -12,11 +19,17 @@ export default function U1( { position, scale, geometry, material } ) {
       scale={ scale }
       rotation={ [ 0, 0, Math.PI * 0.5 ] } 
       geometry={ geometry } 
-      onPointerEnter={ () => {
+      onClick={ ( e ) => {
+        setClicked( !clicked )
+        e.stopPropagation()
+      }}
+      onPointerEnter={ ( e ) => {
         setVisible( false )
+        e.stopPropagation()
       }} 
-      onPointerLeave={ () => {
+      onPointerLeave={ ( e ) => {
         setVisible( true )
+        e.stopPropagation()
       }}
     >
       <DissolveMaterial 
