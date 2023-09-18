@@ -19,8 +19,8 @@ export default function Exp() {
       cursor={ false }
       polar={ [ -0.75, 0.75 ] }
       azimuth={ [ -0.75, 0.75 ] }
-      config={ { mass: 2, tension: 400 } }
-      snap={ { mass: 4, tension: 600 } }
+      config={ { mass: 5, tension: 100 } }
+      snap={ { mass: 5, tension: 200 } }
     >
       <Float
         rotationIntensity={ 0.75 }

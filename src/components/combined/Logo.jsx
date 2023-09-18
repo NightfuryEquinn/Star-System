@@ -1,9 +1,3 @@
-import { easings, useSpring } from "@react-spring/three"
-import { Center, useGLTF } from "@react-three/drei"
-import * as THREE from "three"
-import { useState } from "react"
-import { useFrame } from "@react-three/fiber"
-
 import F1 from "../blocks/F1"
 import F2 from "../blocks/F2"
 import R1 from "../blocks/R1"
@@ -16,6 +10,12 @@ import U1 from "../blocks/U1"
 import U2 from "../blocks/U2"
 import U3 from "../blocks/U3"
 import U4 from "../blocks/U4"
+
+import { easings, useSpring } from "@react-spring/three"
+import { Center, useGLTF } from "@react-three/drei"
+import * as THREE from "three"
+
+// CameraControls.install( { THREE } )
 
 export default function Logo() {
   const { nodes } = useGLTF( "../model/logo.glb" )
@@ -51,9 +51,9 @@ export default function Logo() {
     to: [
       {
         F1Animate: [ -50, 50, 50 ], F2Animate: [ -50, -50, 50 ],
-        R1Animate: [ 50, 50, -50 ], R2Animate: [ 50, 50, -50 ], R3Animate: [ 50, -50, 50 ],
-        Y1Animate: [ 50, -50, 50 ], Y2Animate: [ 50, 50, -50 ], Y3Animate: [ 50, 50, 50 ],
-        U1Animate: [ -50, -50, 50 ], U2Animate: [ 50, 50, -50 ], U3Animate: [ -50, -50, -50 ], U4Animate: [ 50, -50, -50 ]
+        R1Animate: [ 50, 50, -50 ], R2Animate: [ 50, 50, 50 ], R3Animate: [ 50, -50, 50 ],
+        Y1Animate: [ -25, -50, 50 ], Y2Animate: [ 25, 50, -50 ], Y3Animate: [ 0, 0, -50 ],
+        U1Animate: [ -50, -50, 50 ], U2Animate: [ 50, -50, -50 ], U3Animate: [ -50, 0, -50 ], U4Animate: [ 50, 0, -50 ]
       },
       {
         F1Animate: [ 0, 0, 0 ], F2Animate: [ 0, -6, 0 ],
@@ -82,12 +82,19 @@ export default function Logo() {
     config: {
       mass: 1,
       tension: 1,
-      duration: 2000,
+      duration: 1000,
       easing: easings.easeInOutCirc
     },
     loop: false,
-    immediate: true
+    immediate: true,
   })
+
+  // External camera controls, disabling its controls to let presentation controls running
+  // const { camera, gl } = useThree( ( state ) => state )
+  // const controls = useMemo( () => new CameraControls( camera, gl.domElement ), [] )
+  // controls.smoothTime = 0.5
+  // controls.restThreshold = 1
+  // controls.enabled = false
 
   return <>
     <Center>
