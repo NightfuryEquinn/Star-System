@@ -10,17 +10,12 @@ import U1 from "../blocks/U1"
 import U2 from "../blocks/U2"
 import U3 from "../blocks/U3"
 import U4 from "../blocks/U4"
+import LogoAnimation from "../../animation/LogoAnimation"
 
 import { Center, useGLTF } from "@react-three/drei"
-import { useThree, useFrame } from "@react-three/fiber"
-import { useMemo, useState } from "react"
 import * as THREE from "three"
-import CameraControls from "camera-controls"
-import LogoAnimation from "./LogoAnimation"
 
-CameraControls.install( { THREE } )
-
-export default function Logo() {
+export default function Logo( { controls } ) {
   const { nodes } = useGLTF( "../model/logo.glb" )
 
   const blackMetal = new THREE.MeshStandardMaterial({
@@ -41,12 +36,6 @@ export default function Logo() {
     U3Opacity, U4Opacity
   } = LogoAnimation()
 
-  //External camera controls, disabling its controls to let presentation controls running
-  const { camera, gl } = useThree( ( state ) => state )
-  const controls = useMemo( () => new CameraControls( camera, gl.domElement ), [] )
-  controls.smoothTime = 3.75
-  controls.restThreshold = 1
-  controls.enabled = false
 
   return <>
     <Center>

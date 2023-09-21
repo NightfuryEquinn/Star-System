@@ -1,19 +1,12 @@
 import DissolveMaterial from "../../material/DissolveMaterial"
-import { LogoBlockControls } from "../combined/LogoBlockControls"
 
 import { animated } from "@react-spring/three"
 import { useState, useRef } from "react"
-import { useFrame } from "@react-three/fiber"
 
 export default function Y1( { controls, position, scale, geometry, material } ) {
   const [ visible, setVisible ] = useState( true )
-  const [ clicked, setClicked ] = useState( false )
 
   const theMesh = useRef()
-
-  useFrame(( _, delta ) => {
-    LogoBlockControls( theMesh, controls, clicked, delta )
-  })
 
   return <>
     <animated.mesh
@@ -24,7 +17,19 @@ export default function Y1( { controls, position, scale, geometry, material } ) 
       rotation={ [ 0, 0, Math.PI * 0.5 ] } 
       geometry={ geometry } 
       onClick={ ( e ) => {
-        setClicked( !clicked )
+        controls.setLookAt(
+          -12.5, 5, 25,
+          -5, 0, 0,
+          true
+        )
+        e.stopPropagation()
+      }}
+      onPointerMissed={ ( e ) => {
+        controls.setLookAt(
+          0, 0, 75,
+          0, 0, 0,
+          true
+        )
         e.stopPropagation()
       }}
       onPointerEnter={ ( e ) => {
