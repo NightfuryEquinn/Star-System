@@ -1,10 +1,12 @@
 import DissolveMaterial from "../../material/DissolveMaterial"
 
 import { animated } from "@react-spring/three"
+import { Html } from "@react-three/drei"
 import { useState, useRef } from "react"
 
 export default function F2( { controls, position, scale, geometry, material } ) {
   const [ visible, setVisible ] = useState( true )
+  const [ hover, setHover ] = useState( false )
 
   const theMesh = useRef()
 
@@ -33,10 +35,12 @@ export default function F2( { controls, position, scale, geometry, material } ) 
         e.stopPropagation()
       }}
       onPointerEnter={ ( e ) => {
+        setHover( true )
         setVisible( false )
         e.stopPropagation()
       }} 
       onPointerLeave={ ( e ) => {
+        setHover( false )
         setVisible( true )
         e.stopPropagation()
       }}
@@ -45,6 +49,20 @@ export default function F2( { controls, position, scale, geometry, material } ) 
         baseMaterial={ material }
         visible={ visible }
       />
+      
+      <Html 
+        position={ [ -20, -5, 0 ] }
+        distanceFactor={ 75 }
+        center
+      >
+        <h2 
+          data-gw-string="Experimental" 
+          className={ `glitched-title ease-in-out duration-300 ${ hover ? "opacity-100" : "opacity-0" }`}
+        >
+          Experimental
+        </h2>
+      </Html>
+        
     </animated.mesh>
   </>
 }
