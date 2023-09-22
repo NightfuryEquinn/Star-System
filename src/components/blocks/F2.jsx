@@ -2,6 +2,7 @@ import DissolveMaterial from "../../material/DissolveMaterial"
 
 import { animated } from "@react-spring/three"
 import { Html } from "@react-three/drei"
+import { write } from "glitched-writer"
 import { useState, useRef } from "react"
 
 export default function F2( { controls, position, scale, geometry, material } ) {
@@ -35,11 +36,13 @@ export default function F2( { controls, position, scale, geometry, material } ) 
         e.stopPropagation()
       }}
       onPointerEnter={ ( e ) => {
+        write( "F2Here", "#glitched-f2", "typewriter" )
         setHover( true )
         setVisible( false )
         e.stopPropagation()
       }} 
       onPointerLeave={ ( e ) => {
+        write( "", "#glitched-f2", "typewriter" )
         setHover( false )
         setVisible( true )
         e.stopPropagation()
@@ -51,18 +54,29 @@ export default function F2( { controls, position, scale, geometry, material } ) 
       />
       
       <Html 
-        position={ [ -20, -5, 0 ] }
+        position={ [ -19, -4, 0 ] }
         distanceFactor={ 75 }
         center
       >
         <h2 
           data-gw-string="Experimental" 
-          className={ `glitched-title ease-in-out duration-300 ${ hover ? "opacity-100" : "opacity-0" }`}
+          className={`glitched-title lg:block hidden ease-in-out duration-300 ${ hover ? "opacity-100" : "opacity-0" }`}
         >
           Experimental
         </h2>
       </Html>
-        
     </animated.mesh>
+
+    <Html
+      position={ [ 3, -40, 0 ] }
+      distanceFactor={ 75 }
+      center
+    >
+      <h2 
+        className={`glitched-title text-center lg:hidden ease-in-out duration-300 ${ hover ? "opacity-100" : "opacity-0" }`}
+        id="glitched-f2" 
+      >
+      </h2>
+    </Html>
   </>
 }

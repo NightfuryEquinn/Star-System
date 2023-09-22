@@ -36,7 +36,6 @@ export default function Logo( { controls } ) {
     U3Opacity, U4Opacity
   } = LogoAnimation()
 
-
   return <>
     <Center>
       <F1 controls={ controls } position={ F1Animate } scale={ F1Scale } geometry={ nodes.F1.geometry } material={ blackMetal } />
