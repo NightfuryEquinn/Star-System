@@ -13,16 +13,15 @@ const fragmentShader = patchShaders( DissolveFragment )
 
 export default function DissolveMaterial({
   baseMaterial,
-  visible = true,
-  opacity = 1,
+  visible = 1,
   thickness = 1,
   color = "#DEE2E6",
-  intensity = 1.125,
-  duration = 0.5,
+  intensity = 1.5,
+  duration = 0.75,
 }) {
   const uniforms = useRef({
-    uThickness: { value: 0.1 },
-    uColor: { value: new THREE.Color( "#DEE2E6" ).multiplyScalar( 1 ) },
+    uThickness: { value: 1 },
+    uColor: { value: new THREE.Color( "#DEE2E6" ).multiplyScalar( 10 ) },
     uProgress: { value: 0 },
   });
 
@@ -31,11 +30,11 @@ export default function DissolveMaterial({
     uniforms.current.uColor.value.set( color ).multiplyScalar( intensity )
   }, [ thickness, color, intensity ] )
 
-  useFrame( ( state, delta ) => {
+  useFrame( ( _, delta ) => {
     easing.damp(
       uniforms.current.uProgress,
       "value",
-      visible ? opacity = 1 : opacity = 0,
+      visible ? 1 : 0,
       duration,
       delta
     );

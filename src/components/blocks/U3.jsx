@@ -1,9 +1,9 @@
 import { animated } from "@react-spring/three"
 
-export default function U3( { position, geometry, opacity } ) {
+export default function U3( { geometry } ) {
   return <>
     <animated.mesh
-      position={ position } 
+      position={ [ -1, -22.65, 0 ] } 
       rotation={ [ 0, Math.PI, 0 ] } 
       geometry={ geometry }
     >
@@ -11,7 +11,6 @@ export default function U3( { position, geometry, opacity } ) {
         color={ [ 7.5, 0.25, 0.25 ] } 
         toneMapped={ false }
         transparent={ true }
-        opacity={ opacity }
       />
     </animated.mesh>
   </>

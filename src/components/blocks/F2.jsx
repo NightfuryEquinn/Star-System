@@ -3,8 +3,7 @@ import DissolveMaterial from "../../material/DissolveMaterial"
 import { animated } from "@react-spring/three"
 import { useState, useRef } from "react"
 
-export default function F2( { controls, position, scale, geometry, material } ) {
-  const [ visible, setVisible ] = useState( true )
+export default function F2( { controls, geometry, material } ) {
   const [ hover, setHover ] = useState( false )
 
   const theMesh = useRef()
@@ -13,8 +12,7 @@ export default function F2( { controls, position, scale, geometry, material } ) 
     <animated.mesh
       ref={ theMesh }
       name="F2"
-      position={ position } 
-      scale={ scale }
+      position={ [ 0, -6, 0 ] } 
       rotation={ [ 0, 0, 0 ] } 
       geometry={ geometry } 
       onClick={ ( e ) => {
@@ -27,7 +25,7 @@ export default function F2( { controls, position, scale, geometry, material } ) 
       }}
       onPointerMissed={ ( e ) => {
         controls.setLookAt(
-          0, 0, 75,
+          0, 0, 50,
           0, 0, 0,
           true
         )
@@ -35,18 +33,19 @@ export default function F2( { controls, position, scale, geometry, material } ) 
       }}
       onPointerEnter={ ( e ) => {
         setHover( true )
-        setVisible( false )
+
         e.stopPropagation()
       }} 
       onPointerLeave={ ( e ) => {
         setHover( false )
-        setVisible( true )
+
         e.stopPropagation()
       }}
     >
       <DissolveMaterial 
         baseMaterial={ material }
-        visible={ visible }
+        visible={ hover ? false : true }
+        thickness={ hover ? 0.25 : 1 }
       />
     </animated.mesh>
   </>
