@@ -1,5 +1,3 @@
-@import "/node_modules/augmented-ui/augmented-ui.css";
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -37,71 +35,8 @@
   }
 }
 
-/* CSS Variables */
-@property --colorAlpha {
-  syntax: "<color>";
-  initial-value: #ed0101;
-  inherits: true;
-}
-
-@property --colorBeta {
-  syntax: "<color>";
-  initial-value: #0c44ac;
-  inherits: true;
-}
-
-html {
-  --aug-bg: linear-gradient( -135deg, var( --colorAlpha ), var( --colorBeta ) );
-  animation: colorGradient 10s ease alternate infinite;
-}
-
-@keyframes colorGradient {
-  0%, 100% { 
-    --colorAlpha: #ed0101;
-    --colorBeta: #0c44ac;
-  }
-  50% { 
-    --colorAlpha: #970005; 
-    --colorBeta: #000052;
-  }
-}
-
 canvas {
   touch-action: none;
-}
-
-/* Cyber Border */
-.cyber-border {
-  --aug-clip-t1: initial;
-  --aug-clip-t2: initial;
-  --aug-clip-r1: initial;
-  --aug-clip-r2: initial;
-  --aug-clip-l1: initial;
-  --aug-clip-l2: initial;
-  --aug-t-extend1: 25%;
-  --aug-r-extend1: 50%;
-  --aug-l-extend1: 50%;
-}
-
-.cyber-border-color {
-  --aug-border-bg: var( --aug-bg );
-  --aug-border-all: 7.5px;
-  --aug-inlay-all: 7.5px;
-  --aug-inlay-bg: #161a1d;
-  --aug-inlay-opacity: 0.75;
-}
-
-@media screen and ( min-width: 768px ) {
-  .cyber-border-color {
-    --aug-tl: 50px;
-    --aug-t: 50px;
-    --aug-tr: 50px;
-    --aug-r: 50px;
-    --aug-bl: 50px;
-    --aug-b: 50px;
-    --aug-br: 50px;
-    --aug-l: 50px;
-  }
 }
 
 /* Style on Glitched Write classes */
