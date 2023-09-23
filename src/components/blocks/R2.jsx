@@ -5,6 +5,7 @@ import { useState, useRef } from "react"
 
 export default function R2( { controls, geometry, material } ) {
   const [ hover, setHover ] = useState( false )
+  const [ clicked, setClicked ] = useState( false )
 
   const theMesh = useRef()
 
@@ -45,7 +46,7 @@ export default function R2( { controls, geometry, material } ) {
       <DissolveMaterial 
         baseMaterial={ material }
         visible={ hover ? false : true }
-        thickness={ hover ? 0.25 : 1 }
+        thickness={ hover ? 0.425 : 1 }
       />
     </animated.mesh>
   </>

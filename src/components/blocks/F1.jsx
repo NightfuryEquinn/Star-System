@@ -7,6 +7,7 @@ import * as THREE from "three"
 
 export default function F1( { controls, geometry, material } ) {
   const [ hover, setHover ] = useState( false )
+  const [ clicked, setClicked ] = useState( false )
 
   const theMesh = useRef()
 
@@ -20,8 +21,8 @@ export default function F1( { controls, geometry, material } ) {
       onClick={ ( e ) => {
         setClicked( true )
         controls.setLookAt(
-          -25, 15, 25,
-          -10, 15, 0,
+          -12.5, 12.5, 0,
+          -10, 12.5, 0,
           true
         )
         e.stopPropagation()
@@ -49,7 +50,7 @@ export default function F1( { controls, geometry, material } ) {
       <DissolveMaterial 
         baseMaterial={ material }
         visible={ hover ? false : true }
-        thickness={ hover ? 0.25 : 1 }
+        thickness={ hover ? 0.425 : 1 }
       />
     </animated.mesh>
   </>

@@ -37,9 +37,9 @@ export default function Exp() {
       azimuth={ [ -0.75, 0.75 ] }
     >
       <Float
-        rotationIntensity={ 0.75 }
-        floatIntensity={ 0.75 }
-        floatingRange={ [ -1.5, 1.5 ] }
+        rotationIntensity={ 0.25 }
+        floatIntensity={ 0.25 }
+        floatingRange={ [ -0.1, 0.1 ] }
       >
         <Logo controls={ controls } />
       </Float>

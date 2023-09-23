@@ -6,9 +6,9 @@ uniform vec3 uColor;
 uniform float uProgress;
 
 void main() {
-  gln_tWorleyOpts voronoiOpts = gln_tWorleyOpts( 1.0, 1.0, 3.0, false );
-  
-  float noise = gln_worley( vec2( vPosition.y, vPosition.z ), voronoiOpts );
+  gln_tFBMOpts opts = gln_tFBMOpts( 1.0, 0.5, 1.5, 2.5, 1.0, 5, false, false );
+
+  float noise = gln_pfbm( vPosition, opts );
   noise = gln_normalize( noise );
 
   float progress = uProgress;
