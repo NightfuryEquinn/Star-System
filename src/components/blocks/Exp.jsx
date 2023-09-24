@@ -21,8 +21,6 @@ export default function Exp() {
   })
 
   return <>
-    <color args={ [ '#0a0c0d' ] } attach='background' />
-
     <ambientLight intensity={ 0.5 } />
 
     <pointLight 
@@ -35,12 +33,10 @@ export default function Exp() {
       cursor={ false }
       polar={ [ -0.75, 0.75 ] }
       azimuth={ [ -0.75, 0.75 ] }
+      config={ { mass: 2, tension: 150 } }
+      snap={ { mass: 4, tension: 150 } }
     >
-      <Float
-        rotationIntensity={ 0.25 }
-        floatIntensity={ 0.25 }
-        floatingRange={ [ -0.1, 0.1 ] }
-      >
+      <Float>
         <Logo controls={ controls } />
       </Float>
     </PresentationControls>

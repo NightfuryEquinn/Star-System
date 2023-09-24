@@ -12,6 +12,18 @@ export default function F1( { controls, geometry, material } ) {
 
   const theMesh = useRef()
 
+  useFrame(() => {
+    if( clicked ) {
+      theMesh.current.position.lerp(
+        new THREE.Vector3( -10, 10, 10 ), 0.015
+      )
+    } else {
+      theMesh.current.position.lerp(
+        new THREE.Vector3( 0, 0, 0 ), 0.015
+      )
+    }
+  })
+
   return <>
     <animated.mesh
       ref={ theMesh }
@@ -22,8 +34,8 @@ export default function F1( { controls, geometry, material } ) {
       onClick={ ( e ) => {
         setClicked( true )
         controls.setLookAt(
-          -12.5, 12.5, 0,
-          -10, 12.5, 0,
+          -25, 25, -50,
+          -25, 25, -50,
           true
         )
         e.stopPropagation()

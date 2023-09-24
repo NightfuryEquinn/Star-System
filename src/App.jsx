@@ -3,7 +3,7 @@ import { Suspense } from "react"
 import { Perf } from "r3f-perf"
 import { EffectComposer, Glitch, Bloom } from "@react-three/postprocessing"
 
-import Exp from "./components/combined/Exp.jsx"
+import Exp from "./components/blocks/Exp.jsx"
 
 export default function App() {
   return <>
@@ -15,7 +15,7 @@ export default function App() {
 
         <EffectComposer>
           <Glitch 
-            delay={ [ 60, 120 ] }
+            delay={ [ 60, 90 ] }
             duration={ [ 0.3, 0.5 ] }
             strength={ [ 0.2, 0.4 ] }
           />
