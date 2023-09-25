@@ -12,22 +12,36 @@ export default function U2( { controls, geometry, material } ) {
 
   const theMesh = useRef()
 
+  useFrame(() => {
+    if( clicked ) {
+      theMesh.current.position.lerp(
+        new THREE.Vector3( 15, -25, 10 ), 0.015
+      )
+    } else {
+      theMesh.current.position.lerp(
+        new THREE.Vector3( 14, -18.75, 0 ), 0.015
+      )
+    }
+  })
+
   return <>
     <animated.mesh
       ref={ theMesh }
       name="U2"
-      position={ [ 14, -18.5, 0 ] } 
+      position={ [ 14, -18.75, 0 ] } 
       rotation={ [ 0, Math.PI, Math.PI * 0.5 ] } 
       geometry={ geometry } 
       onClick={ ( e ) => {
+        setClicked( true )
         controls.setLookAt(
-          25, 0, 25,
-          2.5, -10, 0,
+          25, -25, -50,
+          25, -25, -50,
           true
         )
         e.stopPropagation()
       }}
       onPointerMissed={ ( e ) => {
+        setClicked( false )
         controls.setLookAt(
           0, 0, 50,
           0, 0, 0,

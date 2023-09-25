@@ -10,6 +10,7 @@
     "vercel": "vercel --prod"
   },
   "dependencies": {
+    "@arwes/react": "^1.0.0-alpha.23",
     "@react-spring/three": "^9.7.3",
     "@react-three/postprocessing": "^2.7.1",
     "camera-controls": "^2.7.2",

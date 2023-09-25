@@ -12,6 +12,18 @@ export default function Y3( { controls, geometry, material } ) {
 
   const theMesh = useRef()
 
+  useFrame(() => {
+    if( clicked ) {
+      theMesh.current.position.lerp(
+        new THREE.Vector3( 4, -30, 10 ), 0.015
+      )
+    } else {
+      theMesh.current.position.lerp(
+        new THREE.Vector3( 4, -21.45, 0 ), 0.015
+      )
+    }
+  })
+
   return <>
     <animated.mesh
       ref={ theMesh }
@@ -20,14 +32,16 @@ export default function Y3( { controls, geometry, material } ) {
       rotation={ [ 0, 0, 0 ] } 
       geometry={ geometry } 
       onClick={ ( e ) => {
+        setClicked( true )
         controls.setLookAt(
-          0, -5, 25,
-          0, -7.5, 0,
+          0, -30, -50,
+          0, -30, -50,
           true
         )
         e.stopPropagation()
       }}
       onPointerMissed={ ( e ) => {
+        setClicked( false )
         controls.setLookAt(
           0, 0, 50,
           0, 0, 0,
