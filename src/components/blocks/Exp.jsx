@@ -1,10 +1,10 @@
+import Logo from "./Logo"
+
 import { Float, PresentationControls } from "@react-three/drei"
 import CameraControls from "camera-controls"
 import * as THREE from "three"
 import { useThree, useFrame } from "@react-three/fiber"
 import { useMemo } from "react"
-
-import Logo from "./Logo"
 
 CameraControls.install( { THREE } )
 

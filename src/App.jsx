@@ -4,11 +4,10 @@ import { Perf } from "r3f-perf"
 import { EffectComposer, Glitch, Bloom } from "@react-three/postprocessing"
 
 import Exp from "./components/blocks/Exp.jsx"
-import MainTerminal from "./components/ui/terminal/MainTerminal.jsx"
 
 export default function App() {
   return <>
-    {/* <Canvas camera={ { position: [ 0, 0, 50 ], fov: 55 } }>
+    <Canvas camera={ { position: [ 0, 0, 50 ], fov: 55 } }>
       <Perf position='top-left' />
 
       <Suspense fallback={ null }>
@@ -28,9 +27,7 @@ export default function App() {
           />
         </EffectComposer>
       </Suspense>
-    </Canvas> */}
-
-    <MainTerminal />
+    </Canvas>
   </>
 }
 
