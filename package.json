@@ -16,9 +16,8 @@
     "gl-noise": "^1.6.1",
     "postprocessing": "^6.30.2",
     "r3f-perf": "^7.1.2",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "three-custom-shader-material": "^5.4.0"
+    "three-custom-shader-material": "^5.4.0",
+    "vercel": "^32.3.1"
   },
   "devDependencies": {
     "@react-three/drei": "^9.64.0",
@@ -29,6 +28,8 @@
     "autoprefixer": "^10.4.14",
     "leva": "^0.9.34",
     "postcss": "^8.4.21",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "tailwindcss": "^3.3.1",
     "tailwindcss-animated": "^1.0.0",
     "three": "^0.151.3",
