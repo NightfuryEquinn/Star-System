@@ -10,13 +10,10 @@
     "vercel": "vercel --prod"
   },
   "dependencies": {
-    "@arwes/react": "^1.0.0-alpha.23",
-    "@emotion/react": "^11.11.1",
     "@react-spring/three": "^9.7.3",
     "@react-three/postprocessing": "^2.7.1",
     "camera-controls": "^2.7.2",
     "gl-noise": "^1.6.1",
-    "motion": "^10.16.4",
     "postprocessing": "^6.30.2",
     "r3f-perf": "^7.1.2",
     "react": "^18.2.0",
@@ -30,7 +27,6 @@
     "@types/react-dom": "^18.0.11",
     "@vitejs/plugin-react": "^3.1.0",
     "autoprefixer": "^10.4.14",
-    "glitched-writer": "^2.0.29",
     "leva": "^0.9.34",
     "postcss": "^8.4.21",
     "tailwindcss": "^3.3.1",
