@@ -19,7 +19,8 @@ export default {
       'wormbox': [ 'Wormbox' ],
       'made-light': [ 'Made Light' ],
       'made-regular': [ 'Made Regular' ],
-      'made-bold': [ 'Made Bold' ]
+      'made-bold': [ 'Made Bold' ],
+      'stray': [ 'Stray' ]
     },
     extend: {
       screens: {

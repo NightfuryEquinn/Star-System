@@ -33,6 +33,11 @@
     font-family: 'Made Bold';
     src: url( '/fonts/made_bold.otf' );
   }
+
+  @font-face {
+    font-family: 'Stray';
+    src: url( '/fonts/stray.otf' );
+  }
 }
 
 canvas {
