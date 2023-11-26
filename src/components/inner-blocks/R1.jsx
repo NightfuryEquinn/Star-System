@@ -66,7 +66,7 @@ export default function R1( { controls, geometry, material } ) {
       />
 
       <Html
-        position={ [ -15, -2, 0 ] }
+        position={ [ -17, -2, 0 ] }
         center
         distanceFactor={ 50 }
       >
@@ -75,7 +75,7 @@ export default function R1( { controls, geometry, material } ) {
             data-gw-string="R1 Here" 
             className={`glitched-title font-made-light text-4xl text-white whitespace-nowrap delay-200 duration-300 ease-in-out ${ hover ? "opacity-100" : "opacity-0" }`}
           >
-            R1 Here
+            ITF Taekwondo<br/>Practitioner
           </h2>
         </div>
       </Html>

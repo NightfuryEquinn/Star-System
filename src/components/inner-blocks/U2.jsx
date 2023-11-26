@@ -75,7 +75,7 @@ export default function U2( { controls, geometry, material } ) {
             data-gw-string="U2 Here" 
             className={`glitched-title font-made-light text-4xl text-white whitespace-nowrap delay-200 duration-300 ease-in-out ${ hover ? "opacity-100" : "opacity-0" }`}
           >
-            U2 Here
+            LoL<br/>Diehard
           </h2>
         </div>
       </Html>

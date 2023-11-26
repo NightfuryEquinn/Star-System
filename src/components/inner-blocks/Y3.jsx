@@ -66,7 +66,7 @@ export default function Y3( { controls, geometry, material } ) {
       />
 
       <Html
-        position={ [ -19, -1, 0 ] }
+        position={ [ -21, -1, 0 ] }
         center
         distanceFactor={ 50 }
       >
@@ -75,7 +75,7 @@ export default function Y3( { controls, geometry, material } ) {
             data-gw-string="Y3 Here" 
             className={`glitched-title font-made-light text-4xl text-white whitespace-nowrap delay-200 duration-300 ease-in-out ${ hover ? "opacity-100" : "opacity-0" }`}
           >
-            Y3 Here
+            Miscellaneous
           </h2>
         </div>
       </Html>

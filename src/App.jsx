@@ -15,7 +15,7 @@ export default function App() {
 
         <EffectComposer>
           <Glitch 
-            delay={ [ 60, 90 ] }
+            delay={ [ 30, 60 ] }
             duration={ [ 0.3, 0.5 ] }
             strength={ [ 0.2, 0.4 ] }
           />
