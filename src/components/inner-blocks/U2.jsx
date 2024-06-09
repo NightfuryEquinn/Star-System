@@ -72,7 +72,7 @@ export default function U2( { controls, geometry, material } ) {
       >
         <div className={`relative pl-4 border-white duration-300 ease-in-out ${ hover ? "border-l-4" : "border-l-0" }`}>
           <h2 
-            data-gw-string="U2 Here" 
+            data-gw-string="LoL Diehard" 
             className={`glitched-title font-made-light text-4xl text-white whitespace-nowrap delay-200 duration-300 ease-in-out ${ hover ? "opacity-100" : "opacity-0" }`}
           >
             LoL<br/>Diehard

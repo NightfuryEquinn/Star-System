@@ -72,7 +72,7 @@ export default function U1( { controls, geometry, material } ) {
       >
         <div className={`relative pr-4 border-white duration-300 ease-in-out ${ hover ? "border-r-4" : "border-r-0" }`}>
           <h2 
-            data-gw-string="U1 Here" 
+            data-gw-string="Hoyoverse Supporter" 
             className={`glitched-title font-made-light text-4xl text-white whitespace-nowrap delay-200 duration-300 ease-in-out ${ hover ? "opacity-100" : "opacity-0" }`}
           >
             Hoyoverse<br/>Supporter

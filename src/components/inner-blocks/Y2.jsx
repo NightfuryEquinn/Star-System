@@ -72,10 +72,10 @@ export default function Y2( { controls, geometry, material } ) {
       >
         <div className={`relative pl-4 border-white duration-300 ease-in-out ${ hover ? "border-l-4" : "border-l-0" }`}>
           <h2 
-            data-gw-string="Y2 Here" 
+            data-gw-string="Trying Blender" 
             className={`glitched-title font-made-light text-4xl text-white whitespace-nowrap delay-200 duration-300 ease-in-out ${ hover ? "opacity-100" : "opacity-0" }`}
           >
-            Hobby<br/>Sports
+            Trying<br />Blender
           </h2>
         </div>
       </Html>

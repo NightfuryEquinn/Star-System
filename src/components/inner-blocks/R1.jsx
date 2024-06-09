@@ -27,7 +27,7 @@ export default function R1( { controls, geometry, material } ) {
   return <>
     <animated.mesh
       ref={ theMesh }
-      name="R1"
+      name="ITF Taekwondo Practitioner"
       position={ [ 8, 0, 0 ] } 
       rotation={ [ 0, Math.PI, 0 ] } 
       geometry={ geometry } 
@@ -72,7 +72,7 @@ export default function R1( { controls, geometry, material } ) {
       >
         <div className={`relative pl-4 border-white duration-300 ease-in-out ${ hover ? "border-l-4" : "border-l-0" }`}>
           <h2 
-            data-gw-string="R1 Here" 
+            data-gw-string="ITF Taekwondo Practitioner" 
             className={`glitched-title font-made-light text-4xl text-white whitespace-nowrap delay-200 duration-300 ease-in-out ${ hover ? "opacity-100" : "opacity-0" }`}
           >
             ITF Taekwondo<br/>Practitioner
