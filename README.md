@@ -14,14 +14,14 @@ It is still under development, but there are some information about my professio
 <hr/>
 
 ### 💡 Libraries and framework used: 
-1️⃣ React Three Fiber <br/>
-2️⃣ React Three Drei <br/>
-3️⃣ Camera Controls <br/>
-4️⃣ Three Custom Shader Material <br/>
-5️⃣ GL-Noise <br/>
-6️⃣ Vite & Vercel <br/>
-7️⃣ TailwindCSS with Autoprefixer and PostCSS <br/>
-8️⃣ Leva for Debugging <br/>
+1. React Three Fiber <br/>
+2. React Three Drei <br/>
+3. Camera Controls <br/>
+4. Three Custom Shader Material <br/>
+5. GL-Noise <br/>
+6. Vite & Vercel <br/>
+7. TailwindCSS with Autoprefixer and PostCSS <br/>
+8. Leva for Debugging <br/>
 
 <hr/>
 
