@@ -9,7 +9,7 @@ It is legit a major change with libraries, framework and extra stuffs.
 <br/>
 I even designed my own logo and created a wireframe in Figma. 
 <br/>
-It is still under development, but there are some information about my professional-side.
+It is just a simple model showcase website but there are some information about my professional-side.
 
 <hr/>
 
