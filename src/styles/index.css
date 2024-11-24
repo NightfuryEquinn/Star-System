@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* IE and Edge */
+* {
+  -ms-overflow-style: none;
+}
+
+/* Chrome */
+::-webkit-scrollbar {
+  display: none;
+}
+
+@layer base {
+  @font-face {
+    font-family: "DM Mono Regular";
+    src: url("../../fonts/dmmono_regular.ttf");
+  }
+  
+  @font-face {
+    font-family: "DM Mono Medium";
+    src: url("../../fonts/dmmono_medium.ttf");
+  }
+  
+  @font-face {
+    font-family: "DM Mono Light";
+    src: url("../../fonts/dmmono_light.ttf");
+  }
+  
+  @font-face {
+    font-family: "DM Mono Italic Regular";
+    src: url("../../fonts/dmmono_italic.ttf");
+  }
+  
+  @font-face {
+    font-family: "DM Mono Italic Medium";
+    src: url("../../fonts/dmmono_italic_medium.ttf");
+  }
+  
+  @font-face {
+    font-family: "DM Mono Italic Light";
+    src: url("../../fonts/dmmono_italic_light.ttf");
+  }
+}

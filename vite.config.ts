@@ -4,7 +4,7 @@ import react from '@vitejs/plugin-react'
 
 export default {
   root: "src/",
-  publicDir: "public/",
+  publicDir: "../public/",
   base: "./",
   server: {
     host: true,
@@ -16,7 +16,7 @@ export default {
     sourcemap: true,
   },
   plugins: [
-    restart({ restart: [ "public/**" ] }),
+    restart({ restart: [ "src/**" ] }),
     glsl(),
     react()
   ]
