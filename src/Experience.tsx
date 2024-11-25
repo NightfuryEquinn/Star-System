@@ -1,23 +1,21 @@
 import { Canvas } from '@react-three/fiber'
 import { OrbitControls } from '@react-three/drei'
-import starVertex from "./shaders/star/vertex.glsl"
-import starFragment from "./shaders/star/fragment.glsl"
+import Star from './components/Star'
+import Earth from './components/Earth'
+import * as THREE from "three"
 
 export default function Experience() {
+  const sunDirection = new THREE.Vector3()
+
   return <>
     <Canvas
-      camera={{ fov: 45, near: 1, far: 200 }}
+      camera={{ position: [ 12, 8, 2 ], fov: 45, near: 1, far: 200 }}
       className="bg-black"
     >
-      <OrbitControls />
+      <OrbitControls enableDamping />
 
-      <mesh>
-        <sphereGeometry />
-        <shaderMaterial
-          vertexShader={ starVertex }
-          fragmentShader={ starFragment }
-        />
-      </mesh>
+      <Star sunDirection={ sunDirection } />
+      <Earth sunDirection={ sunDirection } />
     </Canvas>
   </>
 }

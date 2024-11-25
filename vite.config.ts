@@ -1,6 +1,5 @@
 import restart from 'vite-plugin-restart'
 import glsl from 'vite-plugin-glsl'
-import react from '@vitejs/plugin-react'
 
 export default {
   root: "src/",
@@ -16,8 +15,7 @@ export default {
     sourcemap: true,
   },
   plugins: [
-    restart({ restart: [ "src/**" ] }),
+    restart({ restart: [ "../public/**" ] }),
     glsl(),
-    react()
   ]
 }
