@@ -1,34 +1,67 @@
 import starVertex from "../shaders/star/vertex.glsl"
 import starFragment from "../shaders/star/fragment.glsl"
+import starAtmosphereVertex from "../shaders/star_atmosphere/vertex.glsl"
+import starAtmosphereFragment from "../shaders/star_atmosphere/fragment.glsl"
 import { useMemo, useRef } from "react"
-import { useFrame } from "@react-three/fiber";
+import { useFrame, useLoader } from "@react-three/fiber";
 import * as THREE from "three"
 
 export default function Star({ sunDirection }: any) {
+  // Sun
   const starMaterial = useRef<any>(null)
   const starGeometry = useRef<any>(null)
   const sunSpherical = useMemo(() => new THREE.Spherical(1, Math.PI * 0.5, 0.5), [])
 
-  useFrame(( _, delta ) => {
-    sunSpherical.theta += delta * 0.125
-    sunDirection.setFromSpherical(sunSpherical)
-    starGeometry.current.position.copy(sunDirection).multiplyScalar(5)
+  const sunParameters = {
+    sunLightColor: "#C86920",
+    sunDarkColor: "#F9C353"
+  }
 
-    if (starMaterial.current) {
-      // starMaterial.current.uniforms.uTime.value += delta
-    }
+  const sunTexture = useLoader(THREE.TextureLoader, "../public/assets/textures/solar/sun.jpg")
+  sunTexture.colorSpace = THREE.SRGBColorSpace
+  sunTexture.anisotropy = 8
+
+  // Atmosphere
+  const starAtmosphereGeometry = useRef<any>(null)
+  const starAtmosphereMaterial = useRef<any>(null)
+
+  
+  useFrame(( _, delta ) => {
+    sunDirection.setFromSpherical(sunSpherical)
+
+    starMaterial.current.uniforms.uTime.value += delta
   })
 
   return <>
     <mesh ref={ starGeometry }>
-      <icosahedronGeometry args={[ 0.1, 2 ]} />
+      <sphereGeometry args={[ 4, 64, 64 ]} />
       <shaderMaterial
         ref={ starMaterial }
         vertexShader={ starVertex }
         fragmentShader={ starFragment }
         uniforms={{
-          uTime: { value: 0 }
+          uTime: { value: 0 },
+          uSunTexture: { value: sunTexture },
+          uSunLightColor: { value: new THREE.Color(sunParameters.sunLightColor) },
+          uSunDarkColor: { value: new THREE.Color(sunParameters.sunDarkColor) }
         }}
+        toneMapped={ true }
+      />
+    </mesh>
+
+    <mesh ref={ starAtmosphereGeometry }>
+      <sphereGeometry args={[ 4.5, 64, 64 ]} />
+      <shaderMaterial 
+        ref={ starAtmosphereMaterial }
+        side={ THREE.BackSide }
+        transparent={ true }
+        vertexShader={ starAtmosphereVertex }
+        fragmentShader={ starAtmosphereFragment }
+        uniforms={{
+          uSunLightColor: { value: new THREE.Color(sunParameters.sunLightColor) },
+          uSunDarkColor: { value: new THREE.Color(sunParameters.sunDarkColor) }
+        }}
+        toneMapped={ true }
       />
     </mesh>
   </>

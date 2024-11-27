@@ -1,12 +1,20 @@
 import earthVertex from "../shaders/earth/vertex.glsl"
 import earthFragment from "../shaders/earth/fragment.glsl"
+import atmosphereVertex from "../shaders/earth_atmosphere/vertex.glsl"
+import atmosphereFragment from "../shaders/earth_atmosphere/fragment.glsl"
 import { useFrame, useLoader } from "@react-three/fiber"
-import { useRef } from "react"
+import { useRef, useState } from "react"
 import * as THREE from "three"
 
 export default function Earth({ sunDirection }: any) {
+  // Earth
   const earthMaterial = useRef<any>(null)
   const earthGeometry = useRef<any>(null)
+
+  const earthParameters = {
+    atmosphereDayColor: "#2E6CCB",
+    atmosphereNightColor: "#E06F00"
+  }
 
   const earthDayTexture = useLoader(THREE.TextureLoader, "../public/assets/textures/earth/day.jpg")
   const earthNightTexture = useLoader(THREE.TextureLoader, "../public/assets/textures/earth/night.jpg")
@@ -17,15 +25,37 @@ export default function Earth({ sunDirection }: any) {
 
   earthDayTexture.anisotropy = 8
   earthNightTexture.anisotropy = 8
+  earthSpecularTexture.anisotropy = 8
+
+  // Atmosphere
+  const atmosphereGeometry = useRef<any>(null)
+  const atmosphereMaterial = useRef<any>(null)
+
+  // Orbit
+  const orbitRadius = 20
+  const orbitSpeed = 0.025
+  const [ orbitAngle, setOrbitAngle ] = useState(0)
 
   useFrame(( _, delta ) => {
-    if (earthGeometry.current) {
-      earthGeometry.current.rotation.y -= delta * 0.05
-    }
+    earthMaterial.current.uniforms.uTime.value += delta
+    earthGeometry.current.rotation.y += delta * 0.075
 
-    if (earthMaterial.current) {
-      earthMaterial.current.uniforms.uSunDirection.value.copy(sunDirection);
-    }
+    const newOrbitAngle = orbitAngle + delta * orbitSpeed
+    setOrbitAngle(newOrbitAngle)
+
+    const x = Math.cos(newOrbitAngle) * orbitRadius
+    const z = Math.sin(newOrbitAngle) * orbitRadius
+
+    earthGeometry.current.position.set(x, 0, z)
+    atmosphereGeometry.current.position.set(x, 0, z)
+
+    const sunPosition = new THREE.Vector3().subVectors(
+      sunDirection,
+      earthGeometry.current.position
+    ).normalize()
+
+    earthMaterial.current.uniforms.uSunDirection.value.copy(sunPosition)
+    atmosphereMaterial.current.uniforms.uSunDirection.value.copy(sunPosition)
   })
 
   return <>
@@ -36,11 +66,32 @@ export default function Earth({ sunDirection }: any) {
         vertexShader={ earthVertex }
         fragmentShader={ earthFragment }
         uniforms={{
+          uTime: { value: 0 },
           uDayTexture: { value: earthDayTexture },
           uNightTexture: { value: earthNightTexture },
           uSpecularTexture: { value: earthSpecularTexture },
-          uSunDirection: { value: sunDirection }
+          uSunDirection: { value: sunDirection },
+          uAtmosphereDayColor: { value: new THREE.Color(earthParameters.atmosphereDayColor) },
+          uAtmosphereNightColor: { value: new THREE.Color(earthParameters.atmosphereNightColor) }
         }}
+        toneMapped={ true }
+      />
+    </mesh>
+
+    <mesh ref={ atmosphereGeometry }>
+      <sphereGeometry args={[ 2.125, 64, 64 ]} />
+      <shaderMaterial
+        ref={ atmosphereMaterial }
+        side={ THREE.BackSide }
+        transparent={ true }
+        vertexShader={ atmosphereVertex }
+        fragmentShader={ atmosphereFragment }
+        uniforms={{
+          uSunDirection: { value: sunDirection },
+          uAtmosphereDayColor: { value: new THREE.Color(earthParameters.atmosphereDayColor) },
+          uAtmosphereNightColor: { value: new THREE.Color(earthParameters.atmosphereNightColor) }
+        }}
+        toneMapped={ true }
       />
     </mesh>
   </>
