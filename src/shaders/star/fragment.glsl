@@ -17,10 +17,10 @@ float fbm(vec3 layer) {
   float amp = 1.0;
   float scale = 1.0;
 
-  for (int i = 0; i < 5; i++) {
+  for (int i = 0; i < 4; i++) {
     sum += snoise(p * scale) * amp;
     p.w += 100.0;
-    amp *= 0.9;
+    amp *= 0.65;
     scale *= 2.0;
   }
 
@@ -42,6 +42,10 @@ float supersun() {
   return sum;
 }
 
+vec3 sunBrightness(float b) {
+  return vec3(b, b * b, b * b * b * b / 0.25) * 0.6;
+}
+
 void main() 
 {
   vec3 viewDirection = normalize(vPosition - cameraPosition);
@@ -59,10 +63,11 @@ void main()
 
   // Sun rotation with parallax
   float brightness = supersun();
-  color *= brightness;
 
   // Sun color
   vec3 sunColor = mix(uSunDarkColor, uSunLightColor, brightness);
+  vec3 sunColorBrightness = sunBrightness(supersun() * 2.5 + 1.0);
+  color += smoothstep(0.375, 0.75, sunColorBrightness);
   color += sunColor;
 
   gl_FragColor = vec4(color, 1.0);
