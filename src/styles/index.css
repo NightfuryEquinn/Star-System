@@ -12,6 +12,10 @@
   display: none;
 }
 
+.canvas-experience {
+  touch-action: none;
+}
+
 @layer base {
   @font-face {
     font-family: "DM Mono Regular";

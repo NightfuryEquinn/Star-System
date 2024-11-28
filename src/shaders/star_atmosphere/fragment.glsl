@@ -19,7 +19,6 @@ void main() {
   // Alpha
   float edgeAlpha = fresnel;
   edgeAlpha = smoothstep(0.0, 0.55, edgeAlpha);
-
   float alpha = edgeAlpha;
 
   // Final color

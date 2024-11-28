@@ -1,10 +1,10 @@
-import earthVertex from "../shaders/earth/vertex.glsl"
-import earthFragment from "../shaders/earth/fragment.glsl"
-import atmosphereVertex from "../shaders/earth_atmosphere/vertex.glsl"
-import atmosphereFragment from "../shaders/earth_atmosphere/fragment.glsl"
 import { useFrame, useLoader } from "@react-three/fiber"
 import { useRef, useState } from "react"
 import * as THREE from "three"
+import earthFragment from "../shaders/earth/fragment.glsl"
+import earthVertex from "../shaders/earth/vertex.glsl"
+import atmosphereFragment from "../shaders/earth_atmosphere/fragment.glsl"
+import atmosphereVertex from "../shaders/earth_atmosphere/vertex.glsl"
 
 export default function Earth({ sunDirection }: any) {
   // Earth
@@ -16,9 +16,9 @@ export default function Earth({ sunDirection }: any) {
     atmosphereNightColor: "#E06F00"
   }
 
-  const earthDayTexture = useLoader(THREE.TextureLoader, "../public/assets/textures/earth/day.jpg")
-  const earthNightTexture = useLoader(THREE.TextureLoader, "../public/assets/textures/earth/night.jpg")
-  const earthSpecularTexture = useLoader(THREE.TextureLoader, "../public/assets/textures/earth/specularClouds.jpg")
+  const earthDayTexture = useLoader(THREE.TextureLoader, "../assets/textures/earth/day.jpg")
+  const earthNightTexture = useLoader(THREE.TextureLoader, "../assets/textures/earth/night.jpg")
+  const earthSpecularTexture = useLoader(THREE.TextureLoader, "../assets/textures/earth/specularClouds.jpg")
   
   earthDayTexture.colorSpace = THREE.SRGBColorSpace
   earthNightTexture.colorSpace = THREE.SRGBColorSpace

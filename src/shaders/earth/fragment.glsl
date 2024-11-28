@@ -56,6 +56,7 @@ void main() {
   specular = pow(specular, 32.0);
   specular *= specularCloudsColor.r;
 
+  // Specular Color
   vec3 specularColor = mix(vec3(1.0), atmosphereColor, fresnel);
   color += specular * specularColor;
 

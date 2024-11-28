@@ -11,6 +11,7 @@ varying vec3 vLayer2;
 
 #include ../includes/4dnoise.glsl
 
+// Fractal Brownian Motion
 float fbm(vec3 layer) {
   vec4 p = vec4(layer * 2.0, uTime * 0.05);
   float sum = 0.0;
@@ -27,6 +28,7 @@ float fbm(vec3 layer) {
   return sum;
 }
 
+// Sun Layers
 float supersun() {
   float sum = 0.0;
   
@@ -42,6 +44,7 @@ float supersun() {
   return sum;
 }
 
+// Sun brightness
 vec3 sunBrightness(float b) {
   return vec3(b, b * b, b * b * b * b / 0.25) * 0.6;
 }

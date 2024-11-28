@@ -1,10 +1,10 @@
-import starVertex from "../shaders/star/vertex.glsl"
-import starFragment from "../shaders/star/fragment.glsl"
-import starAtmosphereVertex from "../shaders/star_atmosphere/vertex.glsl"
-import starAtmosphereFragment from "../shaders/star_atmosphere/fragment.glsl"
+import { useFrame, useLoader } from "@react-three/fiber"
 import { useMemo, useRef } from "react"
-import { useFrame, useLoader } from "@react-three/fiber";
 import * as THREE from "three"
+import starFragment from "../shaders/star/fragment.glsl"
+import starVertex from "../shaders/star/vertex.glsl"
+import starAtmosphereFragment from "../shaders/star_atmosphere/fragment.glsl"
+import starAtmosphereVertex from "../shaders/star_atmosphere/vertex.glsl"
 
 export default function Star({ sunDirection }: any) {
   // Sun
@@ -17,7 +17,7 @@ export default function Star({ sunDirection }: any) {
     sunDarkColor: "#F9C353"
   }
 
-  const sunTexture = useLoader(THREE.TextureLoader, "../public/assets/textures/solar/sun.jpg")
+  const sunTexture = useLoader(THREE.TextureLoader, "../assets/textures/solar/sun.jpg")
   sunTexture.colorSpace = THREE.SRGBColorSpace
   sunTexture.anisotropy = 8
 
