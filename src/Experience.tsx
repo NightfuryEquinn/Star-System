@@ -40,8 +40,8 @@ export default function Experience() {
     <Star sunDirection={ sunDirection } />
     <Earth sunDirection={ sunDirection } />
 
-    <InfiniteStarField count={ 100 } size={ 400 } gridSize={ 3 } />
-    <InfiniteStarField count={ 200 } size={ 800 } gridSize={ 3 } />
+    <InfiniteStarField count={ 5 } size={ 400 } gridSize={ 8 } />
+    <InfiniteStarField count={ 10 } size={ 800 } gridSize={ 8 } />
 
     <ambientLight intensity={ 0.375 } />
     <pointLight castShadow intensity={ 5 } position={[0, 0, 0]}  />
