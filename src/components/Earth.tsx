@@ -8,17 +8,17 @@ import atmosphereVertex from "../shaders/earth_atmosphere/vertex.glsl"
 
 export default function Earth({ sunDirection }: any) {
   // Earth
-  const earthMaterial = useRef<any>(null)
-  const earthGeometry = useRef<any>(null)
+  const earthMaterial = useRef<any>( null )
+  const earthGeometry = useRef<any>( null )
 
   const earthParameters = {
     atmosphereDayColor: "#2E6CCB",
     atmosphereNightColor: "#E06F00"
   }
 
-  const earthDayTexture = useLoader(THREE.TextureLoader, "../assets/textures/earth/day.jpg")
-  const earthNightTexture = useLoader(THREE.TextureLoader, "../assets/textures/earth/night.jpg")
-  const earthSpecularTexture = useLoader(THREE.TextureLoader, "../assets/textures/earth/specularClouds.jpg")
+  const earthDayTexture = useLoader( THREE.TextureLoader, "../assets/textures/earth/day.jpg" )
+  const earthNightTexture = useLoader( THREE.TextureLoader, "../assets/textures/earth/night.jpg" )
+  const earthSpecularTexture = useLoader( THREE.TextureLoader, "../assets/textures/earth/specularClouds.jpg" )
   
   earthDayTexture.colorSpace = THREE.SRGBColorSpace
   earthNightTexture.colorSpace = THREE.SRGBColorSpace
@@ -28,34 +28,34 @@ export default function Earth({ sunDirection }: any) {
   earthSpecularTexture.anisotropy = 8
 
   // Atmosphere
-  const atmosphereGeometry = useRef<any>(null)
-  const atmosphereMaterial = useRef<any>(null)
+  const atmosphereGeometry = useRef<any>( null )
+  const atmosphereMaterial = useRef<any>( null )
 
   // Orbit
   const orbitRadius = 20
   const orbitSpeed = 0.025
-  const [ orbitAngle, setOrbitAngle ] = useState(0)
+  const [ orbitAngle, setOrbitAngle ] = useState( 0 )
 
   useFrame(( _, delta ) => {
     earthMaterial.current.uniforms.uTime.value += delta
     earthGeometry.current.rotation.y += delta * 0.075
 
     const newOrbitAngle = orbitAngle + delta * orbitSpeed
-    setOrbitAngle(newOrbitAngle)
+    setOrbitAngle( newOrbitAngle )
 
-    const x = Math.cos(newOrbitAngle) * orbitRadius
-    const z = Math.sin(newOrbitAngle) * orbitRadius
+    const x = Math.cos( newOrbitAngle ) * orbitRadius
+    const z = Math.sin( newOrbitAngle ) * orbitRadius
 
-    earthGeometry.current.position.set(x, 0, z)
-    atmosphereGeometry.current.position.set(x, 0, z)
+    earthGeometry.current.position.set( x, 0, z )
+    atmosphereGeometry.current.position.set( x, 0, z )
 
     const sunPosition = new THREE.Vector3().subVectors(
       sunDirection,
       earthGeometry.current.position
     ).normalize()
 
-    earthMaterial.current.uniforms.uSunDirection.value.copy(sunPosition)
-    atmosphereMaterial.current.uniforms.uSunDirection.value.copy(sunPosition)
+    earthMaterial.current.uniforms.uSunDirection.value.copy( sunPosition )
+    atmosphereMaterial.current.uniforms.uSunDirection.value.copy( sunPosition )
   })
 
   return <>
@@ -71,8 +71,8 @@ export default function Earth({ sunDirection }: any) {
           uNightTexture: { value: earthNightTexture },
           uSpecularTexture: { value: earthSpecularTexture },
           uSunDirection: { value: sunDirection },
-          uAtmosphereDayColor: { value: new THREE.Color(earthParameters.atmosphereDayColor) },
-          uAtmosphereNightColor: { value: new THREE.Color(earthParameters.atmosphereNightColor) }
+          uAtmosphereDayColor: { value: new THREE.Color( earthParameters.atmosphereDayColor )},
+          uAtmosphereNightColor: { value: new THREE.Color( earthParameters.atmosphereNightColor )}
         }}
         toneMapped={ true }
       />
@@ -88,8 +88,8 @@ export default function Earth({ sunDirection }: any) {
         fragmentShader={ atmosphereFragment }
         uniforms={{
           uSunDirection: { value: sunDirection },
-          uAtmosphereDayColor: { value: new THREE.Color(earthParameters.atmosphereDayColor) },
-          uAtmosphereNightColor: { value: new THREE.Color(earthParameters.atmosphereNightColor) }
+          uAtmosphereDayColor: { value: new THREE.Color( earthParameters.atmosphereDayColor )},
+          uAtmosphereNightColor: { value: new THREE.Color( earthParameters.atmosphereNightColor )}
         }}
         toneMapped={ true }
       />

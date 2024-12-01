@@ -4,6 +4,7 @@ import { Perf } from "r3f-perf"
 import * as THREE from "three"
 import Earth from './components/Earth'
 import InfiniteStarField from './components/InfiniteStarField'
+import SpaceCompass from './components/SpaceCompass'
 import Star from './components/Star'
 
 export default function Experience() {
@@ -12,7 +13,7 @@ export default function Experience() {
   return <>
     <Perf position='top-left' />
 
-    <color args={["#161A1D"]} attach="background" />
+    <color args={[ "#161A1D" ]} attach="background" />
     
     <Environment
       background
@@ -44,7 +45,9 @@ export default function Experience() {
     <InfiniteStarField count={ 10 } size={ 800 } gridSize={ 8 } />
 
     <ambientLight intensity={ 0.375 } />
-    <pointLight castShadow intensity={ 5 } position={[0, 0, 0]}  />
+    <pointLight castShadow intensity={ 5 } position={[ 0, 0, 0 ]} color="#DEE2E6" />
+
+    <SpaceCompass />
 
     <OrbitControls
       enableDamping

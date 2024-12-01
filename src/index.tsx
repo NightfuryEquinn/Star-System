@@ -5,10 +5,10 @@ import Experience from './Experience.tsx'
 import './styles/index.css'
 
 // Disable strict mode if Arwes not working
-createRoot(document.getElementById('root')!).render(
+createRoot( document.getElementById( 'root' )! ).render(
   <StrictMode>
     <Canvas
-      camera={{ position: [12, 8, 5], fov: 55, near: 1, far: 4000 }}
+      camera={{ position: [ 25, 8, 5 ], fov: 40, near: 1, far: 4000 }}
       className="canvas-experience"
     >
       <Experience />
