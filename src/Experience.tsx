@@ -1,6 +1,8 @@
 import { Environment, OrbitControls } from '@react-three/drei'
 import { Bloom, EffectComposer, Glitch } from '@react-three/postprocessing'
+import { Howl } from 'howler'
 import { Perf } from "r3f-perf"
+import { useRef } from 'react'
 import * as THREE from "three"
 import Earth from './components/Earth'
 import InfiniteStarField from './components/InfiniteStarField'
@@ -9,6 +11,11 @@ import Star from './components/Star'
 
 export default function Experience() {
   const sunDirection = new THREE.Vector3()
+
+  const controlsRef = useRef<any>( null )
+
+  const rotateSound = new Howl({ src: [ "../audio/rotate.mp3" ], volume: 0.5 })
+  const panSound = new Howl({ src: [ "../audio/pan.mp3" ], volume: 0.5 })
 
   return <>
     <Perf position='top-left' />
@@ -29,9 +36,9 @@ export default function Experience() {
     
     <EffectComposer>
       <Glitch
-        delay={ new THREE.Vector2(30, 60) }
-        duration={ new THREE.Vector2(0.25, 0.5) }
-        strength={ new THREE.Vector2(0.2, 0.8) }
+        delay={ new THREE.Vector2( 30, 60 ) }
+        duration={ new THREE.Vector2( 0.25, 0.5 ) }
+        strength={ new THREE.Vector2( 0.2, 0.8 ) }
         ratio={ 0.75 }
       />
 
@@ -42,7 +49,7 @@ export default function Experience() {
     <Earth sunDirection={ sunDirection } />
 
     <InfiniteStarField count={ 5 } size={ 400 } gridSize={ 8 } />
-    <InfiniteStarField count={ 10 } size={ 800 } gridSize={ 8 } />
+    <InfiniteStarField count={ 10 } size={ 800 } gridSize={ 8 } alternate={ true } />
 
     <ambientLight intensity={ 0.375 } />
     <pointLight castShadow intensity={ 5 } position={[ 0, 0, 0 ]} color="#DEE2E6" />
@@ -50,8 +57,8 @@ export default function Experience() {
     <SpaceCompass />
 
     <OrbitControls
+      ref={ controlsRef }
       enableDamping
-      maxDistance={ 1250 }
       panSpeed={ 1 }
     />
   </>

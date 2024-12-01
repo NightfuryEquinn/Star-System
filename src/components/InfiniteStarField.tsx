@@ -1,4 +1,4 @@
-import { useFrame } from "@react-three/fiber"
+import { useFrame, useLoader } from "@react-three/fiber"
 import { useRef } from "react"
 import * as THREE from "three"
 
@@ -16,9 +16,12 @@ const generateStars = (count: number, size: number) => {
   return new Float32Array( positions )
 }
 
-export default function InfiniteStarField({ count, size, gridSize }: any) {
+export default function InfiniteStarField({ count, size, gridSize, alternate = false }: any) {
   const groupRef = useRef<any>( null )
   const positions = generateStars( count, size )
+
+  const whiteStarTexture = useLoader( THREE.TextureLoader, "../assets/textures/stars/white-star.png" )
+  const blueStarTexture = useLoader( THREE.TextureLoader, "../assets/textures/stars/blue-star.png" )
 
   useFrame(({ camera }) => {
     const cameraGridX = Math.floor( camera.position.x / size )
@@ -51,7 +54,8 @@ export default function InfiniteStarField({ count, size, gridSize }: any) {
               </bufferAttribute>
             </bufferGeometry>
             <pointsMaterial
-              size={ 0.05 }
+              map={ alternate ? blueStarTexture : whiteStarTexture }
+              size={ alternate ? 2.5 : 5 }
               sizeAttenuation
               color="#DEE2E6"
               transparent={ true }

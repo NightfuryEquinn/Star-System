@@ -3,6 +3,7 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import Experience from './Experience.tsx'
 import './styles/index.css'
+import AmbientMusic from './components/AmbientMusic.tsx'
 
 // Disable strict mode if Arwes not working
 createRoot( document.getElementById( 'root' )! ).render(
@@ -13,5 +14,7 @@ createRoot( document.getElementById( 'root' )! ).render(
     >
       <Experience />
     </Canvas>
+
+    <AmbientMusic />
   </StrictMode>,
 )
