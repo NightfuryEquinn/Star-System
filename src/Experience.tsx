@@ -1,4 +1,5 @@
 import { Environment, OrbitControls } from '@react-three/drei'
+import { useFrame, useThree } from '@react-three/fiber'
 import { Bloom, EffectComposer, Glitch } from '@react-three/postprocessing'
 import { Howl } from 'howler'
 import { Perf } from "r3f-perf"
@@ -11,11 +12,27 @@ import Star from './components/Star'
 
 export default function Experience() {
   const sunDirection = new THREE.Vector3()
+  const { camera } = useThree()
+  const prevCameraPosition = useRef<any>( camera.position.clone() )
+  const totalDistance = useRef<any>( 0 )
+  const threshold = 10
 
-  const controlsRef = useRef<any>( null )
+  const orbitSound = new Howl({ src: [ "../audio/orbit.mp3" ], volume: 0.75, rate: 2.5 })
 
-  const rotateSound = new Howl({ src: [ "../audio/rotate.mp3" ], volume: 0.5 })
-  const panSound = new Howl({ src: [ "../audio/pan.mp3" ], volume: 0.5 })
+  useFrame(() => {
+    const currentPosition = camera.position
+    const prevPos = prevCameraPosition.current
+
+    const frameDistance = currentPosition.distanceTo( prevPos )
+    totalDistance.current += frameDistance
+
+    if ( !orbitSound.playing() && totalDistance.current >= threshold ) {
+      orbitSound.play()
+      totalDistance.current = 0
+    }
+
+    prevCameraPosition.current.copy( currentPosition )
+  })
 
   return <>
     <Perf position='top-left' />
@@ -57,7 +74,6 @@ export default function Experience() {
     <SpaceCompass />
 
     <OrbitControls
-      ref={ controlsRef }
       enableDamping
       panSpeed={ 1 }
     />
