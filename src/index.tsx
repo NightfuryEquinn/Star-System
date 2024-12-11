@@ -11,6 +11,7 @@ createRoot( document.getElementById( 'root' )! ).render(
     <Canvas
       camera={{ position: [ 25, 8, 5 ], fov: 40, near: 1, far: 4000 }}
       className="canvas-experience"
+      shadows={ true }
     >
       <Experience />
     </Canvas>

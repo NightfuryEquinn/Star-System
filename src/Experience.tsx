@@ -9,9 +9,12 @@ import Earth from './components/Earth'
 import InfiniteStarField from './components/InfiniteStarField'
 import SpaceCompass from './components/SpaceCompass'
 import Star from './components/Star'
+import Saturn from './components/Saturn'
 
 export default function Experience() {
-  const sunDirection = new THREE.Vector3()
+  const sunDirection = new THREE.Vector3( 0, 0, 1 )
+  const sunDirectionForSaturn = new THREE.Vector3( 0, 0, 1 )
+  
   const { camera } = useThree()
   const prevCameraPosition = useRef<any>( camera.position.clone() )
   const totalDistance = useRef<any>( 0 )
@@ -37,8 +40,6 @@ export default function Experience() {
   return <>
     <Perf position='top-left' />
 
-    <color args={[ "#161A1D" ]} attach="background" />
-    
     <Environment
       background
       files={[
@@ -64,12 +65,20 @@ export default function Experience() {
 
     <Star sunDirection={ sunDirection } />
     <Earth sunDirection={ sunDirection } />
+    <Saturn sunDirection={ sunDirectionForSaturn } />
 
     <InfiniteStarField count={ 5 } size={ 400 } gridSize={ 8 } />
     <InfiniteStarField count={ 10 } size={ 800 } gridSize={ 8 } alternate={ true } />
 
-    <ambientLight intensity={ 0.375 } />
-    <pointLight castShadow intensity={ 5 } position={[ 0, 0, 0 ]} color="#DEE2E6" />
+    <ambientLight intensity={ 0.5 } />
+
+    <pointLight 
+      castShadow 
+      intensity={ 5 } 
+      position={[ 0, 0, 0 ]}
+      shadow-normalBias={ 1 }
+      shadow-mapSize={[ 1024, 1024 ]}
+    />
 
     <SpaceCompass />
 

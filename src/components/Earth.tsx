@@ -32,9 +32,9 @@ export default function Earth({ sunDirection }: any) {
   const atmosphereMaterial = useRef<any>( null )
 
   // Orbit
-  const orbitRadius = 20
-  const orbitSpeed = 0.025
-  const [ orbitAngle, setOrbitAngle ] = useState( 0 )
+  const orbitRadius = 25
+  const orbitSpeed = 0.0125
+  const [ orbitAngle, setOrbitAngle ] = useState( Math.PI / 4 )
 
   useFrame(( _, delta ) => {
     earthMaterial.current.uniforms.uTime.value += delta
