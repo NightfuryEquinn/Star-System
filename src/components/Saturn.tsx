@@ -47,7 +47,7 @@ export default function Saturn({ sunDirection }: any) {
 
   // Orbit
   const orbitRadius = 50
-  const orbitSpeed = 0.0125
+  const orbitSpeed = 0.025
   const [ orbitAngle, setOrbitAngle ] = useState( - Math.PI / 2 )
 
   useFrame(( _, delta ) => {

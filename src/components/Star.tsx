@@ -8,8 +8,8 @@ import starAtmosphereVertex from "../shaders/star_atmosphere/vertex.glsl"
 
 export default function Star({ sunDirection }: any) {
   // Sun
-  const starMaterial = useRef<any>(null)
-  const starGeometry = useRef<any>(null)
+  const starMaterial = useRef<any>( null )
+  const starGeometry = useRef<any>( null )
   const sunSpherical = useMemo(() => new THREE.Spherical(1, Math.PI * 0.5, 0.5), [])
 
   const sunParameters = {
@@ -17,17 +17,17 @@ export default function Star({ sunDirection }: any) {
     sunDarkColor: "#F9C353"
   }
 
-  const sunTexture = useLoader(THREE.TextureLoader, "../assets/textures/solar/sun.jpg")
+  const sunTexture = useLoader( THREE.TextureLoader, "../assets/textures/solar/sun.jpg" )
   sunTexture.colorSpace = THREE.SRGBColorSpace
   sunTexture.anisotropy = 8
 
   // Atmosphere
-  const starAtmosphereGeometry = useRef<any>(null)
-  const starAtmosphereMaterial = useRef<any>(null)
+  const starAtmosphereGeometry = useRef<any>( null )
+  const starAtmosphereMaterial = useRef<any>( null )
 
   
   useFrame(( _, delta ) => {
-    sunDirection.setFromSpherical(sunSpherical)
+    sunDirection.setFromSpherical( sunSpherical )
 
     starMaterial.current.uniforms.uTime.value += delta
   })

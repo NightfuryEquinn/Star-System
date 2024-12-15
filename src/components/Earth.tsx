@@ -5,6 +5,8 @@ import earthFragment from "../shaders/earth/fragment.glsl"
 import earthVertex from "../shaders/earth/vertex.glsl"
 import atmosphereFragment from "../shaders/earth_atmosphere/fragment.glsl"
 import atmosphereVertex from "../shaders/earth_atmosphere/vertex.glsl"
+import moonFragment from "../shaders/moons/fragment.glsl"
+import moonVertex from "../shaders/moons/vertex.glsl"
 
 export default function Earth({ sunDirection }: any) {
   // Earth
@@ -31,15 +33,34 @@ export default function Earth({ sunDirection }: any) {
   const atmosphereGeometry = useRef<any>( null )
   const atmosphereMaterial = useRef<any>( null )
 
+  // Moon
+  const moonGeometry = useRef<any>( null )
+  const moonMaterial = useRef<any>( null )
+
+  const moonTexture = useLoader( THREE.TextureLoader, "../assets/textures/moons/moon.jpg" )
+
+  moonTexture.colorSpace = THREE.SRGBColorSpace
+
+  moonTexture.anisotropy = 8
+
   // Orbit
   const orbitRadius = 25
-  const orbitSpeed = 0.0125
+  const orbitSpeed = 0.05
+  const moonOrbitRadius = 7.5
+  const moonOrbitSpeed = 0.075
+
   const [ orbitAngle, setOrbitAngle ] = useState( Math.PI / 4 )
+  const [ moonOrbitAngle, setMoonOrbitAngle ] = useState( Math.PI / 2 )
 
   useFrame(( _, delta ) => {
+    // For Earth
     earthMaterial.current.uniforms.uTime.value += delta
     earthGeometry.current.rotation.y += delta * 0.075
 
+    // For Moon
+    moonGeometry.current.rotation.y += delta * 0.5
+
+    // Orbit angle for Earth
     const newOrbitAngle = orbitAngle + delta * orbitSpeed
     setOrbitAngle( newOrbitAngle )
 
@@ -49,6 +70,18 @@ export default function Earth({ sunDirection }: any) {
     earthGeometry.current.position.set( x, 0, z )
     atmosphereGeometry.current.position.set( x, 0, z )
 
+    // Orbit angle for Moon
+    const newMoonOrbitAngle = moonOrbitAngle + delta * moonOrbitSpeed
+    setMoonOrbitAngle( newMoonOrbitAngle )
+
+    const moonX = Math.cos( newMoonOrbitAngle ) * moonOrbitRadius
+    const moonZ = Math.sin( newMoonOrbitAngle ) * moonOrbitRadius
+    moonGeometry.current.position.set( x + moonX, 0, z + moonZ );
+
+    // Update moon to earth position
+    moonMaterial.current.uniforms.uOrbitObjectDirection.value.copy( earthGeometry.current.position )
+
+    // Update sun position to earth and atmosphere 
     const sunPosition = new THREE.Vector3().subVectors(
       sunDirection,
       earthGeometry.current.position
@@ -90,6 +123,21 @@ export default function Earth({ sunDirection }: any) {
           uSunDirection: { value: sunDirection },
           uAtmosphereDayColor: { value: new THREE.Color( earthParameters.atmosphereDayColor )},
           uAtmosphereNightColor: { value: new THREE.Color( earthParameters.atmosphereNightColor )}
+        }}
+        toneMapped={ true }
+      />
+    </mesh>
+
+    <mesh ref={ moonGeometry }>
+      <sphereGeometry args={[ 0.75, 64, 64 ]} />
+      <shaderMaterial 
+        ref={ moonMaterial }
+        vertexShader={ moonVertex }
+        fragmentShader={ moonFragment }
+        uniforms={{
+          uMoonTexture: { value: moonTexture },
+          uSunDirection: { value: sunDirection },
+          uOrbitObjectDirection: { value: new THREE.Vector3(0, 0, 0) },
         }}
         toneMapped={ true }
       />

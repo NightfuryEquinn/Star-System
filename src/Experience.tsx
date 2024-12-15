@@ -15,6 +15,7 @@ export default function Experience() {
   const sunDirection = new THREE.Vector3( 0, 0, 1 )
   const sunDirectionForSaturn = new THREE.Vector3( 0, 0, 1 )
   
+  // Mouse drag sound effect
   const { camera } = useThree()
   const prevCameraPosition = useRef<any>( camera.position.clone() )
   const totalDistance = useRef<any>( 0 )
