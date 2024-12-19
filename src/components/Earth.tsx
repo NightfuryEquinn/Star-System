@@ -1,5 +1,5 @@
 import { useFrame, useLoader } from "@react-three/fiber"
-import { useRef, useState } from "react"
+import { useRef } from "react"
 import * as THREE from "three"
 import earthFragment from "../shaders/earth/fragment.glsl"
 import earthVertex from "../shaders/earth/vertex.glsl"
@@ -12,6 +12,7 @@ export default function Earth({ sunDirection }: any) {
   // Earth
   const earthMaterial = useRef<any>( null )
   const earthGeometry = useRef<any>( null )
+  const orbitAngleRef = useRef( Math.PI / 4 )
 
   const earthParameters = {
     atmosphereDayColor: "#2E6CCB",
@@ -36,6 +37,7 @@ export default function Earth({ sunDirection }: any) {
   // Moon
   const moonGeometry = useRef<any>( null )
   const moonMaterial = useRef<any>( null )
+  const moonOrbitAngleRef = useRef( Math.PI / 2 )
 
   const moonTexture = useLoader( THREE.TextureLoader, "../assets/textures/moons/moon.jpg" )
 
@@ -44,39 +46,36 @@ export default function Earth({ sunDirection }: any) {
   moonTexture.anisotropy = 8
 
   // Orbit
-  const orbitRadius = 25
-  const orbitSpeed = 0.05
+  const orbitRadius = 50
+  const orbitSpeed = 0.025
   const moonOrbitRadius = 7.5
-  const moonOrbitSpeed = 0.075
-
-  const [ orbitAngle, setOrbitAngle ] = useState( Math.PI / 4 )
-  const [ moonOrbitAngle, setMoonOrbitAngle ] = useState( Math.PI / 2 )
+  const moonOrbitSpeed = 0.05
 
   useFrame(( _, delta ) => {
     // For Earth
-    earthMaterial.current.uniforms.uTime.value += delta
     earthGeometry.current.rotation.y += delta * 0.075
-
+    earthMaterial.current.uniforms.uTime.value += delta
     // For Moon
-    moonGeometry.current.rotation.y += delta * 0.5
+    moonGeometry.current.rotation.y += delta * 0.05
 
     // Orbit angle for Earth
-    const newOrbitAngle = orbitAngle + delta * orbitSpeed
-    setOrbitAngle( newOrbitAngle )
+    const newOrbitAngle = orbitAngleRef.current + delta * orbitSpeed
+    orbitAngleRef.current = newOrbitAngle
 
     const x = Math.cos( newOrbitAngle ) * orbitRadius
+    const y = Math.sin( newOrbitAngle ) * orbitRadius * Math.tan( Math.PI / 12 );
     const z = Math.sin( newOrbitAngle ) * orbitRadius
 
-    earthGeometry.current.position.set( x, 0, z )
-    atmosphereGeometry.current.position.set( x, 0, z )
+    earthGeometry.current.position.set( x, y, z )
+    atmosphereGeometry.current.position.set( x, y, z )
 
     // Orbit angle for Moon
-    const newMoonOrbitAngle = moonOrbitAngle + delta * moonOrbitSpeed
-    setMoonOrbitAngle( newMoonOrbitAngle )
+    const newMoonOrbitAngle = moonOrbitAngleRef.current + delta * moonOrbitSpeed
+    moonOrbitAngleRef.current = newMoonOrbitAngle
 
     const moonX = Math.cos( newMoonOrbitAngle ) * moonOrbitRadius
     const moonZ = Math.sin( newMoonOrbitAngle ) * moonOrbitRadius
-    moonGeometry.current.position.set( x + moonX, 0, z + moonZ );
+    moonGeometry.current.position.set( x + moonX, y, z + moonZ );
 
     // Update moon to earth position
     moonMaterial.current.uniforms.uOrbitObjectDirection.value.copy( earthGeometry.current.position )

@@ -17,8 +17,8 @@ void main() {
   
   vec3 moonToSun = vPosition - uSunDirection;
   float distanceMoonSun = length(moonToSun);
-
-  bool inEarthShadow = (distanceEarthSun * 1.25) < distanceMoonSun;
+  
+  bool inEarthShadow = (distanceEarthSun + 6.0) < distanceMoonSun;
 
   // Sun orientation
   float sunOrientation = dot(uSunDirection, normal);

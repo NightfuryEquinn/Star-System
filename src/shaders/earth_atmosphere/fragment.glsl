@@ -5,8 +5,7 @@ uniform vec3 uAtmosphereNightColor;
 varying vec3 vNormal;
 varying vec3 vPosition;
 
-void main()
-{
+void main() {
   vec3 viewDirection = normalize(vPosition - cameraPosition);
   vec3 normal = normalize(vNormal);
   vec3 color = vec3(0.0);

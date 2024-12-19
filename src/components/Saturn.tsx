@@ -1,16 +1,17 @@
 import { useFrame, useLoader } from "@react-three/fiber"
+import { useMemo, useRef } from "react"
 import * as THREE from "three"
-import { useMemo, useRef, useState } from "react"
-import saturnVertex from "../shaders/saturn/vertex.glsl"
 import saturnFragment from "../shaders/saturn/fragment.glsl"
-import saturnAtmosphereVertex from "../shaders/saturn_atmosphere/vertex.glsl"
+import saturnVertex from "../shaders/saturn/vertex.glsl"
 import saturnAtmosphereFragment from "../shaders/saturn_atmosphere/fragment.glsl"
+import saturnAtmosphereVertex from "../shaders/saturn_atmosphere/vertex.glsl"
 
 export default function Saturn({ sunDirection }: any) {
   // Saturn
   const saturnGeometry = useRef<any>( null )
   const saturnMaterial = useRef<any>( null )
   const saturnRingGeometry = useRef<any>( null )
+  const saturnOrbitAngleRef = useRef( - Math.PI / 2 )
 
   const saturnParameters = {
     atmosphereDayColor: "#69859E",
@@ -46,24 +47,24 @@ export default function Saturn({ sunDirection }: any) {
   }, [])
 
   // Orbit
-  const orbitRadius = 50
+  const orbitRadius = 75
   const orbitSpeed = 0.025
-  const [ orbitAngle, setOrbitAngle ] = useState( - Math.PI / 2 )
 
   useFrame(( _, delta ) => {
     saturnGeometry.current.rotation.y += delta * 0.05
     saturnRingGeometry.current.rotation.x += Math.abs(Math.sin(delta)) * 0.005
     saturnRingGeometry.current.rotation.y += Math.abs(Math.sin(delta)) * 0.005 
 
-    const newOrbitAngle = orbitAngle + delta * orbitSpeed
-    setOrbitAngle( newOrbitAngle )
+    const newOrbitAngle = saturnOrbitAngleRef.current + delta * orbitSpeed
+    saturnOrbitAngleRef.current = newOrbitAngle
 
     const x = Math.cos( newOrbitAngle ) * orbitRadius
+    const y = Math.sin( newOrbitAngle ) * orbitRadius * Math.tan( Math.PI / 15 );
     const z = Math.sin( newOrbitAngle ) * orbitRadius
 
-    saturnGeometry.current.position.set( x, 0, z )
-    atmosphereGeometry.current.position.set( x, 0, z )
-    saturnRingGeometry.current.position.set( x, 0, z )
+    saturnGeometry.current.position.set( x, y, z )
+    atmosphereGeometry.current.position.set( x, y, z )
+    saturnRingGeometry.current.position.set( x, y, z )
 
     const sunPosition = new THREE.Vector3().subVectors(
       sunDirection,

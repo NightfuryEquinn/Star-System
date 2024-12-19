@@ -10,10 +10,13 @@ import InfiniteStarField from './components/InfiniteStarField'
 import SpaceCompass from './components/SpaceCompass'
 import Star from './components/Star'
 import Saturn from './components/Saturn'
+import Venus from './components/Venus'
+import AsteroidBelt from './components/AsteroidBelt'
 
 export default function Experience() {
   const sunDirection = new THREE.Vector3( 0, 0, 1 )
   const sunDirectionForSaturn = new THREE.Vector3( 0, 0, 1 )
+  const sunDirectionForVenus = new THREE.Vector3( 0, 0, 1 )
   
   // Mouse drag sound effect
   const { camera } = useThree()
@@ -65,7 +68,11 @@ export default function Experience() {
     </EffectComposer>
 
     <Star sunDirection={ sunDirection } />
+    <Venus sunDirection={ sunDirectionForVenus } />
     <Earth sunDirection={ sunDirection } />
+
+    <AsteroidBelt />
+
     <Saturn sunDirection={ sunDirectionForSaturn } />
 
     <InfiniteStarField count={ 5 } size={ 400 } gridSize={ 8 } />
