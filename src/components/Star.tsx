@@ -34,7 +34,7 @@ export default function Star({ sunDirection }: any) {
 
   return <>
     <mesh ref={ starGeometry }>
-      <sphereGeometry args={[ 4, 64, 64 ]} />
+      <sphereGeometry args={[ 5, 64, 64 ]} />
       <shaderMaterial
         ref={ starMaterial }
         vertexShader={ starVertex }
@@ -50,7 +50,7 @@ export default function Star({ sunDirection }: any) {
     </mesh>
 
     <mesh ref={ starAtmosphereGeometry }>
-      <sphereGeometry args={[ 5.75, 64, 64 ]} />
+      <sphereGeometry args={[ 6.75, 64, 64 ]} />
       <shaderMaterial 
         ref={ starAtmosphereMaterial }
         side={ THREE.BackSide }

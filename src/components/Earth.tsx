@@ -63,7 +63,7 @@ export default function Earth({ sunDirection }: any) {
     orbitAngleRef.current = newOrbitAngle
 
     const x = Math.cos( newOrbitAngle ) * orbitRadius
-    const y = Math.sin( newOrbitAngle ) * orbitRadius * Math.tan( Math.PI / 12 );
+    const y = 0
     const z = Math.sin( newOrbitAngle ) * orbitRadius
 
     earthGeometry.current.position.set( x, y, z )

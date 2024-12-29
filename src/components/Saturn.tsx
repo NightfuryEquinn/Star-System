@@ -33,21 +33,21 @@ export default function Saturn({ sunDirection }: any) {
 
   // Saturn Ring
   const ringGeometry = useMemo(() => {
-    const ringGeometry = new THREE.RingGeometry(3, 5, 64);
+    const ringGeometry = new THREE.RingGeometry( 4, 7, 64 );
     const pos = ringGeometry.attributes.position
     const uv = ringGeometry.attributes.uv;
     const v3 = new THREE.Vector3()
 
     for (let i = 0; i < pos.count; i++) {
       v3.fromBufferAttribute(pos, i)
-      uv.setXY(i, v3.length() < 4 ? 0 : 1, 1)
+      uv.setXY(i, v3.length() < 5 ? 0 : 1, 1)
     }
 
     return ringGeometry
   }, [])
 
   // Orbit
-  const orbitRadius = 75
+  const orbitRadius = 150
   const orbitSpeed = 0.025
 
   useFrame(( _, delta ) => {
@@ -59,7 +59,7 @@ export default function Saturn({ sunDirection }: any) {
     saturnOrbitAngleRef.current = newOrbitAngle
 
     const x = Math.cos( newOrbitAngle ) * orbitRadius
-    const y = Math.sin( newOrbitAngle ) * orbitRadius * Math.tan( Math.PI / 15 );
+    const y = 0
     const z = Math.sin( newOrbitAngle ) * orbitRadius
 
     saturnGeometry.current.position.set( x, y, z )
@@ -76,7 +76,7 @@ export default function Saturn({ sunDirection }: any) {
 
   return <>
     <mesh ref={ saturnGeometry }>
-      <sphereGeometry args={[ 2, 64, 64 ]} />
+      <sphereGeometry args={[ 3, 64, 64 ]} />
       <shaderMaterial 
         ref={ saturnMaterial }
         vertexShader={ saturnVertex }
@@ -93,7 +93,7 @@ export default function Saturn({ sunDirection }: any) {
     </mesh>
 
     <mesh ref={ atmosphereGeometry }>
-      <sphereGeometry args={[ 2.125, 64, 64 ]} />
+      <sphereGeometry args={[ 3.125, 64, 64 ]} />
       <shaderMaterial 
         ref={ atmosphereMaterial }
         side={ THREE.BackSide }
