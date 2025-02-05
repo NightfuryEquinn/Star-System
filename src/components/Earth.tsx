@@ -5,8 +5,8 @@ import earthFragment from "../shaders/earth/fragment.glsl"
 import earthVertex from "../shaders/earth/vertex.glsl"
 import atmosphereFragment from "../shaders/earth_atmosphere/fragment.glsl"
 import atmosphereVertex from "../shaders/earth_atmosphere/vertex.glsl"
-import moonFragment from "../shaders/moons/fragment.glsl"
-import moonVertex from "../shaders/moons/vertex.glsl"
+import moonFragment from "../shaders/moon/fragment.glsl"
+import moonVertex from "../shaders/moon/vertex.glsl"
 
 export default function Earth({ sunDirection }: any) {
   // Earth
