@@ -24,17 +24,15 @@ export default function Star({ sunDirection }: any) {
   // Atmosphere
   const starAtmosphereGeometry = useRef<any>( null )
   const starAtmosphereMaterial = useRef<any>( null )
-
   
   useFrame(( _, delta ) => {
     sunDirection.setFromSpherical( sunSpherical )
-
     starMaterial.current.uniforms.uTime.value += delta
   })
 
   return <>
     <mesh ref={ starGeometry }>
-      <sphereGeometry args={[ 5, 64, 64 ]} />
+      <sphereGeometry args={[ 5, 24, 24 ]} />
       <shaderMaterial
         ref={ starMaterial }
         vertexShader={ starVertex }
@@ -50,7 +48,7 @@ export default function Star({ sunDirection }: any) {
     </mesh>
 
     <mesh ref={ starAtmosphereGeometry }>
-      <sphereGeometry args={[ 6.75, 64, 64 ]} />
+      <sphereGeometry args={[ 6.75, 24, 24 ]} />
       <shaderMaterial 
         ref={ starAtmosphereMaterial }
         side={ THREE.BackSide }

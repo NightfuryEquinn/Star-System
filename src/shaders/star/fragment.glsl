@@ -16,14 +16,12 @@ float fbm(vec3 layer) {
   vec4 p = vec4(layer * 2.0, uTime * 0.05);
   float sum = 0.0;
   float amp = 1.0;
-  float scale = 1.0;
+  float scale = 0.75;
 
-  for (int i = 0; i < 4; i++) {
-    sum += snoise(p * scale) * amp;
-    p.w += 100.0;
-    amp *= 0.65;
-    scale *= 2.0;
-  }
+  sum += snoise(p * scale) * amp;
+  p.w += 100.0;
+  amp *= 0.75;
+  scale *= 2.0;
 
   return sum;
 }

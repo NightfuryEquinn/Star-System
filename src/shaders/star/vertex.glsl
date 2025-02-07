@@ -25,7 +25,7 @@ void main() {
   // Layers rotation
   float t = uTime * 0.025;
   mat2 rot = rotate(t);
-  mat2 rot1 = rotate(t * 1.2);
+  mat2 rot1 = rotate(t * - 1.2);
   mat2 rot2 = rotate(t * 1.5);
 
   vec3 p0 = modelPosition.xyz;

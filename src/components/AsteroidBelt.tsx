@@ -1,7 +1,6 @@
 import { PointMaterial, Points } from "@react-three/drei"
 import { useFrame } from "@react-three/fiber"
 import { useMemo, useRef } from "react"
-import * as THREE from "three"
 
 export default function AsteroidBelt({ asteroidCount, radius, ringThickness }: any) {
   const pointsRef = useRef<any>( null )
@@ -21,11 +20,11 @@ export default function AsteroidBelt({ asteroidCount, radius, ringThickness }: a
   }, [ asteroidCount, radius, ringThickness ])
 
   useFrame(( _, delta ) => {
-    pointsRef.current.rotation.y += delta * -0.0125
+    pointsRef.current.rotation.y += delta * -0.0025
   })
 
   return <>
-    <Points ref={ pointsRef } positions={ asteroidPositions } stride={ 3 }>
+    <Points ref={ pointsRef } positions={ asteroidPositions }>
       <PointMaterial
         size={ 1 }
         transparent={ true }
@@ -33,7 +32,6 @@ export default function AsteroidBelt({ asteroidCount, radius, ringThickness }: a
         depthWrite={ false }
         opacity={ 0.5 }
         color="#DEE2E6"
-        blending={ THREE.AdditiveBlending }
       />
     </Points>
   </>

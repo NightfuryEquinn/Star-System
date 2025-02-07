@@ -20,11 +20,11 @@ export default function Experience() {
   
   // Mouse drag sound effect
   const { camera } = useThree()
-  const prevCameraPosition = useRef<any>( camera.position.clone() )
-  const totalDistance = useRef<any>( 0 )
-  const threshold = 10
+  const prevCameraPosition = useRef<THREE.Vector3>( camera.position.clone() )
+  const totalDistance = useRef<number>( 0 )
+  const threshold = 20
 
-  const orbitSound = new Howl({ src: [ "../audio/orbit.mp3" ], volume: 0.5, rate: 2.5 })
+  const orbitSound = new Howl({ src: [ "../audio/orbit.mp3" ], volume: 0.25, rate: 2.5 })
 
   useFrame(() => {
     const currentPosition = camera.position
@@ -67,22 +67,21 @@ export default function Experience() {
       <Bloom luminanceThreshold={ 0.9 } luminanceSmoothing={ 0.9 } intensity={ 3.5 } mipmapBlur />
     </EffectComposer>
 
+    <SpaceCompass />
+
     <Star sunDirection={ sunDirection } />
     <Venus sunDirection={ sunDirectionForVenus } />
     <Earth sunDirection={ sunDirection } />
     <AsteroidBelt asteroidCount={ 500 } radius={ 100 } ringThickness={ 25 } />
     <Saturn sunDirection={ sunDirectionForSaturn } />
 
-    <InfiniteStarField size={ 0.125 } color="#03274C" />
-    <InfiniteStarField size={ 0.25 } color="#4D004F" />
-
-    <ambientLight intensity={ 0.5 } />
-
-    <SpaceCompass />
+    <InfiniteStarField size={ 500 } color="#4361EE" />
+    <InfiniteStarField size={ 750 } color="#7209B7" />
+    <InfiniteStarField size={ 1000 } color="#C1115A" />
 
     <OrbitControls
       enableDamping
-      panSpeed={ 1 }
+      panSpeed={ 0.3 }
     />
   </>
 }

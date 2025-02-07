@@ -1,72 +1,44 @@
-import { Point, Points } from "@react-three/drei"
+import { Points } from "@react-three/drei"
 import { useFrame } from "@react-three/fiber"
-import { useMemo, useRef, useState } from "react"
+import { useMemo, useRef } from "react"
 import * as THREE from "three"
-
-const GRID_SIZE = 5
-const SPACING = 5
-const BOUNDARY = GRID_SIZE * SPACING * 0.75
-
-function getRandomOffset( scale: number ) {
-  return ( Math.random() - 0.5 ) * scale
-}
+import starfieldFragment from "../shaders/starfield/fragment.glsl"
+import starfieldVertex from "../shaders/starfield/vertex.glsl"
 
 export default function InfiniteStarField({ size, color }: any) {
-  const groupRef = useRef<any>( null )
-  const [ prevCamPos ] = useState(() => new THREE.Vector3());
-
-  const starPositions = useMemo(() => {
-    const positions = []
-
-    for ( let x = 0; x < GRID_SIZE; x++ ) {
-      for ( let y = 0; y < GRID_SIZE; y++ ) {
-        for ( let z = 0; z < GRID_SIZE; z++ ) {
-          positions.push(
-            new THREE.Vector3(
-              ( x - GRID_SIZE / 2 ) * SPACING + getRandomOffset( 3.5 ),
-              ( y - GRID_SIZE / 2 ) * SPACING + getRandomOffset( 1.5 ),
-              ( z - GRID_SIZE / 2 ) * SPACING + getRandomOffset( 2.5 )
-            )
-          )
-        }
-      }
+  const materialRef = useRef<any>()
+  const starCount = 1000
+  const positions = useMemo(() => {
+    const positions = new Float32Array( starCount * 3 )
+    for ( let i = 0; i < starCount; i++ ) {
+      positions[ i * 3 + 0 ] = (Math.random() - 0.5) * size
+      positions[ i * 3 + 1 ] = (Math.random() - 0.5) * size
+      positions[ i * 3 + 2 ] = (Math.random() - 0.5) * size
     }
 
     return positions
-  }, [])
+  }, [ starCount, size ])
 
   useFrame(({ camera }) => {
-    if ( !groupRef.current ) return
-
-    const delta = new THREE.Vector3().subVectors( camera.position, prevCamPos )
-    prevCamPos.copy( camera.position ) 
-
-    starPositions.forEach(( star: any ) => {
-      star.sub( delta )
-
-      if ( star.x > camera.position.x + BOUNDARY ) star.x -= GRID_SIZE * SPACING
-      if ( star.x < camera.position.x - BOUNDARY ) star.x += GRID_SIZE * SPACING
-      if ( star.y > camera.position.y + BOUNDARY ) star.y -= GRID_SIZE * SPACING
-      if ( star.y < camera.position.y - BOUNDARY ) star.y += GRID_SIZE * SPACING
-      if ( star.z > camera.position.z + BOUNDARY ) star.z -= GRID_SIZE * SPACING
-      if ( star.z < camera.position.z - BOUNDARY ) star.z += GRID_SIZE * SPACING
-    })
-
-    groupRef.current.children.forEach((child: any, i: number) => {
-      child.position.copy( starPositions[ i ] )
-    })
+    if ( materialRef.current ) {
+      materialRef.current.uniforms.uCameraPosition.value.copy( camera.position )
+    }
   })
 
   return <>
-    <group ref={ groupRef }>
-      {
-        starPositions.map(( pos ) => (
-          <Points>
-            <pointsMaterial size={ size } color={ color } sizeAttenuation blending={ THREE.AdditiveBlending } />
-            <Point position={ pos.toArray() } />
-          </Points>
-        ))
-      }
-    </group>
+    <Points positions={ positions }>
+      <shaderMaterial
+        ref={ materialRef }
+        attach="material"
+        transparent
+        uniforms={{
+          uCameraPosition: { value: new THREE.Vector3() },
+          uStarDistance: { value: size },
+          uColor: { value: new THREE.Color( color ) }
+        }}
+        vertexShader={ starfieldVertex }
+        fragmentShader={ starfieldFragment }
+      />
+    </Points>
   </>
 }
