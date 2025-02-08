@@ -1,4 +1,4 @@
-import { useFrame, useLoader } from "@react-three/fiber"
+import { useFrame, useLoader, useThree } from "@react-three/fiber"
 import { useRef } from "react"
 import * as THREE from "three"
 import earthFragment from "../shaders/earth/fragment.glsl"
@@ -8,7 +8,15 @@ import atmosphereVertex from "../shaders/earth_atmosphere/vertex.glsl"
 import moonFragment from "../shaders/moon/fragment.glsl"
 import moonVertex from "../shaders/moon/vertex.glsl"
 
-export default function Earth({ sunDirection }: any) {
+export default function Earth({ sunDirection, zoomedRef, orbitRef }: any) {
+  const { camera } = useThree()
+  const earthOffset = new THREE.Vector3( 0, 0, 10 )
+  const moonOffset = new THREE.Vector3( 0, 0, 5 )
+
+  const zoomTowards = ( planet: string ) => {
+    zoomedRef.current = planet
+  }
+
   // Earth
   const earthMaterial = useRef<any>( null )
   const earthGeometry = useRef<any>( null )
@@ -47,9 +55,9 @@ export default function Earth({ sunDirection }: any) {
 
   // Orbit
   const orbitRadius = 50
-  const orbitSpeed = 0.025
+  const orbitSpeed = 0.005
   const moonOrbitRadius = 7.5
-  const moonOrbitSpeed = 0.05
+  const moonOrbitSpeed = 0.015
 
   useFrame(( _, delta ) => {
     // For Earth
@@ -88,10 +96,22 @@ export default function Earth({ sunDirection }: any) {
 
     earthMaterial.current.uniforms.uSunDirection.value.copy( sunPosition )
     atmosphereMaterial.current.uniforms.uSunDirection.value.copy( sunPosition )
+
+    if ( zoomedRef.current === "Earth" ) {
+      camera.position.copy( earthGeometry.current.position ).add( earthOffset )
+      camera.lookAt( earthGeometry.current.position )
+      orbitRef.current.enabled = false
+    }
+
+    if ( zoomedRef.current === "Moon" ) {
+      camera.position.copy( moonGeometry.current.position ).add( moonOffset )
+      camera.lookAt( moonGeometry.current.position )
+      orbitRef.current.enabled = false
+    }
   })
 
   return <>
-    <mesh ref={ earthGeometry }>
+    <mesh ref={ earthGeometry } onClick={ () => zoomTowards( "Earth" ) }>
       <sphereGeometry args={[ 2, 64, 64 ]} />
       <shaderMaterial
         ref={ earthMaterial }
@@ -127,7 +147,7 @@ export default function Earth({ sunDirection }: any) {
       />
     </mesh>
 
-    <mesh ref={ moonGeometry }>
+    <mesh ref={ moonGeometry } onClick={ () => zoomTowards( "Moon" ) }>
       <sphereGeometry args={[ 0.75, 64, 64 ]} />
       <shaderMaterial 
         ref={ moonMaterial }

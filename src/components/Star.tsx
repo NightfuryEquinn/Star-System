@@ -1,4 +1,4 @@
-import { useFrame, useLoader } from "@react-three/fiber"
+import { useFrame, useLoader, useThree } from "@react-three/fiber"
 import { useMemo, useRef } from "react"
 import * as THREE from "three"
 import starFragment from "../shaders/star/fragment.glsl"
@@ -6,7 +6,14 @@ import starVertex from "../shaders/star/vertex.glsl"
 import starAtmosphereFragment from "../shaders/star_atmosphere/fragment.glsl"
 import starAtmosphereVertex from "../shaders/star_atmosphere/vertex.glsl"
 
-export default function Star({ sunDirection }: any) {
+export default function Star({ sunDirection, zoomedRef, orbitRef }: any) {
+  const { camera } = useThree()
+  const offset = new THREE.Vector3( 0, 0, 30 )
+
+  const zoomTowards = () => {
+    zoomedRef.current = "Star"
+  }
+
   // Sun
   const starMaterial = useRef<any>( null )
   const starGeometry = useRef<any>( null )
@@ -28,10 +35,16 @@ export default function Star({ sunDirection }: any) {
   useFrame(( _, delta ) => {
     sunDirection.setFromSpherical( sunSpherical )
     starMaterial.current.uniforms.uTime.value += delta
+
+    if ( zoomedRef.current === "Star" ) {
+      camera.position.copy( starGeometry.current.position ).add( offset )
+      camera.lookAt( starGeometry.current.position )
+      orbitRef.current.enabled = false
+    }
   })
 
   return <>
-    <mesh ref={ starGeometry }>
+    <mesh ref={ starGeometry } onClick={ zoomTowards }>
       <sphereGeometry args={[ 5, 24, 24 ]} />
       <shaderMaterial
         ref={ starMaterial }
