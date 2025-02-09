@@ -16,34 +16,23 @@
   touch-action: none;
 }
 
+#root {
+  @apply relative top-0 left-0 w-full h-screen
+}
+
 @layer base {
   @font-face {
-    font-family: "DM Mono Regular";
-    src: url("../../fonts/dmmono_regular.ttf");
+    font-family: "Tomorrow Regular";
+    src: url("../../fonts/tmr_regular.ttf");
   }
   
   @font-face {
-    font-family: "DM Mono Medium";
-    src: url("../../fonts/dmmono_medium.ttf");
+    font-family: "Tomorrow Bold";
+    src: url("../../fonts/tmr_bold.ttf");
   }
   
   @font-face {
-    font-family: "DM Mono Light";
-    src: url("../../fonts/dmmono_light.ttf");
-  }
-  
-  @font-face {
-    font-family: "DM Mono Italic Regular";
-    src: url("../../fonts/dmmono_italic.ttf");
-  }
-  
-  @font-face {
-    font-family: "DM Mono Italic Medium";
-    src: url("../../fonts/dmmono_italic_medium.ttf");
-  }
-  
-  @font-face {
-    font-family: "DM Mono Italic Light";
-    src: url("../../fonts/dmmono_italic_light.ttf");
+    font-family: "Tomorrow Light";
+    src: url("../../fonts/tmr_light.ttf");
   }
 }

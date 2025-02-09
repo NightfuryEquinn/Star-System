@@ -1,4 +1,4 @@
-import { useFrame, useLoader, useThree } from "@react-three/fiber"
+import { useFrame, useLoader } from "@react-three/fiber"
 import { useMemo, useRef } from "react"
 import * as THREE from "three"
 import saturnFragment from "../shaders/saturn/fragment.glsl"
@@ -6,14 +6,7 @@ import saturnVertex from "../shaders/saturn/vertex.glsl"
 import saturnAtmosphereFragment from "../shaders/saturn_atmosphere/fragment.glsl"
 import saturnAtmosphereVertex from "../shaders/saturn_atmosphere/vertex.glsl"
 
-export default function Saturn({ sunDirection, zoomedRef, orbitRef }: any) {
-  const { camera } = useThree()
-  const offset = new THREE.Vector3( 0, 0, 25 )
-
-  const zoomTowards = () => {
-    zoomedRef.current = "Saturn"
-  }
-
+export default function Saturn({ sunDirection }: any) {
   // Saturn
   const saturnGeometry = useRef<any>( null )
   const saturnMaterial = useRef<any>( null )
@@ -79,16 +72,10 @@ export default function Saturn({ sunDirection, zoomedRef, orbitRef }: any) {
     ).normalize()
 
     atmosphereMaterial.current.uniforms.uSunDirection.value.copy( sunPosition )
-    
-    if ( zoomedRef.current === "Saturn" ) {
-      camera.position.copy( saturnGeometry.current.position ).add( offset )
-      camera.lookAt( saturnGeometry.current.position )
-      orbitRef.current.enabled = false
-    }
   })
 
   return <>
-    <mesh ref={ saturnGeometry } onClick={ zoomTowards }>
+    <mesh ref={ saturnGeometry }>
       <sphereGeometry args={[ 3, 64, 64 ]} />
       <shaderMaterial 
         ref={ saturnMaterial }

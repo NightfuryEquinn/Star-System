@@ -1,4 +1,4 @@
-import { useFrame, useLoader, useThree } from "@react-three/fiber"
+import { useFrame, useLoader } from "@react-three/fiber"
 import { useRef } from "react"
 import * as THREE from "three"
 import venusFragment from "../shaders/venus/fragment.glsl"
@@ -6,14 +6,7 @@ import venusVertex from "../shaders/venus/vertex.glsl"
 import venusAtmosphereFragment from "../shaders/venus_atmosphere/fragment.glsl"
 import venusAtmosphereVertex from "../shaders/venus_atmosphere/vertex.glsl"
 
-export default function Venus({ sunDirection, zoomedRef, orbitRef }: any) {
-  const { camera } = useThree()
-  const offset = new THREE.Vector3( 0, 0, 10 )
-
-  const zoomTowards = () => {
-    zoomedRef.current = "Venus"
-  }
-
+export default function Venus({ sunDirection }: any) {
   // Venus
   const venusGeometry = useRef<any>( null )
   const venusMaterial = useRef<any>( null )
@@ -64,16 +57,10 @@ export default function Venus({ sunDirection, zoomedRef, orbitRef }: any) {
 
     venusMaterial.current.uniforms.uSunDirection.value.copy( sunPosition )
     atmosphereMaterial.current.uniforms.uSunDirection.value.copy( sunPosition )
-
-    if ( zoomedRef.current === "Venus" ) {
-      camera.position.copy( venusGeometry.current.position ).add( offset )
-      camera.lookAt( venusGeometry.current.position )
-      orbitRef.current.enabled = false
-    }
   })
 
   return <>
-    <mesh ref={ venusGeometry } onClick={ zoomTowards }>
+    <mesh ref={ venusGeometry }>
       <sphereGeometry args={[ 1.8, 64, 64 ]} />
       <shaderMaterial 
         ref={ venusMaterial }

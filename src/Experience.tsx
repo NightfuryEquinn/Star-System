@@ -2,6 +2,7 @@ import { Environment, OrbitControls } from '@react-three/drei'
 import { useFrame, useThree } from '@react-three/fiber'
 import { Bloom, EffectComposer, Glitch } from '@react-three/postprocessing'
 import { Howl } from 'howler'
+import { Perf } from 'r3f-perf'
 import { useRef } from 'react'
 import * as THREE from "three"
 import AsteroidBelt from './components/AsteroidBelt'
@@ -13,9 +14,6 @@ import Star from './components/Star'
 import Venus from './components/Venus'
 
 export default function Experience() {
-  const orbitRef = useRef<any>()
-  const zoomedRef = useRef( "" )
-
   const sunDirection = new THREE.Vector3( 0, 0, 1 )
   const sunDirectionForSaturn = new THREE.Vector3( 0, 0, 1 )
   const sunDirectionForVenus = new THREE.Vector3( 0, 0, 1 )
@@ -27,19 +25,6 @@ export default function Experience() {
   const threshold = 20
 
   const orbitSound = new Howl({ src: [ "../audio/orbit.mp3" ], volume: 0.25, rate: 2.5 })
-
-  const zoomOut = () => {
-    zoomedRef.current = ""
-    camera.position.copy( new THREE.Vector3( 50, 25, 100 ) )
-    orbitRef.current.target.copy( new THREE.Vector3( 0, 0, 0 ) )
-    orbitRef.current.enabled = true
-  }
-
-  window.addEventListener( "keydown", ( e: any ) => {
-    if ( e.code === "Space" ) {
-      zoomOut()
-    }
-  })
 
   useFrame(() => {
     const currentPosition = camera.position
@@ -57,6 +42,7 @@ export default function Experience() {
   })
 
   return <>
+    <Perf />
     <Environment
       background
       files={[
@@ -82,18 +68,18 @@ export default function Experience() {
 
     <SpaceCompass />
 
-    <Star sunDirection={ sunDirection } zoomedRef={ zoomedRef } orbitRef={ orbitRef } />
-    <Venus sunDirection={ sunDirectionForVenus } zoomedRef={ zoomedRef } orbitRef={ orbitRef } />
-    <Earth sunDirection={ sunDirection } zoomedRef={ zoomedRef } orbitRef={ orbitRef } />
+    <Star sunDirection={ sunDirection } />
+    <Venus sunDirection={ sunDirectionForVenus } />
+    <Earth sunDirection={ sunDirection } />
+    <Saturn sunDirection={ sunDirectionForSaturn } />
+
     <AsteroidBelt asteroidCount={ 500 } radius={ 100 } ringThickness={ 25 } />
-    <Saturn sunDirection={ sunDirectionForSaturn } zoomedRef={ zoomedRef } orbitRef={ orbitRef } />
 
     <InfiniteStarField size={ 500 } color="#4361EE" />
     <InfiniteStarField size={ 750 } color="#7209B7" />
     <InfiniteStarField size={ 1000 } color="#C1115A" />
 
     <OrbitControls
-      ref={ orbitRef }
       enableDamping
       panSpeed={ 0.3 }
     />

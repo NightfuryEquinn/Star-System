@@ -23,12 +23,9 @@ export default {
       "white": "#DEE2E6",
     },
     fontFamily: {
-      "dm-mono": ["DM Mono Regular"],
-      "dm-mono-medium": ["DM Mono Medium"],
-      "dm-mono-light": ["DM Mono Light"],
-      "dm-mono-italic": ["DM Mono Italic Regular"],
-      "dm-mono-italic-medium": ["DM Mono Italic Medium"],
-      "dm-mono-italic-light": ["DM Mono Italic Light"]
+      "tmr": ["Tomorrow Regular"],
+      "tmr-bold": ["Tomorrow Bold"],
+      "tmr-light": ["Tomorrow Light"],
     },
     extend: {
       screens: {

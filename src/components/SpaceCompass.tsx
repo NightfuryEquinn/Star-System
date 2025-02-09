@@ -1,4 +1,4 @@
-import { useFrame, useLoader, useThree } from "@react-three/fiber"
+import { useFrame, useThree } from "@react-three/fiber"
 import { useRef } from "react"
 import * as THREE from "three"
 
@@ -6,22 +6,17 @@ export default function SpaceCompass() {
   const compassRef = useRef<any>( null )
   const { camera, size } = useThree()
 
-  const xAxisTexture = useLoader( THREE.TextureLoader, "../assets/textures/axes/x.png" )
-  const yAxisTexture = useLoader( THREE.TextureLoader, "../assets/textures/axes/y.png" )
-  const zAxisTexture = useLoader( THREE.TextureLoader, "../assets/textures/axes/z.png" )
-  const pointTexture = useLoader( THREE.TextureLoader, "../assets/textures/axes/point.png" )
-
   const renderAxis = ( axis: "X" | "Y" | "Z" ) => {
-    const axesMatcap = axis === "X" ? xAxisTexture : axis === "Y" ? yAxisTexture : zAxisTexture
+    const axesColor = axis === "X" ? "#a40001" : axis === "Y" ? "#00229c" : "#48cc74"
 
     return <>
       <mesh>
         <cylinderGeometry args={[ 0.02, 0.02, 0.1875, 32 ]} />
-        <meshMatcapMaterial matcap={ axesMatcap } />
+        <meshBasicMaterial color={ axesColor } />
         
         <mesh position={[ 0, 0.125, 0 ]}>
           <coneGeometry args={[ 0.05, 0.125, 32 ]} />
-          <meshMatcapMaterial matcap={ axesMatcap } />
+          <meshBasicMaterial color={ axesColor } />
         </mesh>
       </mesh>
     </>
@@ -30,7 +25,7 @@ export default function SpaceCompass() {
   useFrame(() => {
     compassRef.current.lookAt( 0, 0, 0 )
 
-    const margin = 75
+    const margin = 35
     const ndcX = -1 + ( margin / size.width ) * 2
     const ndcY = -1 + ( margin / size.height ) * 2
 
@@ -50,7 +45,7 @@ export default function SpaceCompass() {
 
       <mesh scale={ 0.25 }>
         <sphereGeometry args={[ 0.5, 16, 16 ]} />
-        <meshMatcapMaterial matcap={ pointTexture } />
+        <meshBasicMaterial color="#332233" />
       </mesh>
     </group>
   </>
