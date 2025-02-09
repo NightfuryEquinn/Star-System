@@ -42,7 +42,8 @@ export default function Experience() {
   })
 
   return <>
-    <Perf />
+    <Perf minimal />
+
     <Environment
       background
       files={[
